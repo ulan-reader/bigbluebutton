@@ -1,0 +1,38 @@
+.apiParams th {
+	white-space: nowrap;
+}
+
+.apiParams td {
+	padding: 1em 5px;
+	vertical-align: top;
+}
+.apiParams td > :last-child {
+	margin-bottom: 0;
+}
+
+.apiRequired {
+	font-weight: bold;
+	font-size: 0.85rem;
+	font-style: italic;
+	margin-bottom: 0;
+}
+.apiDeprecated {
+	font-size: 0.85rem;
+	font-style: italic;
+	margin-bottom: 0;
+}
+
+.apiConstraints {
+	font-style: italic;
+	margin-bottom: 0;
+}
+
+.apiDefault {
+	font-style: italic;
+	margin-top: var(--ifm-leading);
+	margin-bottom: 0;
+}
+
+.apiConstraints span {
+	text-wrap-mode: nowrap;
+}

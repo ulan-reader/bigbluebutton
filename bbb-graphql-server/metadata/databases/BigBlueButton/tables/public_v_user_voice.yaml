@@ -1,0 +1,69 @@
+table:
+  name: v_user_voice
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_name: user_voice
+  custom_root_fields: {}
+object_relationships:
+  - name: user
+    using:
+      manual_configuration:
+        column_mapping:
+          meetingId: meetingId
+          userId: userId
+        insertion_order: null
+        remote_table:
+          name: v_user_ref
+          schema: public
+select_permissions:
+  - role: bbb_client
+    permission:
+      columns:
+        - callerName
+        - callerNum
+        - callingWith
+        - endTime
+        - floor
+        - joined
+        - lastFloorTime
+        - listenOnly
+        - muted
+        - listenOnlyInputDevice
+        - deafened
+        - spoke
+        - startTime
+        - talking
+        - userId
+        - voiceConf
+        - voiceUserId
+      filter:
+        meetingId:
+          _eq: X-Hasura-MeetingId
+  - role: bbb_client_not_in_meeting
+    permission:
+      columns:
+        - callerName
+        - callerNum
+        - callingWith
+        - endTime
+        - floor
+        - joined
+        - lastFloorTime
+        - listenOnly
+        - muted
+        - listenOnlyInputDevice
+        - deafened
+        - spoke
+        - startTime
+        - talking
+        - userId
+        - voiceConf
+        - voiceUserId
+      filter:
+        _and:
+          - meetingId:
+              _eq: X-Hasura-MeetingId
+          - userId:
+              _eq: X-Hasura-UserId
