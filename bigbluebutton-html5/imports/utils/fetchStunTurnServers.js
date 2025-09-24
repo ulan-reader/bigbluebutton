@@ -35,7 +35,7 @@ const fetchStunTurnServers = function (sessionToken) {
     TURN_CACHE_VALID_UNTIL = max_ttl;
 
     const stDictionary = {
-      stun: stunServers.map(server => server.url),
+      stun: stunServers.map((server) => server.url),
       turn: turnReply,
     };
 
@@ -48,13 +48,13 @@ const fetchStunTurnServers = function (sessionToken) {
 
   const url = `${STUN_TURN_FETCH_URL}?sessionToken=${sessionToken}`;
   return fetch(url, { credentials: 'include' })
-    .then(res => res.json())
+    .then((res) => res.json())
     .then(handleStunTurnResponse);
 };
 
 const mapStunTurn = ({ stun, turn }) => {
-  const rtcStuns = stun.map(url => ({ urls: url }));
-  const rtcTurns = turn.map(t => ({ urls: t.urls, credential: t.password, username: t.username }));
+  const rtcStuns = stun.map((url) => ({ urls: url }));
+  const rtcTurns = turn.map((t) => ({ urls: t.urls, credential: t.password, username: t.username }));
   return rtcStuns.concat(rtcTurns);
 };
 
@@ -92,9 +92,7 @@ const fetchWebRTCMappedStunTurnServers = function (sessionToken) {
   });
 };
 
-const hasTurnServer = () => {
-  return HAS_SEEN_TURN_SERVER;
-}
+const hasTurnServer = () => HAS_SEEN_TURN_SERVER;
 
 export {
   fetchStunTurnServers,

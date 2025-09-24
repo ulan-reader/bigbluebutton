@@ -23,7 +23,7 @@ class ScreenshareBroker extends BaseBroker {
     this.ws = null;
     this.webRtcPeer = null;
     this.hasAudio = false;
-    this.contentType = "camera";
+    this.contentType = 'camera';
     this.offering = true;
     this.signalCandidates = true;
     this.ending = false;
@@ -56,7 +56,7 @@ class ScreenshareBroker extends BaseBroker {
     // To be implemented by instantiators
   }
 
-  async share () {
+  async share() {
     return new Promise((resolve, reject) => {
       if (this.stream == null) {
         logger.error({
@@ -73,12 +73,12 @@ class ScreenshareBroker extends BaseBroker {
     });
   }
 
-  view () {
+  view() {
     return this.openWSConnection()
       .then(this.subscribeToScreenStream.bind(this));
   }
 
-  onWSMessage (message) {
+  onWSMessage(message) {
     const parsedMessage = JSON.parse(message.data);
 
     switch (parsedMessage.id) {
@@ -114,12 +114,12 @@ class ScreenshareBroker extends BaseBroker {
             messageId: parsedMessage.id || 'Unknown',
             sfuComponent: this.sfuComponent,
             role: this.role,
-          }
-        }, `Discarded invalid SFU message`);
+          },
+        }, 'Discarded invalid SFU message');
     }
   }
 
-  handleSFUError (sfuResponse) {
+  handleSFUError(sfuResponse) {
     const { code, reason } = sfuResponse;
     const error = BaseBroker.assembleError(code, reason);
 
@@ -132,11 +132,11 @@ class ScreenshareBroker extends BaseBroker {
         sfuComponent: this.sfuComponent,
         started: this.started,
       },
-    }, `Screen sharing failed in SFU`);
+    }, 'Screen sharing failed in SFU');
     this.onerror(error);
   }
 
-  sendLocalDescription (localDescription) {
+  sendLocalDescription(localDescription) {
     const message = {
       id: SUBSCRIBER_ANSWER,
       type: this.sfuComponent,
@@ -149,7 +149,7 @@ class ScreenshareBroker extends BaseBroker {
     this.sendMessage(message);
   }
 
-  onRemoteDescriptionReceived (sfuResponse) {
+  onRemoteDescriptionReceived(sfuResponse) {
     if (this.offering) {
       return this.processAnswer(sfuResponse);
     }
@@ -235,7 +235,7 @@ class ScreenshareBroker extends BaseBroker {
     });
   }
 
-  onIceCandidate (candidate) {
+  onIceCandidate(candidate) {
     const message = {
       id: ON_ICE_CANDIDATE_MSG,
       role: this.role,
@@ -292,7 +292,6 @@ class ScreenshareBroker extends BaseBroker {
         }, 'Screenshare peer creation failed');
         this.onerror(normalizedError);
         reject(normalizedError);
-
       }
     });
   }

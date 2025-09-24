@@ -9,17 +9,15 @@ const HAS_DISPLAY_MEDIA = (typeof navigator.getDisplayMedia === 'function'
 
 const getConferenceBridge = () => getVoiceConf();
 
-const normalizeGetDisplayMediaError = (error) => {
-  return SCREENSHARING_ERRORS[error.name] || SCREENSHARING_ERRORS.GetDisplayMediaGenericError;
-};
+const normalizeGetDisplayMediaError = (error) => SCREENSHARING_ERRORS[error.name] || SCREENSHARING_ERRORS.GetDisplayMediaGenericError;
 
 const getBoundGDM = () => {
   if (typeof navigator.getDisplayMedia === 'function') {
     return navigator.getDisplayMedia.bind(navigator);
-  } else if (navigator.mediaDevices && typeof navigator.mediaDevices.getDisplayMedia === 'function') {
+  } if (navigator.mediaDevices && typeof navigator.mediaDevices.getDisplayMedia === 'function') {
     return navigator.mediaDevices.getDisplayMedia.bind(navigator.mediaDevices);
   }
-}
+};
 
 const getScreenStream = async () => {
   const {
@@ -36,14 +34,14 @@ const getScreenStream = async () => {
 
     if (typeof stream.getVideoTracks === 'function'
       && typeof GDM_CONSTRAINTS.video === 'object') {
-      stream.getVideoTracks().forEach(track => {
-        if (typeof track.applyConstraints  === 'function') {
-          track.applyConstraints(GDM_CONSTRAINTS.video).catch(error => {
+      stream.getVideoTracks().forEach((track) => {
+        if (typeof track.applyConstraints === 'function') {
+          track.applyConstraints(GDM_CONSTRAINTS.video).catch((error) => {
             logger.warn({
               logCode: 'screenshare_videoconstraint_failed',
               extraInfo: { errorName: error.name, errorCode: error.code },
             },
-              'Error applying screenshare video constraint');
+            'Error applying screenshare video constraint');
           });
         }
       });
@@ -51,9 +49,9 @@ const getScreenStream = async () => {
 
     if (typeof stream.getAudioTracks === 'function'
       && typeof GDM_CONSTRAINTS.audio === 'object') {
-      stream.getAudioTracks().forEach(track => {
-        if (typeof track.applyConstraints  === 'function') {
-          track.applyConstraints(GDM_CONSTRAINTS.audio).catch(error => {
+      stream.getAudioTracks().forEach((track) => {
+        if (typeof track.applyConstraints === 'function') {
+          track.applyConstraints(GDM_CONSTRAINTS.audio).catch((error) => {
             logger.warn({
               logCode: 'screenshare_audioconstraint_failed',
               extraInfo: { errorName: error.name, errorCode: error.code },
@@ -71,7 +69,7 @@ const getScreenStream = async () => {
   if (typeof getDisplayMedia === 'function') {
     return getDisplayMedia(GDM_CONSTRAINTS)
       .then(gDMCallback)
-      .catch(error => {
+      .catch((error) => {
         const normalizedError = normalizeGetDisplayMediaError(error);
         logger.error({
           logCode: 'screenshare_getdisplaymedia_failed',
@@ -79,21 +77,18 @@ const getScreenStream = async () => {
         }, 'getDisplayMedia call failed');
         return Promise.reject(normalizedError);
       });
-  } else {
-    // getDisplayMedia isn't supported, error its way out
-    return Promise.reject(SCREENSHARING_ERRORS.NotSupportedError);
   }
+  // getDisplayMedia isn't supported, error its way out
+  return Promise.reject(SCREENSHARING_ERRORS.NotSupportedError);
 };
 
-const getIceServers = (sessionToken) => {
-  return fetchWebRTCMappedStunTurnServers(sessionToken).catch(error => {
-    logger.error({
-      logCode: 'screenshare_fetchstunturninfo_error',
-      extraInfo: { error }
-    }, 'Screenshare bridge failed to fetch STUN/TURN info');
-    return getMappedFallbackStun();
-  });
-}
+const getIceServers = (sessionToken) => fetchWebRTCMappedStunTurnServers(sessionToken).catch((error) => {
+  logger.error({
+    logCode: 'screenshare_fetchstunturninfo_error',
+    extraInfo: { error },
+  }, 'Screenshare bridge failed to fetch STUN/TURN info');
+  return getMappedFallbackStun();
+});
 
 const getMediaServerAdapter = () => {
   const {
@@ -115,38 +110,34 @@ const getNextReconnectionInterval = (oldInterval) => {
     (TIMEOUT_INCREASE_FACTOR * Math.max(oldInterval, BASE_RECONNECTION_TIMEOUT)),
     MAX_MEDIA_TIMEOUT,
   );
-}
+};
 
-const streamHasAudioTrack = (stream) => {
-  return stream
+const streamHasAudioTrack = (stream) => stream
     && typeof stream.getAudioTracks === 'function'
     && stream.getAudioTracks().length >= 1;
-}
 
 const dispatchAutoplayHandlingEvent = (mediaElement) => {
   const tagFailedEvent = new CustomEvent('screensharePlayFailed',
     { detail: { mediaElement } });
   window.dispatchEvent(tagFailedEvent);
-}
+};
 
-const screenshareLoadAndPlayMediaStream = (stream, mediaElement, muted) => {
-  return loadAndPlayMediaStream(stream, mediaElement, muted).catch(error => {
-    // NotAllowedError equals autoplay issues, fire autoplay handling event.
-    // This will be handled in the screenshare react component.
-    if (error.name === 'NotAllowedError') {
-      logger.error({
-        logCode: 'screenshare_error_autoplay',
-        extraInfo: { errorName: error.name },
-      }, 'Screen share media play failed: autoplay error');
-      dispatchAutoplayHandlingEvent(mediaElement);
-    } else {
-      throw {
-        errorCode: SCREENSHARING_ERRORS.SCREENSHARE_PLAY_FAILED.errorCode,
-        errorMessage: error.message || SCREENSHARING_ERRORS.SCREENSHARE_PLAY_FAILED.errorMessage,
-      };
-    }
-  });
-}
+const screenshareLoadAndPlayMediaStream = (stream, mediaElement, muted) => loadAndPlayMediaStream(stream, mediaElement, muted).catch((error) => {
+  // NotAllowedError equals autoplay issues, fire autoplay handling event.
+  // This will be handled in the screenshare react component.
+  if (error.name === 'NotAllowedError') {
+    logger.error({
+      logCode: 'screenshare_error_autoplay',
+      extraInfo: { errorName: error.name },
+    }, 'Screen share media play failed: autoplay error');
+    dispatchAutoplayHandlingEvent(mediaElement);
+  } else {
+    throw {
+      errorCode: SCREENSHARING_ERRORS.SCREENSHARE_PLAY_FAILED.errorCode,
+      errorMessage: error.message || SCREENSHARING_ERRORS.SCREENSHARE_PLAY_FAILED.errorMessage,
+    };
+  }
+});
 
 class EXPORTED_CONFIGS {
   static BASE_MEDIA_TIMEOUT() {

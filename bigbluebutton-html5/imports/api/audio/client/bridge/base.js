@@ -59,11 +59,11 @@ export default class BaseAudioBridge {
     console.error('The Bridge must implement sendDtmf');
   }
 
-  set inputDeviceId (deviceId) {
+  set inputDeviceId(deviceId) {
     this._inputDeviceId = deviceId;
   }
 
-  get inputDeviceId () {
+  get inputDeviceId() {
     return this._inputDeviceId;
   }
 

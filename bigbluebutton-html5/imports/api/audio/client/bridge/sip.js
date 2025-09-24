@@ -64,7 +64,7 @@ class SIPSession {
     this._currentSessionState = null;
     this._ignoreCallState = false;
 
-    this.mediaStreamFactory = this.mediaStreamFactory.bind(this)
+    this.mediaStreamFactory = this.mediaStreamFactory.bind(this);
   }
 
   get inputStream() {
@@ -325,7 +325,6 @@ class SIPSession {
           this.userAgent.stop();
           window.removeEventListener('beforeunload', this.onBeforeUnload);
         }
-
 
         hangupRetries += 1;
 
@@ -761,7 +760,7 @@ class SIPSession {
       this.setupEventHandlers(inviter).then(() => {
         inviter.invite().then(() => {
           resolve();
-        }).catch(e => reject(e));
+        }).catch((e) => reject(e));
       });
     });
   }
@@ -771,7 +770,7 @@ class SIPSession {
       if (this.userRequestedHangup === true) reject();
 
       let iceCompleted = false;
-      let fsReady = false;
+      const fsReady = false;
       let sessionTerminated = false;
 
       const setupRemoteMedia = () => {
@@ -1020,7 +1019,6 @@ class SIPSession {
         // any possible errors
         if (!this._currentSessionState) return false;
 
-
         let mappedCause;
         let cause;
         if (!iceCompleted) {
@@ -1042,7 +1040,7 @@ class SIPSession {
           bridgeError: cause,
           bridge: this.bridgeName,
         });
-      }
+      };
 
       const handleSessionTerminated = (message) => {
         logger.info({
@@ -1107,7 +1105,7 @@ class SIPSession {
 
       const matchConstraints = filterSupportedConstraints(constraints);
 
-      //Chromium bug - see: https://bugs.chromium.org/p/chromium/issues/detail?id=796964&q=applyConstraints&can=2
+      // Chromium bug - see: https://bugs.chromium.org/p/chromium/issues/detail?id=796964&q=applyConstraints&can=2
       const { isChrome } = browserInfo;
 
       if (isChrome) {
@@ -1122,7 +1120,7 @@ class SIPSession {
           .sessionDescriptionHandler;
 
         localMediaStream.getAudioTracks().forEach(
-          track => track.applyConstraints(matchConstraints),
+          (track) => track.applyConstraints(matchConstraints),
         );
       }
     } catch (error) {
@@ -1155,7 +1153,7 @@ export default class SIPBridge extends BaseAudioBridge {
     };
 
     this.protocol = window.document.location.protocol;
-    if (MEDIA['sip_ws_host'] != null && MEDIA['sip_ws_host'] != '') {
+    if (MEDIA.sip_ws_host != null && MEDIA.sip_ws_host != '') {
       this.hostname = MEDIA.sip_ws_host;
     } else {
       this.hostname = window.document.location.hostname;
@@ -1216,7 +1214,7 @@ export default class SIPBridge extends BaseAudioBridge {
           if (this.activeSession.webrtcConnected) {
             // webrtc was able to connect so just try again
             message.silenceNotifications = true;
-            callback({ status: this.baseCallStates.reconnecting, bridge: this.bridgeName, });
+            callback({ status: this.baseCallStates.reconnecting, bridge: this.bridgeName });
             shouldTryReconnect = true;
           } else if (hasFallbackDomain === true && hostname !== IPV4_FALLBACK_DOMAIN) {
             message.silenceNotifications = true;

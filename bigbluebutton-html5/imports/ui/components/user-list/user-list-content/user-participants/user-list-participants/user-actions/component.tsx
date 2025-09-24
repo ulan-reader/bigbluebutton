@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { User } from '/imports/ui/Types/user';
 import { LockSettings, UsersPolicies } from '/imports/ui/Types/meeting';
 import { useIntl, defineMessages } from 'react-intl';
@@ -41,6 +41,7 @@ import { PRESENTATION_SET_WRITERS } from '/imports/ui/components/presentation/mu
 import useToggleVoice from '/imports/ui/components/audio/audio-graphql/hooks/useToggleVoice';
 import useWhoIsUnmuted from '/imports/ui/core/hooks/useWhoIsUnmuted';
 import { notify } from '/imports/ui/services/notification';
+import Session from '/imports/ui/services/storage/in-memory';
 
 interface UserActionsProps {
   userListDropdownItems: PluginSdk.UserListDropdownInterface[];
@@ -153,6 +154,18 @@ const messages = defineMessages({
   removeUserConfirmation: {
     id: 'app.userList.menu.removeConfirmation.label',
     description: 'Confirmation message for removing a user from the meeting',
+  },
+  hideParticipantVideoStreamLabel: {
+    id: 'app.videoDock.webcamHideLabel',
+  },
+  hideParticipantVideoStreamDesc: {
+    id: 'app.videoDock.webcamHideDesc',
+  },
+  showParticipantVideoStreamLabel: {
+    id: 'app.videoDock.webcamShowLabel',
+  },
+  showParticipantVideoStreamDesc: {
+    id: 'app.videoDock.webcamShowDesc',
   },
 });
 const makeDropdownPluginItem: (
@@ -334,6 +347,21 @@ const UserActions: React.FC<UserActionsProps> = ({
   const [setUserChatLocked] = useMutation(SET_USER_CHAT_LOCKED);
   const [userEjectCameras] = useMutation(USER_EJECT_CAMERAS);
 
+  // Получаем из локального хранилища список скрытых видео
+  const [hiddenCamsT, setHiddenCams] = useState<string[]>(() => {
+    const stored = Session.getItem('hiddenCams');
+    return Array.isArray(stored) ? stored : [];
+  });
+
+  // Обновляем список скрытых видео при изменении локального хранилища
+  useEffect(() => {
+    const handleHiddenCamsChange = (e: CustomEvent<string[]>) => {
+      setHiddenCams(e.detail);
+    };
+
+    window.addEventListener('hiddenCamsChange', handleHiddenCamsChange as any);
+    return () => window.removeEventListener('hiddenCamsChange', handleHiddenCamsChange as any);
+  }, []);
   const removeUser = (userId: string, banUser: boolean) => {
     if (isVoiceOnlyUser(user.userId)) {
       ejectFromVoice({
@@ -585,6 +613,31 @@ const UserActions: React.FC<UserActionsProps> = ({
       },
       icon: 'video_off',
       dataTest: 'ejectCamera',
+    },
+    {
+      allowed: currentUser.isModerator,
+      key: 'hideVideo',
+      label: hiddenCamsT.includes(user?.userId)
+        ? intl.formatMessage(messages.showParticipantVideoStreamLabel)
+        : intl.formatMessage(messages.hideParticipantVideoStreamLabel),
+      tooltip: hiddenCamsT.includes(user?.userId)
+        ? intl.formatMessage(messages.showParticipantVideoStreamDesc)
+        : intl.formatMessage(messages.hideParticipantVideoStreamDesc),
+      onClick: () => {
+        let updatedHidden: string[];
+        if (hiddenCamsT.includes(user?.userId)) {
+          updatedHidden = hiddenCamsT.filter((id) => id !== user?.userId);
+        } else {
+          updatedHidden = [...hiddenCamsT, user?.userId];
+        }
+
+        Session.setItem('hiddenCams', updatedHidden);
+
+        // ⚡ уведомляем компонент о смене состояния
+        window.dispatchEvent(new CustomEvent('hiddenCamsChange', { detail: updatedHidden }));
+      },
+      icon: hiddenCamsT.includes(user?.userId) ? 'video' : 'video_off',
+      dataTest: 'hideParticipantBtn',
     },
     ...makeDropdownPluginItem(userDropdownItems.filter(
       (item: PluginSdk.UserListDropdownInterface) => (

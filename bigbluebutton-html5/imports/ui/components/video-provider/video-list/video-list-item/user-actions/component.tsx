@@ -1,4 +1,6 @@
-import React, { MutableRefObject, useContext, useEffect } from 'react';
+import React, {
+  MutableRefObject, useContext, useEffect, useState,
+} from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useMutation } from '@apollo/client';
 import Session from '/imports/ui/services/storage/in-memory';
@@ -16,6 +18,7 @@ import { VideoItem } from '/imports/ui/components/video-provider/types';
 import { ACTIONS } from '/imports/ui/components/layout/enums';
 import { useIsVideoPinEnabledForCurrentUser } from '/imports/ui/components/video-provider/hooks';
 import { VIDEO_TYPES } from '/imports/ui/components/video-provider/enums';
+import { addTypedEventListener } from '/imports/utils/events';
 
 const intlMessages = defineMessages({
   focusLabel: {
@@ -78,6 +81,18 @@ const intlMessages = defineMessages({
   disableWarning: {
     id: 'app.videoDock.webcamDisableWarning',
   },
+  hideParticipantVideoStreamLabel: {
+    id: 'app.videoDock.webcamHideLabel',
+  },
+  hideParticipantVideoStreamDesc: {
+    id: 'app.videoDock.webcamHideDesc',
+  },
+  showParticipantVideoStreamLabel: {
+    id: 'app.videoDock.webcamShowLabel',
+  },
+  showParticipantVideoStreamDesc: {
+    id: 'app.videoDock.webcamShowDesc',
+  },
 });
 
 interface UserActionProps {
@@ -136,12 +151,30 @@ const UserActions: React.FC<UserActionProps> = (props) => {
     }
   }, []);
 
+  // Получаем из локального хранилища список скрытых видео
+  const [hiddenCams, setHiddenCams] = useState<string[]>(() => {
+    const stored = Session.getItem('hiddenCams');
+    return Array.isArray(stored) ? stored : [];
+  });
+
+  // Обновляем список скрытых видео при изменении локального хранилища
+  useEffect(() => {
+    const unsubscribe = addTypedEventListener<string[]>(window, 'hiddenCamsChange', (e) => {
+      setHiddenCams(e.detail);
+    });
+
+    return unsubscribe;
+  }, []);
+
+
   const getAvailableActions = () => {
     const pinned = stream.type === VIDEO_TYPES.STREAM && stream.user.pinned;
     const { userId } = stream;
     const isPinnedIntlKey = !pinned ? 'pin' : 'unpin';
     const isFocusedIntlKey = !focused ? 'focus' : 'unfocus';
     const isMirroredIntlKey = !isMirrored ? 'enableMirror' : 'disableMirror';
+    const isHiddenLocally = hiddenCams.includes(userId);
+    const isHiddenKey = !isHiddenLocally ? 'hideParticipantVideoStream' : 'showParticipantVideoStream';
     const disabledCams = (Session.getItem('disabledCams') || []) as string[];
     const isCameraDisabled = Array.isArray(disabledCams) && disabledCams?.includes(cameraId);
     const enableSelfCamIntlKey = !isCameraDisabled ? 'disable' : 'enable';
@@ -185,6 +218,27 @@ const UserActions: React.FC<UserActionProps> = (props) => {
         description: intl.formatMessage(intlMessages[`${isMirroredIntlKey}Desc`]),
         onClick: () => onHandleMirror(),
         dataTest: 'mirrorWebcamBtn',
+      });
+    }
+
+    if (isStream && amIModerator) {
+      menuItems.push({
+        key: `${cameraId}-hide`,
+        label: intl.formatMessage(intlMessages[`${isHiddenKey}Label`]),
+        description: intl.formatMessage(intlMessages[`${isHiddenKey}Desc`]),
+        onClick: () => {
+          let updatedHidden: string[];
+          if (hiddenCams.includes(userId)) {
+            updatedHidden = hiddenCams.filter((id) => id !== userId);
+          } else {
+            updatedHidden = [...hiddenCams, userId];
+          }
+
+          Session.setItem('hiddenCams', updatedHidden);
+          // ⚡ Важно: уведомляем компонент о смене состояния
+          window.dispatchEvent(new CustomEvent('hiddenCamsChange', { detail: updatedHidden }));
+        },
+        dataTest: 'hideParticipantBtn',
       });
     }
 

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import * as PluginSdk from 'bigbluebutton-html-plugin-sdk';
 import {
   UserListItemAdditionalInformationType,
@@ -19,6 +19,8 @@ import { useIsReactionsEnabled } from '/imports/ui/services/features';
 import useWhoIsTalking from '/imports/ui/core/hooks/useWhoIsTalking';
 import useWhoIsUnmuted from '/imports/ui/core/hooks/useWhoIsUnmuted';
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
+import Session from '/imports/ui/services/storage/in-memory';
+import { addTypedEventListener } from '/imports/utils/events';
 
 const messages = defineMessages({
   moderator: {
@@ -229,6 +231,22 @@ const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index }
   const Settings = getSettingsSingletonInstance();
   const animations = Settings?.application?.animations;
 
+  // Получаем из локального хранилища список скрытых видео
+  const [hiddenCams, setHiddenCams] = useState<string[]>(() => {
+    const stored = Session.getItem('hiddenCams');
+    return Array.isArray(stored) ? stored : [];
+  });
+
+  // Обновляем список скрытых видео при изменении локального хранилища
+  useEffect(() => {
+    const unsubscribe = addTypedEventListener<string[]>(window, 'hiddenCamsChange', (e) => {
+      setHiddenCams(e.detail);
+    });
+
+    return unsubscribe;
+  }, []);
+
+
   return (
     <Styled.UserItemContents id={`user-index-${index}`} tabIndex={-1} data-test={(user.userId === Auth.userID) ? 'userListItemCurrent' : 'userListItem'} role="listitem">
       <Styled.Avatar
@@ -265,6 +283,13 @@ const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index }
         </Styled.UserNameSub>
       </Styled.UserNameContainer>
       {renderUserListItemIconsFromPlugin(userItemsFromPlugin)}
+      {hiddenCams.includes(user.userId) && (
+        <Styled.IconRightContainer key={`hidden-${user.userId}`}>
+          <Icon iconName="video_off" />
+          &nbsp;
+          <span>Скрыто</span>
+        </Styled.IconRightContainer>
+      )}
     </Styled.UserItemContents>
   );
 };

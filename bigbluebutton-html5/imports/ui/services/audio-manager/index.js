@@ -209,7 +209,7 @@ class AudioManager {
                 errorMessage: error.message,
               },
             },
-            `Failed to apply output audio device from storage: ${error.message}`
+            `Failed to apply output audio device from storage: ${error.message}`,
           );
         });
     }
@@ -460,11 +460,11 @@ class AudioManager {
     const { isFirefox, isIe, isSafari } = browserInfo;
 
     if (
-      !this.listenOnlyBridge ||
-      typeof this.listenOnlyBridge.trickleIce !== 'function' ||
-      isFirefox ||
-      isIe ||
-      isSafari
+      !this.listenOnlyBridge
+      || typeof this.listenOnlyBridge.trickleIce !== 'function'
+      || isFirefox
+      || isIe
+      || isSafari
     ) {
       return [];
     }
@@ -472,14 +472,14 @@ class AudioManager {
     if (this.validIceCandidates && this.validIceCandidates.length) {
       logger.info(
         { logCode: 'audiomanager_trickle_ice_reuse_candidate' },
-        'Reusing trickle ICE information before activating microphone'
+        'Reusing trickle ICE information before activating microphone',
       );
       return this.validIceCandidates;
     }
 
     logger.info(
       { logCode: 'audiomanager_trickle_ice_get_local_candidate' },
-      'Performing trickle ICE before activating microphone'
+      'Performing trickle ICE before activating microphone',
     );
 
     try {
@@ -494,7 +494,7 @@ class AudioManager {
             errorMessage: error.message,
           },
         },
-        `Trickle ICE before activating microphone failed: ${error.message}`
+        `Trickle ICE before activating microphone failed: ${error.message}`,
       );
       return [];
     }
@@ -524,8 +524,7 @@ class AudioManager {
 
     const MEDIA = window.meetingClientSettings.public.media;
     const ECHO_TEST_NUMBER = MEDIA.echoTestNumber;
-    const EXPERIMENTAL_USE_KMS_TRICKLE_ICE_FOR_MICROPHONE =
-    window.meetingClientSettings.public.app.experimentalUseKmsTrickleIceForMicrophone;
+    const EXPERIMENTAL_USE_KMS_TRICKLE_ICE_FOR_MICROPHONE = window.meetingClientSettings.public.app.experimentalUseKmsTrickleIceForMicrophone;
 
     return this.onAudioJoining
       .bind(this)()
@@ -548,7 +547,7 @@ class AudioManager {
             logCode: 'audiomanager_join_echotest',
             extraInfo: { logType: 'user_action' },
           },
-          'User requested to join audio conference with mic'
+          'User requested to join audio conference with mic',
         );
         return this.joinAudio(callOptions, this.callStateCallback);
       });
@@ -1213,9 +1212,9 @@ class AudioManager {
   playHangUpSound() {
     this.playAlertSound(
       `${
-        window.meetingClientSettings.public.app.cdn +
-        window.meetingClientSettings.public.app.basename
-      }` + '/resources/sounds/LeftCall.mp3'
+        window.meetingClientSettings.public.app.cdn
+        + window.meetingClientSettings.public.app.basename
+      }` + '/resources/sounds/LeftCall.mp3',
     );
   }
 
@@ -1355,10 +1354,9 @@ class AudioManager {
     const transport = Object.values(stats).find((stat) => stat.type === 'transport') || {};
 
     return Object.values(stats).find(
-      (stat) =>
-        stat.type === 'candidate-pair' &&
-        stat.nominated &&
-        (stat.selected || stat.id === transport.selectedCandidatePairId)
+      (stat) => stat.type === 'candidate-pair'
+        && stat.nominated
+        && (stat.selected || stat.id === transport.selectedCandidatePairId),
     );
   }
 
@@ -1395,11 +1393,11 @@ class AudioManager {
 
     const receivers = peer.getReceivers();
     if (
-      receivers &&
-      receivers[0] &&
-      receivers[0].transport &&
-      receivers[0].transport.iceTransport &&
-      typeof receivers[0].transport.iceTransport.getSelectedCandidatePair === 'function'
+      receivers
+      && receivers[0]
+      && receivers[0].transport
+      && receivers[0].transport.iceTransport
+      && typeof receivers[0].transport.iceTransport.getSelectedCandidatePair === 'function'
     ) {
       selectedPair = receivers[0].transport.iceTransport.getSelectedCandidatePair();
     }

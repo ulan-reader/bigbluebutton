@@ -8,7 +8,7 @@ import { shouldForceRelay } from '/imports/ui/services/bbb-webrtc-sfu/utils';
 import MediaStreamUtils from '/imports/utils/media-stream-utils';
 import { notifyStreamStateChange } from '/imports/ui/services/bbb-webrtc-sfu/stream-state-service';
 
-const BRIDGE_NAME = 'kurento'
+const BRIDGE_NAME = 'kurento';
 const SCREENSHARE_VIDEO_TAG = 'screenshareVideo';
 const SEND_ROLE = 'send';
 const RECV_ROLE = 'recv';
@@ -33,7 +33,7 @@ const mapErrorCode = (error) => {
   error.message = mappedError.errorMessage;
 
   return error;
-}
+};
 
 export default class KurentoScreenshareBridge {
   constructor() {
@@ -127,7 +127,7 @@ export default class KurentoScreenshareBridge {
           errorMessage: error.errorMessage,
           reconnecting: this.reconnecting,
           role: this.role,
-          bridge: BRIDGE_NAME
+          bridge: BRIDGE_NAME,
         },
       }, 'Screensharing reconnect failed');
     });
@@ -156,7 +156,7 @@ export default class KurentoScreenshareBridge {
     }
   }
 
-  maxConnectionAttemptsReached () {
+  maxConnectionAttemptsReached() {
     return this.connectionAttempts > BridgeService.MAX_CONN_ATTEMPTS();
   }
 
@@ -174,7 +174,7 @@ export default class KurentoScreenshareBridge {
     }
   }
 
-  clearReconnectionTimeout () {
+  clearReconnectionTimeout() {
     this.reconnecting = false;
     this.restartIntervalMs = BridgeService.BASE_MEDIA_TIMEOUT();
 
@@ -364,7 +364,7 @@ export default class KurentoScreenshareBridge {
         userName: Auth.fullname,
         stream,
         hasAudio: this.hasAudio,
-        contentType: contentType,
+        contentType,
         bitrate: BridgeService.BASE_BITRATE(),
         offering: true,
         mediaServer: BridgeService.getMediaServerAdapter(),

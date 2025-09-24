@@ -47,21 +47,17 @@ export const safeMatch = (regex, content, defaultValue) => {
   return content.match(regex) || defaultValue;
 };
 
-export const lowercaseTrim = (text) => {
-  return text.trim().toLowerCase();
-}
+export const lowercaseTrim = (text) => text.trim().toLowerCase();
 
-export const upperFirst = (string) => {
-  return string ? string.charAt(0).toUpperCase() + string.slice(1) : '';
-}
+export const upperFirst = (string) => (string ? string.charAt(0).toUpperCase() + string.slice(1) : '');
 
 export const uniqueId = (() => {
   let num = 0;
   return function (prefix) {
-      prefix = String(prefix) || '';
-      num += 1;
-      return prefix + num;
-  }
+    prefix = String(prefix) || '';
+    num += 1;
+    return prefix + num;
+  };
 })();
 
 export default {
