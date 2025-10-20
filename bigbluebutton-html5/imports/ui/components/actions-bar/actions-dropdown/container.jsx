@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import { useMutation } from '@apollo/client';
 import ActionsDropdown from './component';
 import { layoutSelectInput, layoutDispatch, layoutSelect } from '../../layout/context';
@@ -21,6 +21,7 @@ import { PRESENTATION_SET_CURRENT } from '../../presentation/mutations';
 import { useStorageKey } from '/imports/ui/services/storage/hooks';
 import { useMeetingIsBreakout } from '/imports/ui/components/app/service';
 import { useIsQuizEnabled } from '../../../services/features';
+// import { useSubtitleSettings } from '/imports/ui/hooks/useSubtitleSettings';
 
 const ActionsDropdownContainer = (props) => {
   const sidebarContent = layoutSelectInput((i) => i.sidebarContent);
@@ -31,6 +32,7 @@ const ActionsDropdownContainer = (props) => {
   const isRTL = layoutSelect((i) => i.isRTL);
   const { pluginsExtensibleAreasAggregatedState } = useContext(PluginsContext);
   const meetingIsBreakout = useMeetingIsBreakout();
+  // const { settings, updateSettings } = useSubtitleSettings();
 
   let actionButtonDropdownItems = [];
   if (pluginsExtensibleAreasAggregatedState.actionButtonDropdownItems) {
@@ -93,6 +95,19 @@ const ActionsDropdownContainer = (props) => {
   const isCameraAsContentEnabled = useIsCameraAsContentEnabled();
   const isQuizEnabled = useIsQuizEnabled();
 
+  // const setEnableSettings = useCallback(() => {
+  //   updateSettings({ ...settings, enabled: !settings.enabled });
+  // }, [settings, updateSettings]);
+
+  // const setModeSettings = useCallback(() => {
+  //   const newMode = settings.mode === 'realtime' ? 'recorded' : 'realtime';
+  //   updateSettings({ mode: newMode });
+  // }, [settings, updateSettings]);
+
+  // const setVisibilitySettings = useCallback(() => {
+  //   updateSettings({ ...settings, visibility: !settings.visibility });
+  // }, [settings, updateSettings]);
+
   return (
     <ActionsDropdown
       {...{
@@ -114,6 +129,10 @@ const ActionsDropdownContainer = (props) => {
         isPresentationEnabled,
         isPresentationManagementDisabled,
         isQuizEnabled,
+        // setEnableSettings,
+        // setModeSettings,
+        // setVisibilitySettings,
+        // settings,
         ...props,
       }}
     />

@@ -188,6 +188,10 @@ class ActionsDropdown extends PureComponent {
       isPresentationEnabled,
       isPresentationManagementDisabled,
       isQuizEnabled,
+      // setEnableSettings,
+      // setModeSettings,
+      // setVisibilitySettings,
+      // settings,
     } = this.props;
 
     const {
@@ -289,6 +293,40 @@ class ActionsDropdown extends PureComponent {
         dataTest: 'shareCameraAsContent',
       });
     }
+
+    
+    // if (amIModerator) {
+    //   actions.push({
+    //     icon: settings.enabled ? 'closed_caption' : 'closed_caption',
+    //     label: settings.enabled
+    //       ? 'Выключить субтитры'
+    //       : 'Включить субтитры',
+    //     key: 'toggle-subtitles',
+    //     onClick: () => setEnableSettings(),
+    //     dataTest: 'toggleSubtitles',
+    //   });
+    //   // 3. Режим (только админ)
+    //   actions.push({
+    //     icon: 'settings',
+    //     label: `Режим: ${
+    //       settings.mode === 'realtime' ? 'Реальное время' : 'Запись'
+    //     }`,
+    //     key: 'subtitle-mode',
+    //     onClick: () => setModeSettings(),
+    //     dataTest: 'subtitleMode',
+    //   });
+    // }
+    
+    // // 2. Показать / скрыть (для всех)
+    // actions.push({
+    //   icon: subtitleSettings.visible ? 'visibility_off' : 'visibility',
+    //   label: subtitleSettings.visible
+    //     ? 'Скрыть субтитры'
+    //     : 'Показать субтитры',
+    //   key: 'toggle-subtitle-visibility',
+    //   onClick: (() => console.log('--- toggle subtitle visibility ---')),
+    // });
+
 
     actionButtonDropdownItems.forEach((actionButtonItem) => {
       switch (actionButtonItem.type) {

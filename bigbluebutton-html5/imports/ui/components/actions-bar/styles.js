@@ -118,6 +118,17 @@ const Gap = styled.div`
   gap: .5rem;
 `;
 
+const SubtitlesOverlay = styled.div`
+  position: absolute;
+  bottom: 100%; /* Над кнопками */
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 15; /* поверх панели */
+  pointer-events: none; /* чтобы не мешать кликам по кнопкам */
+`;
+
 export default {
   ActionsBar,
   Left,
@@ -130,4 +141,5 @@ export default {
   ActionsBarWrapper,
   Gap,
   Separator,
+  SubtitlesOverlay
 };
