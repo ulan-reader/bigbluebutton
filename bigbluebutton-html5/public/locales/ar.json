@@ -1582,5 +1582,13 @@
     "mobileApp.portals.drawerNavigation.button.label": "البوابات",
     "mobileApp.portals.addPortalPopup.validation.emptyFields": "حقول مطلوبة",
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "الاسم مستخدم",
-    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "حدث خطأ أثناء محاولة تحميل الصفحة - تحقق من الرابط واتصال الشبكة"
+    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "حدث خطأ أثناء محاولة تحميل الصفحة - تحقق من الرابط واتصال الشبكة",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.enableDesc": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.disableDesc": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.visibleDesc": "",
+    "app.actionsBar.subtitles.invisible": "",
+    "app.actionsBar.subtitles.invisibleDesc": ""
 }

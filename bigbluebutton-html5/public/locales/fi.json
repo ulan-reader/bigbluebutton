@@ -525,5 +525,9 @@
     "app.iOSWarning.label": "Ole hyvä ja päivitä käyttöjärjestelmäsi iOS 12.2 tai uudempaan versioon.",
     "app.legacy.unsupportedBrowser": "Näyttää siltä että käytät selainta jota ei tueta. Ole hyvä ja käytä {supportedBrowser1} tai {supportedBrowser2} selainta.",
     "app.legacy.upgradeBrowser": "Näyttää siltä että käytät tuetun selaimen vanhaa versiota. Ole hyvä ja päivitä selaimesi uusimpaan mahdolliseen versioon.",
-    "app.legacy.criosBrowser": "iOS-käyttöjärjestelmän kanssa ole hyvä ja käytä Safari-selainta."
+    "app.legacy.criosBrowser": "iOS-käyttöjärjestelmän kanssa ole hyvä ja käytä Safari-selainta.",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

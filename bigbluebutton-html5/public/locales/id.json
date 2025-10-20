@@ -909,5 +909,9 @@
     "app.learningDashboard.usersTable.noUsers": "Belum ada pengguna",
     "app.learningDashboard.pollsTable.anonymousRowName": "Anonim",
     "app.learningDashboard.errors.invalidToken": "Token sesi tidak valid",
-    "app.learningDashboard.errors.dataUnavailable": "Data tidak lagi tersedia"
+    "app.learningDashboard.errors.dataUnavailable": "Data tidak lagi tersedia",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

@@ -1310,5 +1310,9 @@
     "mobileApp.portals.drawerNavigation.button.label": "Portais",
     "mobileApp.portals.addPortalPopup.validation.emptyFields": "Campos obrigatórios",
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "Nome já está em utilização",
-    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Erro ao tentar carregar a página - verifique o URL e a ligação de rede"
+    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Erro ao tentar carregar a página - verifique o URL e a ligação de rede",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

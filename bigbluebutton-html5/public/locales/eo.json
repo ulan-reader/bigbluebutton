@@ -671,5 +671,9 @@
     "playback.button.about.aria": "Pri",
     "playback.player.chat.message.poll.question": "Demando",
     "playback.player.chat.message.poll.option.yes": "Jes",
-    "playback.player.chat.message.poll.option.no": "Ne"
+    "playback.player.chat.message.poll.option.no": "Ne",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

@@ -1430,5 +1430,9 @@
     "mobileApp.portals.drawerNavigation.button.label": "Portale",
     "mobileApp.portals.addPortalPopup.validation.emptyFields": "Pola Wymagane",
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "Nazwa jest już używana",
-    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Błąd podczas próby wczytania strony - sprawdź adres URL i połączenie z siecią"
+    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Błąd podczas próby wczytania strony - sprawdź adres URL i połączenie z siecią",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

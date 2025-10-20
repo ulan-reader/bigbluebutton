@@ -453,5 +453,9 @@
     "app.createBreakoutRoom.freeJoin": "Permitir a los usuarios seleccionar el grupo de trabajo a ingresar",
     "app.createBreakoutRoom.leastOneWarnBreakout": "Debes agregar almenos un usuario a cada grupo de trabajo.",
     "app.externalVideo.start": "Compartir un nuevo video",
-    "app.externalVideo.close": "Cerrar"
+    "app.externalVideo.close": "Cerrar",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

@@ -1584,5 +1584,9 @@
     "mobileApp.portals.drawerNavigation.button.label": "Portaalid",
     "mobileApp.portals.addPortalPopup.validation.emptyFields": "Nõutavad väljad",
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "Nimi on juba kasutusel",
-    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Viga lehe laadimisel - kontrolli URLi ja võrguühendust"
+    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Viga lehe laadimisel - kontrolli URLi ja võrguühendust",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

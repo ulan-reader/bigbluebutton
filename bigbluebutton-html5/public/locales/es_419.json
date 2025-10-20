@@ -174,5 +174,9 @@
     "app.presentationUploder.confirmDesc": "Guardar los cambios e iniciar la presentación",
     "app.presentationUploder.dismissLabel": "Cancelar",
     "app.whiteboard.toolbar.palmRejectionOn": "Activar rechazo de palma (táctiles)",
-    "app.whiteboard.toolbar.palmRejectionOff": "Desactivar rechazo de palma (táctiles)"
+    "app.whiteboard.toolbar.palmRejectionOff": "Desactivar rechazo de palma (táctiles)",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

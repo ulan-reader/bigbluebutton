@@ -1,5 +1,9 @@
 {
-    "app.home.greeting": "Таны танилцуулга удахгүй эхлэх болно ..."
+    "app.home.greeting": "Таны танилцуулга удахгүй эхлэх болно ...",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 
 }
 

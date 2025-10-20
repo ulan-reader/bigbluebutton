@@ -749,5 +749,9 @@
     "app.learningDashboard.usersTable.userStatusOffline": "离线",
     "app.learningDashboard.usersTable.noUsers": "还没有用户",
     "app.learningDashboard.pollsTable.anonymousRowName": "匿名",
-    "app.learningDashboard.errors.dataUnavailable": "数据已不可用"
+    "app.learningDashboard.errors.dataUnavailable": "数据已不可用",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

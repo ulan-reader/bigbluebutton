@@ -299,5 +299,9 @@
     "playback.player.chat.message.poll.option.true": "Verai",
     "playback.player.chat.message.poll.option.false": "Fals",
     "app.learningDashboard.indicators.polls": "Sondatges",
-    "app.learningDashboard.indicators.duration": "Durada"
+    "app.learningDashboard.indicators.duration": "Durada",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

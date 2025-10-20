@@ -1574,5 +1574,9 @@
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "Имя уже используется",
     "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Ошибка при загрузке страницы - проверьте URL и сетевое подключение",
     "showParticipantVideoStreamLabel": "Показать веб-камеру участника",
-    "hideParticipantVideoStreamLabel": "Скрыть веб-камеру участника"
+    "hideParticipantVideoStreamLabel": "Скрыть веб-камеру участника",
+    "app.actionsBar.subtitles.enable": "Включить субтитры",
+    "app.actionsBar.subtitles.disable": "Выключить субтитры",
+    "app.actionsBar.subtitles.visible": "Показать субтитры",
+    "app.actionsBar.subtitles.invisible": "Скрыть субтитры"
 }

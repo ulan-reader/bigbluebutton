@@ -1583,5 +1583,9 @@
     "mobileApp.portals.drawerNavigation.button.label": "Atariak",
     "mobileApp.portals.addPortalPopup.validation.emptyFields": "Beharrezko eremuak",
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "Dagoeneko erabiltzen ari den izena",
-    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Errore bat gertatu da orria kargatzen saiatzean. Egiaztatu URLa eta sareko konexioa"
+    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Errore bat gertatu da orria kargatzen saiatzean. Egiaztatu URLa eta sareko konexioa",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

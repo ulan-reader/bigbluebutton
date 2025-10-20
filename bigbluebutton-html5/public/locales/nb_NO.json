@@ -1582,5 +1582,9 @@
     "mobileApp.portals.drawerNavigation.button.label": "Portaler",
     "mobileApp.portals.addPortalPopup.validation.emptyFields": "Obligatoriske felt",
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "Navnet er allerede i bruk",
-    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Feil ved forsøk på å laste siden - sjekk URL og nettverkstilkobling"
+    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Feil ved forsøk på å laste siden - sjekk URL og nettverkstilkobling",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

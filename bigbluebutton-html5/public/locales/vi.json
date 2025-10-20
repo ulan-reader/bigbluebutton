@@ -110,5 +110,9 @@
     "app.videoPreview.cancelLabel": "Hủy bỏ",
     "app.videoPreview.closeLabel": "Đóng",
     "app.video.cancel": "Hủy bỏ",
-    "app.externalVideo.close": "Đóng"
+    "app.externalVideo.close": "Đóng",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

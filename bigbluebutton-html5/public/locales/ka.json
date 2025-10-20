@@ -708,5 +708,9 @@
     "app.learningDashboard.usersTable.noUsers": "მომხმარებლები ჯერ არ არიან",
     "app.learningDashboard.pollsTable.anonymousRowName": "ანონიმური",
     "app.learningDashboard.errors.invalidToken": "სესიის არასოწრი ტოკენი",
-    "app.learningDashboard.errors.dataUnavailable": "მონაცემები მისაწვდომი აღარ არის"
+    "app.learningDashboard.errors.dataUnavailable": "მონაცემები მისაწვდომი აღარ არის",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

@@ -478,5 +478,9 @@
     "app.createBreakoutRoom.leastOneWarnBreakout": "आपको ब्रेकआउट रूम में कम से कम एक उपयोगकर्ता रखना होगा।",
     "app.externalVideo.start": "एक नया वीडियो साझा करें",
     "app.externalVideo.close": "बंद करे",
-    "app.iOSWarning.label": "कृपया iOS 12.2 या उच्चतर में अपग्रेड करें"
+    "app.iOSWarning.label": "कृपया iOS 12.2 या उच्चतर में अपग्रेड करें",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

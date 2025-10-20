@@ -784,5 +784,9 @@
     "app.debugWindow.form.userAgentLabel": "பயனர் முகவர்",
     "app.debugWindow.form.button.copy": "நகலெடுக்கவும்",
     "app.debugWindow.form.enableAutoarrangeLayoutLabel": "தானாக ஏற்பாடு அமைப்பை இயக்கவும்",
-    "app.debugWindow.form.enableAutoarrangeLayoutDescription": "(நீங்கள் வெப்கேம்கள் பகுதியை இழுத்து அல்லது அளவை மாற்றினால் அது முடக்கப்படும்)"
+    "app.debugWindow.form.enableAutoarrangeLayoutDescription": "(நீங்கள் வெப்கேம்கள் பகுதியை இழுத்து அல்லது அளவை மாற்றினால் அது முடக்கப்படும்)",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

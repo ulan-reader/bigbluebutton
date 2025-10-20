@@ -1584,5 +1584,9 @@
     "mobileApp.portals.drawerNavigation.button.label": "入口",
     "mobileApp.portals.addPortalPopup.validation.emptyFields": "必填欄位",
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "名稱已在使用中",
-    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "嘗試加載頁面時出錯 - 請檢查網址和網路連接"
+    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "嘗試加載頁面時出錯 - 請檢查網址和網路連接",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }
