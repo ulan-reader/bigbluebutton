@@ -17,6 +17,8 @@ import RaiseHandButtonContainer from '/imports/ui/components/actions-bar/raise-h
 import Selector from '/imports/ui/components/common/selector/component';
 import ToggleGroup from '/imports/ui/components/common/toggle-group/component';
 import Separator from '/imports/ui/components/common/separator/component';
+import SubtitlesButtonContainer from '/imports/ui/components/actions-bar/subtitles-button/container';
+import SubtitlesContainer from '/imports/ui/components/subtitles/component';
 
 const intlMessages = defineMessages({
   actionsBarLabel: {
@@ -184,6 +186,9 @@ class ActionsBar extends PureComponent {
           }
         }
       >
+        <Styled.SubtitlesOverlay>
+          <SubtitlesContainer />
+        </Styled.SubtitlesOverlay>
         <h2 className="sr-only">{intl.formatMessage(intlMessages.actionsBarLabel)}</h2>
         <Styled.ActionsBar
           ref={this.actionsBarRef}
@@ -232,6 +237,7 @@ class ActionsBar extends PureComponent {
             )}
             {isReactionsButtonEnabled && this.renderReactionsButton()}
             {this.renderPluginsActionBarItems(ActionsBarPosition.RIGHT)}
+            <SubtitlesButtonContainer amIModerator={amIModerator} />
           </Styled.Center>
           <Styled.Right>
             <Styled.Gap>
