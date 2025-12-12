@@ -485,6 +485,7 @@ case class UserTalkingVoiceEvtMsg(header: BbbClientMsgHeader, body: UserTalkingV
 case class UserTalkingVoiceEvtMsgBody(voiceConf: String, intId: String, voiceUserId: String, talking: Boolean)
 
 /**
+<<<<<<< HEAD
  * Sent to client that user is talking in voice conference.
  */
 
@@ -503,6 +504,8 @@ case class UserVoiceStateEvtMsgBody(
 )
 
 /**
+=======
+>>>>>>> origin/master-dev
  * Sent from client to notify that an user is talking (client-side version of
  * UserTalkingInVoiceConfEvtMsg).
  * Used by audio bridges incapable of generating the event server-side (LiveKit)

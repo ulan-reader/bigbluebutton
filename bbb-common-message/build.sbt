@@ -55,7 +55,11 @@ scalariformAutoformat := true
 // Do not append Scala versions to the generated artifacts
 //crossPaths := false
 
+<<<<<<< HEAD
 scalaVersion := "2.13.18"
+=======
+scalaVersion := "2.13.9"
+>>>>>>> origin/master-dev
 
 // This forbids including Scala related libraries into the dependency
 //autoScalaLibrary := false

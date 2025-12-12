@@ -139,6 +139,7 @@ class FromAkkaAppsMsgSenderActor(msgSender: MessageSender)
         msgSender.send("from-akka-apps-frontend-redis-channel", json)
 
       case NotifyAllInMeetingEvtMsg.NAME =>
+<<<<<<< HEAD
         msgSender.send(fromAkkaAppsRedisChannel, json)
 
       case NotifyUserInMeetingEvtMsg.NAME =>
@@ -146,6 +147,15 @@ class FromAkkaAppsMsgSenderActor(msgSender: MessageSender)
 
       case NotifyRoleInMeetingEvtMsg.NAME =>
         msgSender.send(fromAkkaAppsRedisChannel, json)
+=======
+        msgSender.send("from-akka-apps-frontend-redis-channel", json)
+
+      case NotifyUserInMeetingEvtMsg.NAME =>
+        msgSender.send("from-akka-apps-frontend-redis-channel", json)
+
+      case NotifyRoleInMeetingEvtMsg.NAME =>
+        msgSender.send("from-akka-apps-frontend-redis-channel", json)
+>>>>>>> origin/master-dev
 
       case _ =>
         msgSender.send(fromAkkaAppsRedisChannel, json)

@@ -101,7 +101,11 @@ func ConnectionHandler(w http.ResponseWriter, r *http.Request) {
 		Websocket:                          browserWsConn,
 		BrowserRequestCookies:              r.Cookies(),
 		ActiveSubscriptions:                make(map[string]common.GraphQlSubscription, 1),
+<<<<<<< HEAD
 		ActiveStreamings:                   make(map[string][]string, 1),
+=======
+		ActiveStreamings:                   make(map[string]string, 1),
+>>>>>>> origin/master-dev
 		Context:                            browserConnectionContext,
 		ContextCancelFunc:                  browserConnectionContextCancel,
 		ConnAckSentToBrowser:               false,

@@ -252,6 +252,7 @@ create view "v_meeting_group" as select * from meeting_group;
 CREATE UNLOGGED TABLE "user" (
     "meetingId" varchar(100) references "meeting"("meetingId") ON DELETE CASCADE,
 	"userId" varchar(50) NOT NULL,
+<<<<<<< HEAD
 	"extId" text,
 	"name" text,
 	"firstName" text,
@@ -259,6 +260,15 @@ CREATE UNLOGGED TABLE "user" (
 	"role" varchar(20),
 	"avatar" text,
     "webcamBackground" text,
+=======
+	"extId" varchar(50),
+	"name" varchar(255),
+	"firstName" varchar(255),
+	"lastName" varchar(255),
+	"role" varchar(20),
+	"avatar" varchar(500),
+    "webcamBackground" varchar(500),
+>>>>>>> origin/master-dev
 	"color" varchar(7),
     "authToken" varchar(50),
     "authed" bool,
@@ -274,7 +284,11 @@ CREATE UNLOGGED TABLE "user" (
     "registeredOn" bigint,
     "excludeFromDashboard" bool,
     "enforceLayout" varchar(50),
+<<<<<<< HEAD
     "logoutUrl" text,
+=======
+    "logoutUrl" varchar(500),
+>>>>>>> origin/master-dev
     --columns of user state below
     "raiseHand" bool default false,
     "raiseHandTime" timestamp with time zone,
@@ -300,7 +314,11 @@ CREATE UNLOGGED TABLE "user" (
 	"captionLocale" varchar(255),
 	"inactivityWarningDisplay" bool default FALSE,
 	"inactivityWarningTimeoutSecs" numeric,
+<<<<<<< HEAD
 	"whiteboardWriteAccess" bool default FALSE,
+=======
+	"hasDrawPermissionOnCurrentPage" bool default FALSE,
+>>>>>>> origin/master-dev
 	"echoTestRunningAt" timestamp with time zone,
 	CONSTRAINT "user_pkey" PRIMARY KEY ("meetingId","userId"),
 	FOREIGN KEY ("meetingId", "guestStatusSetByModerator") REFERENCES "user"("meetingId","userId") ON DELETE SET NULL
@@ -334,8 +352,13 @@ CREATE TRIGGER update_user_raiseHand_away_time_trigger BEFORE UPDATE OF "raiseHa
     FOR EACH ROW EXECUTE FUNCTION update_user_raiseHand_away_time_trigger_func();
 
 
+<<<<<<< HEAD
 --whiteboardWriteAccess is necessary to improve the performance of the order by of userlist
 COMMENT ON COLUMN "user"."whiteboardWriteAccess" IS 'This column is dynamically populated by triggers of tables: user, pres_presentation, pres_page, pres_page_writers';
+=======
+--hasDrawPermissionOnCurrentPage is necessary to improve the performance of the order by of userlist
+COMMENT ON COLUMN "user"."hasDrawPermissionOnCurrentPage" IS 'This column is dynamically populated by triggers of tables: user, pres_presentation, pres_page, pres_page_writers';
+>>>>>>> origin/master-dev
 COMMENT ON COLUMN "user"."disconnected" IS 'This column is set true when the user closes the window or his with the server is over';
 COMMENT ON COLUMN "user"."expired" IS 'This column is set true after 10 seconds with disconnected=true';
 COMMENT ON COLUMN "user"."loggedOut" IS 'This column is set to true when the user click the button to Leave meeting';
@@ -373,9 +396,15 @@ WHEN (OLD."joined" IS DISTINCT FROM NEW."joined")
 EXECUTE FUNCTION "set_user_firstJoinedAt_trigger_func"();
 
 --Used to sort the Userlist
+<<<<<<< HEAD
 ALTER TABLE "user" ADD COLUMN "nameSortable" text GENERATED ALWAYS AS (trim(remove_emojis(immutable_lower_unaccent("name")))) STORED;
 ALTER TABLE "user" ADD COLUMN "firstNameSortable" text GENERATED ALWAYS AS (trim(remove_emojis(immutable_lower_unaccent("firstName")))) STORED;
 ALTER TABLE "user" ADD COLUMN "lastNameSortable" text GENERATED ALWAYS AS (trim(remove_emojis(immutable_lower_unaccent("lastName")))) STORED;
+=======
+ALTER TABLE "user" ADD COLUMN "nameSortable" varchar(255) GENERATED ALWAYS AS (trim(remove_emojis(immutable_lower_unaccent("name")))) STORED;
+ALTER TABLE "user" ADD COLUMN "firstNameSortable" varchar(255) GENERATED ALWAYS AS (trim(remove_emojis(immutable_lower_unaccent("firstName")))) STORED;
+ALTER TABLE "user" ADD COLUMN "lastNameSortable" varchar(255) GENERATED ALWAYS AS (trim(remove_emojis(immutable_lower_unaccent("lastName")))) STORED;
+>>>>>>> origin/master-dev
 
 ALTER TABLE "user" ADD COLUMN "isModerator" boolean GENERATED ALWAYS AS (CASE WHEN "role" = 'MODERATOR' THEN true ELSE false END) STORED;
 ALTER TABLE "user" ADD COLUMN "currentlyInMeeting" boolean GENERATED ALWAYS AS (
@@ -427,7 +456,11 @@ AS SELECT "user"."userId",
     "user"."speechLocale",
     "user"."captionLocale",
     CASE WHEN "user"."echoTestRunningAt" > current_timestamp - INTERVAL '3 seconds' THEN TRUE ELSE FALSE END "isRunningEchoTest",
+<<<<<<< HEAD
     "user"."whiteboardWriteAccess",
+=======
+    "user"."hasDrawPermissionOnCurrentPage",
+>>>>>>> origin/master-dev
     "user"."isModerator",
     "user"."currentlyInMeeting"
   FROM "user"
@@ -437,14 +470,21 @@ CREATE INDEX "idx_v_user_meetingId_orderByColumns" ON "user"(
     "meetingId",
     "presenter" DESC NULLS FIRST,
     "role" ASC NULLS LAST,
+<<<<<<< HEAD
     "isDialIn" DESC NULLS FIRST,
     "whiteboardWriteAccess" DESC NULLS FIRST,
+=======
+    "raiseHandTime" ASC NULLS LAST,
+    "isDialIn" DESC NULLS FIRST,
+    "hasDrawPermissionOnCurrentPage" DESC NULLS FIRST,
+>>>>>>> origin/master-dev
     "nameSortable" ASC NULLS LAST,
     "registeredAt" ASC NULLS LAST,
     "userId" ASC NULLS LAST
 )
 WHERE "currentlyInMeeting" IS TRUE;
 
+<<<<<<< HEAD
 CREATE INDEX "idx_v_user_meetingId_raiseHand" ON "user"(
     "meetingId",
     "raiseHandTime" ASC NULLS LAST
@@ -458,6 +498,8 @@ CREATE INDEX "idx_v_user_UsersBasicInfo" ON "user"(
 )
 WHERE "currentlyInMeeting" IS TRUE;
 
+=======
+>>>>>>> origin/master-dev
 
 CREATE OR REPLACE VIEW "v_user_current"
 AS SELECT "user"."userId",
@@ -502,7 +544,11 @@ AS SELECT "user"."userId",
     CASE WHEN "user"."role" = 'MODERATOR' THEN false ELSE "user"."locked" END "locked",
     "user"."speechLocale",
     "user"."captionLocale",
+<<<<<<< HEAD
     "user"."whiteboardWriteAccess",
+=======
+    "user"."hasDrawPermissionOnCurrentPage",
+>>>>>>> origin/master-dev
     "user"."echoTestRunningAt",
     CASE WHEN "user"."echoTestRunningAt" > current_timestamp - INTERVAL '3 seconds' THEN TRUE ELSE FALSE END "isRunningEchoTest",
     "user"."isModerator",
@@ -528,11 +574,14 @@ where u."guestStatus" = 'WAIT'
 and u."loggedOut" is false
 and u."ejected" is not true;
 
+<<<<<<< HEAD
 create index "idx_v_user_guest" on "user"("meetingId", "userId", "isWaiting")
 where "guestStatus" = 'WAIT'
 and "loggedOut" is false
 and "ejected" is not true;
 
+=======
+>>>>>>> origin/master-dev
 --v_user_ref will be used only as foreign key (not possible to fetch this table directly through graphql)
 --it is necessary because v_user has some conditions like "lockSettings-hideUserList"
 --but viewers still needs to query this users as foreign key of chat, cameras, etc
@@ -571,7 +620,11 @@ AS SELECT
     CASE WHEN "user"."role" = 'MODERATOR' THEN false ELSE "user"."locked" END "locked",
     "user"."speechLocale",
     "user"."captionLocale",
+<<<<<<< HEAD
     "user"."whiteboardWriteAccess",
+=======
+    "user"."hasDrawPermissionOnCurrentPage",
+>>>>>>> origin/master-dev
     "user"."isModerator",
     "user"."currentlyInMeeting"
    FROM "user";
@@ -621,6 +674,7 @@ CREATE UNLOGGED TABLE "user_graphqlConnection" (
 	"closedAt" timestamp with time zone
 );
 
+<<<<<<< HEAD
 CREATE INDEX "idx_user_graphqlConnection_sessionToken_closedAt" ON "user_graphqlConnection" ("sessionToken") where "closedAt" is null;
 
 
@@ -633,6 +687,17 @@ select ust."meetingId", ust."userId", ust."sessionToken", ust."sessionName", ust
 from "user_sessionToken" ust
 where ust."removedAt" is null
 ;
+=======
+CREATE INDEX "idx_user_graphqlConnection_sessionToken_closedAt" ON "user_graphqlConnection" ("sessionToken", "closedAt");
+
+
+create view "v_user_session" as
+select ust."meetingId", ust."userId", ust."sessionToken", ust."sessionName", ust."enforceLayout", count(ugc."graphqlConnectionId") as "connectionsAlive"
+from "user_sessionToken" ust
+left join "user_graphqlConnection" ugc on ugc."sessionToken" = ust."sessionToken" and ugc."closedAt" is null
+where ust."removedAt" is null
+group by ust."meetingId", ust."userId", ust."sessionToken", ust."sessionName", ust."enforceLayout";
+>>>>>>> origin/master-dev
 
 create unlogged table "user_metadata"(
     "meetingId" varchar(100),
@@ -788,10 +853,13 @@ CREATE INDEX "idx_user_camera_meeting_contentType" ON "user_camera"("meetingId",
 CREATE OR REPLACE VIEW "v_user_camera" AS
 SELECT * FROM "user_camera";
 
+<<<<<<< HEAD
 -- this view will be used specifically for the join with user_current
 CREATE OR REPLACE VIEW "v_user_current_camera" AS
 SELECT * FROM "user_camera";
 
+=======
+>>>>>>> origin/master-dev
 CREATE UNLOGGED TABLE "user_breakoutRoom" (
 	"meetingId" varchar(100),
     "userId" varchar(50),
@@ -808,10 +876,13 @@ CREATE INDEX "idx_user_breakoutRoom_pk_reverse" ON "user_breakoutRoom"("userId",
 CREATE OR REPLACE VIEW "v_user_breakoutRoom" AS
 SELECT * FROM "user_breakoutRoom";
 
+<<<<<<< HEAD
 -- this view will be used specifically for the join with user_current
 CREATE OR REPLACE VIEW "v_user_current_breakoutRoom" AS
 SELECT * FROM "user_breakoutRoom";
 
+=======
+>>>>>>> origin/master-dev
 CREATE UNLOGGED TABLE "user_connectionStatus" (
 	"meetingId" varchar(100),
     "userId" varchar(50),
@@ -820,7 +891,10 @@ CREATE UNLOGGED TABLE "user_connectionStatus" (
     "lastEntriesCap" integer,
     "connectionAliveAtMaxIntervalMs" numeric,
     "connectionAliveAt" timestamp with time zone,
+<<<<<<< HEAD
     "serverRequestId" text,
+=======
+>>>>>>> origin/master-dev
     "networkRttInMs" numeric,
     "applicationRttInMs" numeric, --presenter only
     "traceLog" varchar(500), --presenter only
@@ -1068,6 +1142,7 @@ select "meetingId", "learningDashboardAccessToken"
 from "v_meeting";
 
 
+<<<<<<< HEAD
 CREATE OR REPLACE VIEW "v_user_whiteboardWriteAccess" AS
 select "meetingId", "userId", "name", "presenter", "isModerator"
 FROM "user"
@@ -1085,6 +1160,8 @@ WHERE "user"."currentlyInMeeting" is true
 AND "user"."whiteboardWriteAccess" is true;
 
 
+=======
+>>>>>>> origin/master-dev
 -- ===================== CHAT TABLES
 
 
@@ -1106,7 +1183,10 @@ CREATE UNLOGGED TABLE "chat_user" (
 	"startedTypingAt" timestamp with time zone,
 	"lastTypingAt" timestamp with time zone,
 	"visible" boolean,
+<<<<<<< HEAD
 	"totalUnreadMessages" integer,
+=======
+>>>>>>> origin/master-dev
 	CONSTRAINT "chat_user_pkey" PRIMARY KEY ("meetingId","chatId","userId"),
     CONSTRAINT chat_fk FOREIGN KEY ("chatId", "meetingId") REFERENCES "chat"("chatId", "meetingId") ON DELETE CASCADE
 );
@@ -1135,6 +1215,7 @@ CREATE TRIGGER "update_chat_user_startedTypingAt_trigger" BEFORE UPDATE OF "last
 
 create view "v_chat_user" as select * from "chat_user";
 
+<<<<<<< HEAD
 CREATE INDEX "idx_v_user_typing_public" ON chat_user("meetingId", "startedTypingAt")
 WHERE "chatId" = 'MAIN-PUBLIC-GROUP-CHAT'
 AND "lastTypingAt" IS NOT NULL;
@@ -1156,6 +1237,31 @@ JOIN "chat_user" chat_with ON chat_with."meetingId" = chat_user."meetingId"
 							AND chat_with."chatId" = chat_user."chatId"
 							AND chat_with."userId" != chat_user."userId"
 							AND chat_with."lastTypingAt" > current_timestamp - INTERVAL '5 seconds'
+=======
+CREATE INDEX "idx_chat_user_typing_public" ON "chat_user"("meetingId", "lastTypingAt")
+        WHERE "chatId" = 'MAIN-PUBLIC-GROUP-CHAT'
+        AND "lastTypingAt" is not null;
+
+CREATE INDEX "idx_chat_user_typing_private" ON "chat_user"("meetingId", "userId", "chatId", "lastTypingAt")
+        WHERE "chatId" != 'MAIN-PUBLIC-GROUP-CHAT'
+        AND "visible" is true;
+
+CREATE OR REPLACE VIEW "v_user_typing_public" AS
+SELECT "meetingId", "chatId", "userId", "lastTypingAt", "startedTypingAt",
+CASE WHEN "lastTypingAt" > current_timestamp - INTERVAL '5 seconds' THEN true ELSE false END AS "isCurrentlyTyping"
+FROM chat_user
+WHERE "chatId" = 'MAIN-PUBLIC-GROUP-CHAT'
+AND "lastTypingAt" is not null;
+
+CREATE OR REPLACE VIEW "v_user_typing_private" AS
+SELECT chat_user."meetingId", chat_user."chatId", chat_user."userId" as "queryUserId", chat_with."userId", chat_with."lastTypingAt", chat_with."startedTypingAt",
+CASE WHEN chat_with."lastTypingAt" > current_timestamp - INTERVAL '5 seconds' THEN true ELSE false END AS "isCurrentlyTyping"
+FROM chat_user
+LEFT JOIN "chat_user" chat_with ON chat_with."meetingId" = chat_user."meetingId"
+									AND chat_with."userId" != chat_user."userId"
+									AND chat_with."chatId" = chat_user."chatId"
+									AND chat_with."lastTypingAt" is not null
+>>>>>>> origin/master-dev
 WHERE chat_user."chatId" != 'MAIN-PUBLIC-GROUP-CHAT'
 AND chat_user."visible" is true;
 
@@ -1167,7 +1273,10 @@ CREATE UNLOGGED TABLE "chat_message" (
 	"messageSequence" integer, --populated via trigger
 	"chatEmphasizedText" boolean,
 	"message" text,
+<<<<<<< HEAD
 	"messageAsHtml" text,
+=======
+>>>>>>> origin/master-dev
 	"messageType" varchar(50),
 	"replyToMessageId" varchar(100) references "chat_message"("messageId"),
 	"messageMetadata" text,
@@ -1223,6 +1332,7 @@ CREATE TRIGGER "trigger_update_chat_totalMessages"
 AFTER INSERT OR DELETE ON "chat_message" FOR EACH ROW
 EXECUTE FUNCTION "update_chat_totalMessages"();
 
+<<<<<<< HEAD
 -- Start of Triggers related with totalUnreadMessages
 
 CREATE OR REPLACE FUNCTION "update_chat_user_totalUnreadMessages"(_meetingId text, _chatId text, _userId text DEFAULT NULL)
@@ -1314,6 +1424,8 @@ FOR EACH ROW EXECUTE FUNCTION "update_chat_user_totalUnreadMessagesInsert"();
 
 -- End of Triggers related with totalUnreadMessages
 
+=======
+>>>>>>> origin/master-dev
 
 CREATE OR REPLACE FUNCTION "update_chatUser_clear_lastTypingAt_trigger_func"() RETURNS TRIGGER AS $$
 BEGIN
@@ -1334,7 +1446,10 @@ CREATE UNLOGGED TABLE "chat_message_history" (
 	"meetingId" varchar(100),
 	"messageVersionSequence" integer, --populated via trigger
 	"message" text,
+<<<<<<< HEAD
 	"messageAsHtml" text,
+=======
+>>>>>>> origin/master-dev
 	"senderId" varchar(100),
 	"createdAt" timestamp with time zone,
 	"movedToHistoryAt" timestamp with time zone default current_timestamp,
@@ -1347,12 +1462,19 @@ CREATE OR REPLACE FUNCTION "update_chat_message_history_trigger_func"()
 RETURNS TRIGGER AS $$
 BEGIN
     IF NEW."message" IS DISTINCT FROM OLD."message" THEN
+<<<<<<< HEAD
         insert into "chat_message_history"("messageId", "meetingId", "messageVersionSequence", "message", "messageAsHtml", "senderId", "createdAt")
+=======
+        insert into "chat_message_history"("messageId", "meetingId", "messageVersionSequence", "message", "senderId", "createdAt")
+>>>>>>> origin/master-dev
 	    values (OLD."messageId",
 	            OLD."meetingId",
 	            (select count(1) from "chat_message_history" prev where prev."messageId" = OLD."messageId"),
 	            OLD."message",
+<<<<<<< HEAD
 	            OLD."messageAsHtml",
+=======
+>>>>>>> origin/master-dev
 	            OLD."senderId",
 	            coalesce(OLD."editedAt",OLD."createdAt")
 	            );
@@ -1374,7 +1496,19 @@ SELECT 	"user"."meetingId",
 		cu."visible",
 		chat_with."userId" AS "participantId",
 		"chat"."totalMessages",
+<<<<<<< HEAD
 		cu."totalUnreadMessages" AS "totalUnread",
+=======
+		(
+            select count(1)
+            from chat_message cm
+            where cm."meetingId" = chat."meetingId"
+            and cm."chatId" = chat."chatId"
+            and cm."senderId" != "user"."userId"
+            and cm."createdAt" < current_timestamp - '2 seconds'::interval --set a delay while user send lastSeenAt
+            and cm."createdAt" > coalesce(cu."lastSeenAt","user"."registeredAt")
+        ) "totalUnread",
+>>>>>>> origin/master-dev
 		cu."lastSeenAt",
 		CASE WHEN "chat"."access" = 'PUBLIC_ACCESS' THEN true ELSE false end "public"
 FROM "user"
@@ -1388,8 +1522,12 @@ LEFT JOIN "chat_user" chat_with ON chat_with."meetingId" = chat."meetingId" AND
                                     chat_with."chatId" != 'MAIN-PUBLIC-GROUP-CHAT'
 WHERE cu."visible" is true;
 
+<<<<<<< HEAD
 CREATE INDEX "idx_v_chat_with" on chat_user("meetingId","chatId","userId") WHERE "chatId" != 'MAIN-PUBLIC-GROUP-CHAT';
 CREATE INDEX "idx_v_chat_message_unread" ON "chat_message"("meetingId","chatId","createdAt" asc);
+=======
+create index idx_v_chat_with on chat_user("meetingId","chatId","userId") where "chatId" != 'MAIN-PUBLIC-GROUP-CHAT';
+>>>>>>> origin/master-dev
 
 CREATE OR REPLACE VIEW "v_chat_message_public" AS
 SELECT cm.*
@@ -1405,7 +1543,10 @@ SELECT  cu."meetingId",
         cm."messageSequence",
         cm."chatEmphasizedText",
         cm."message",
+<<<<<<< HEAD
         cm."messageAsHtml",
+=======
+>>>>>>> origin/master-dev
         cm."messageType",
         cm."replyToMessageId",
         cm."messageMetadata",
@@ -1424,9 +1565,12 @@ LEFT JOIN "chat_user" chat_with ON chat_with."meetingId" = cm."meetingId"
                                 AND chat_with."userId" != cu."userId"
 WHERE cm."chatId" != 'MAIN-PUBLIC-GROUP-CHAT';
 
+<<<<<<< HEAD
 CREATE INDEX "idx_v_chat_message_private" ON chat_message ("meetingId", "chatId", "createdAt")
 WHERE "chatId" != 'MAIN-PUBLIC-GROUP-CHAT';
 
+=======
+>>>>>>> origin/master-dev
 CREATE UNLOGGED TABLE "chat_message_reaction" (
 	"meetingId" varchar(100),
 	"messageId" varchar(100) REFERENCES "chat_message"("messageId") ON DELETE CASCADE,
@@ -1436,8 +1580,13 @@ CREATE UNLOGGED TABLE "chat_message_reaction" (
     CONSTRAINT chat_message_reaction_pk PRIMARY KEY ("messageId", "userId", "reactionEmoji"),
     FOREIGN KEY ("meetingId", "userId") REFERENCES "user"("meetingId","userId") ON DELETE CASCADE
 );
+<<<<<<< HEAD
 CREATE INDEX "chat_message_reaction_meeting_message_idx" ON "chat_message_reaction"("meetingId","messageId","createdAt" asc nulls last);
 CREATE INDEX "chat_message_reaction_meeting_message_idx_rev" ON "chat_message_reaction"("messageId", "meetingId","createdAt" asc nulls last);
+=======
+CREATE INDEX "chat_message_reaction_meeting_message_idx" ON "chat_message_reaction"("meetingId","messageId");
+CREATE INDEX "chat_message_reaction_meeting_message_idx_rev" ON "chat_message_reaction"("messageId", "meetingId");
+>>>>>>> origin/master-dev
 
 CREATE OR REPLACE VIEW "v_chat_message_reaction" AS SELECT * FROM "chat_message_reaction";
 
@@ -1700,9 +1849,15 @@ WHERE "uploadInProgress" IS FALSE
 AND "uploadCompleted" IS FALSE;
 
 ------------------------------------------------------------
+<<<<<<< HEAD
 -- Triggers to automatically control "user" flag "whiteboardWriteAccess"
 
 CREATE OR REPLACE FUNCTION "update_user_whiteboardWriteAccess"("p_userId" varchar DEFAULT NULL, "p_meetingId" varchar DEFAULT NULL)
+=======
+-- Triggers to automatically control "user" flag "hasDrawPermissionOnCurrentPage"
+
+CREATE OR REPLACE FUNCTION "update_user_hasDrawPermissionOnCurrentPage"("p_userId" varchar DEFAULT NULL, "p_meetingId" varchar DEFAULT NULL)
+>>>>>>> origin/master-dev
 RETURNS VOID AS $$
 DECLARE
     where_clause TEXT := '';
@@ -1717,7 +1872,11 @@ BEGIN
     IF where_clause <> '' THEN
         where_clause := substring(where_clause from 6);
         EXECUTE format('UPDATE "user"
+<<<<<<< HEAD
 						SET "whiteboardWriteAccess" =
+=======
+						SET "hasDrawPermissionOnCurrentPage" =
+>>>>>>> origin/master-dev
 						CASE WHEN presenter THEN TRUE
 						WHEN EXISTS (
 							SELECT 1 FROM "v_pres_page_writers" v
@@ -1737,7 +1896,11 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION update_user_presenter_trigger_func() RETURNS TRIGGER AS $$
 BEGIN
     IF OLD."presenter" <> NEW."presenter" THEN
+<<<<<<< HEAD
         PERFORM "update_user_whiteboardWriteAccess"(NEW."userId", NEW."meetingId");
+=======
+        PERFORM "update_user_hasDrawPermissionOnCurrentPage"(NEW."userId", NEW."meetingId");
+>>>>>>> origin/master-dev
     END IF;
     RETURN NEW;
 END;
@@ -1750,7 +1913,11 @@ FOR EACH ROW EXECUTE FUNCTION update_user_presenter_trigger_func();
 CREATE OR REPLACE FUNCTION update_pres_presentation_current_trigger_func() RETURNS TRIGGER AS $$
 BEGIN
     IF OLD."current" <> NEW."current" THEN
+<<<<<<< HEAD
     	PERFORM "update_user_whiteboardWriteAccess"(NULL, NEW."meetingId");
+=======
+    	PERFORM "update_user_hasDrawPermissionOnCurrentPage"(NULL, NEW."meetingId");
+>>>>>>> origin/master-dev
     END IF;
     RETURN NEW;
 END;
@@ -1764,7 +1931,11 @@ CREATE OR REPLACE FUNCTION update_pres_page_current_trigger_func()
 RETURNS TRIGGER AS $$
 BEGIN
     IF OLD."current" <> NEW."current" THEN
+<<<<<<< HEAD
     	PERFORM "update_user_whiteboardWriteAccess"(NULL, pres_presentation."meetingId")
+=======
+    	PERFORM "update_user_hasDrawPermissionOnCurrentPage"(NULL, pres_presentation."meetingId")
+>>>>>>> origin/master-dev
         FROM pres_presentation
         WHERE "presentationId" = NEW."presentationId";
     END IF;
@@ -1780,9 +1951,15 @@ CREATE OR REPLACE FUNCTION ins_upd_del_pres_page_writers_trigger_func()
 RETURNS TRIGGER AS $$
 BEGIN
     IF TG_OP = 'UPDATE' or TG_OP = 'INSERT' THEN
+<<<<<<< HEAD
         PERFORM "update_user_whiteboardWriteAccess"(NEW."userId", NEW."meetingId");
     ELSIF TG_OP = 'DELETE' THEN
         PERFORM "update_user_whiteboardWriteAccess"(OLD."userId", OLD."meetingId");
+=======
+        PERFORM "update_user_hasDrawPermissionOnCurrentPage"(NEW."userId", NEW."meetingId");
+    ELSIF TG_OP = 'DELETE' THEN
+        PERFORM "update_user_hasDrawPermissionOnCurrentPage"(OLD."userId", OLD."meetingId");
+>>>>>>> origin/master-dev
     END IF;
     RETURN NEW;
 END;
@@ -1971,6 +2148,7 @@ CREATE UNLOGGED TABLE "timer" (
 	"meetingId" varchar(100) PRIMARY KEY REFERENCES "meeting"("meetingId") ON DELETE CASCADE,
 	"stopwatch" boolean,
 	"running" boolean,
+<<<<<<< HEAD
 	"elapsed" boolean,
 	"active" boolean,
 	"time" bigint,
@@ -1979,17 +2157,45 @@ CREATE UNLOGGED TABLE "timer" (
 	"songTrack" varchar(50)
 );
 
+=======
+	"active" boolean,
+	"time" bigint,
+	"accumulated" bigint,
+	"startedOn" bigint,
+	"songTrack" varchar(50)
+);
+
+ALTER TABLE "timer" ADD COLUMN "startedAt" timestamp with time zone GENERATED ALWAYS AS (CASE WHEN "startedOn" = 0 THEN NULL ELSE to_timestamp("startedOn"::double precision / 1000) END) STORED;
+>>>>>>> origin/master-dev
 
 CREATE OR REPLACE VIEW "v_timer" AS
 SELECT
      "meetingId",
      "stopwatch",
+<<<<<<< HEAD
      "running",
      "elapsed",
+=======
+     case
+        when "stopwatch" is true or "running" is false then "running"
+        when "startedAt" + (("time" - coalesce("accumulated",0)) * interval '1 milliseconds') >= current_timestamp then true
+        else false
+     end "running",
+    case when
+        "stopwatch" is false
+        and "startedAt" + (("time" - coalesce("accumulated",0)) * interval '1 milliseconds') <= current_timestamp
+        then true
+        else false
+    end "elapsed",
+>>>>>>> origin/master-dev
      "active",
      "time",
      "accumulated",
      "startedAt",
+<<<<<<< HEAD
+=======
+     "startedOn",
+>>>>>>> origin/master-dev
      "songTrack"
  FROM "timer";
 
@@ -2471,11 +2677,15 @@ CREATE UNLOGGED TABLE "pluginDataChannelEntry" (
 	"toRoles" varchar[], --MODERATOR, VIEWER, PRESENTER
 	"toUserIds" varchar[],
 	"createdAt" timestamp with time zone DEFAULT current_timestamp,
+<<<<<<< HEAD
 	"updatedAt" timestamp with time zone DEFAULT current_timestamp,
+=======
+>>>>>>> origin/master-dev
 	"deletedAt" timestamp with time zone,
 	CONSTRAINT "pluginDataChannel_pkey" PRIMARY KEY ("meetingId","pluginName","channelName","entryId", "subChannelName"),
 	FOREIGN KEY ("meetingId", "createdBy") REFERENCES "user"("meetingId","userId") ON DELETE CASCADE
 );
+<<<<<<< HEAD
 
 ALTER TABLE "pluginDataChannelEntry"
 ADD COLUMN "isPublic" boolean
@@ -2494,10 +2704,25 @@ SELECT u."meetingId", u."userId", m."pluginName", m."channelName", m."subChannel
 FROM "user" u
 JOIN "pluginDataChannelEntry" m ON m."meetingId" = u."meetingId"
 			AND (u."userId" = ANY(m."toUserIds")
+=======
+create index "idx_pluginDataChannelEntry_pk_reverse" on "pluginDataChannelEntry"("pluginName", "meetingId", "channelName", "subChannelName");
+create index "idx_pluginDataChannelEntry_pk_reverse_b" on "pluginDataChannelEntry"("channelName", "pluginName", "meetingId", "subChannelName");
+create index "idx_pluginDataChannelEntry_pk_reverse_c" on "pluginDataChannelEntry"("subChannelName", "channelName", "pluginName", "meetingId");
+create index "idx_pluginDataChannelEntry_channelName" on "pluginDataChannelEntry"("meetingId", "pluginName", "channelName", "toRoles", "toUserIds", "subChannelName", "createdAt") where "deletedAt" is null;
+create index "idx_pluginDataChannelEntry_roles" on "pluginDataChannelEntry"("meetingId", "toRoles", "toUserIds", "createdAt") where "deletedAt" is null;
+
+CREATE OR REPLACE VIEW "v_pluginDataChannelEntry" AS
+SELECT u."meetingId", u."userId", m."pluginName", m."channelName", m."subChannelName", m."entryId", m."payloadJson", m."createdBy", m."toRoles", m."createdAt"
+FROM "user" u
+JOIN "pluginDataChannelEntry" m ON m."meetingId" = u."meetingId"
+			AND ((m."toRoles" IS NULL AND m."toUserIds" IS NULL)
+				OR u."userId" = ANY(m."toUserIds")
+>>>>>>> origin/master-dev
 				OR u."role" = ANY(m."toRoles")
 				OR (u."presenter" AND 'PRESENTER' = ANY(m."toRoles"))
 				)
 WHERE "deletedAt" is null
+<<<<<<< HEAD
 AND "isPublic" is false;
 
 CREATE OR REPLACE VIEW "v_pluginDataChannelEntry_public" AS
@@ -2505,6 +2730,9 @@ SELECT "meetingId", "pluginName", "channelName", "subChannelName", "entryId", "p
 FROM "pluginDataChannelEntry"
 WHERE "deletedAt" is null
 AND "isPublic" is true;
+=======
+ORDER BY m."createdAt";
+>>>>>>> origin/master-dev
 
 ------------------------
 

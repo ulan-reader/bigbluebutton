@@ -57,7 +57,10 @@ select_permissions:
         - createdAt
         - deletedAt
         - message
+<<<<<<< HEAD
         - messageAsHtml
+=======
+>>>>>>> origin/master-dev
         - messageId
         - messageMetadata
         - messageSequence

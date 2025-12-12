@@ -244,6 +244,7 @@ RangeLoop:
 					browserConnection.ActiveSubscriptionsMutex.Unlock()
 
 					browserConnection.ActiveStreamingsMutex.Lock()
+<<<<<<< HEAD
 					if removed, newActiveStreamings := removeValueFromSlice(browserConnection.ActiveStreamings, "getCursorCoordinatesStream", browserMessage.ID); removed {
 						browserConnection.ActiveStreamings = newActiveStreamings
 					}
@@ -252,6 +253,10 @@ RangeLoop:
 					}
 					if removed, newActiveStreamings := removeValueFromSlice(browserConnection.ActiveStreamings, "getChatMessageStream", browserMessage.ID); removed {
 						browserConnection.ActiveStreamings = newActiveStreamings
+=======
+					if browserConnection.ActiveStreamings["getCursorCoordinatesStream"] == browserMessage.ID {
+						delete(browserConnection.ActiveStreamings, "getCursorCoordinatesStream")
+>>>>>>> origin/master-dev
 					}
 					browserConnection.ActiveStreamingsMutex.Unlock()
 				}
@@ -380,6 +385,7 @@ func sendErrorMessage(browserConnection *common.BrowserConnection, messageId str
 	jsonDataComplete, _ := json.Marshal(browserResponseComplete)
 	browserConnection.FromHasuraToBrowserChannel.SendWait(browserConnection.Context, jsonDataComplete)
 }
+<<<<<<< HEAD
 
 func removeValueFromSlice(mapWithSlices map[string][]string, key string, value string) (bool, map[string][]string) {
 	removed := false
@@ -397,3 +403,5 @@ func removeValueFromSlice(mapWithSlices map[string][]string, key string, value s
 
 	return removed, mapWithSlices
 }
+=======
+>>>>>>> origin/master-dev

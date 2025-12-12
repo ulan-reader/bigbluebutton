@@ -41,6 +41,7 @@ begin
 end
 
 # Load parameters and set up paths
+<<<<<<< HEAD
 props = BigBlueButton.read_props
 video_props = File.open(File.expand_path('../video.yml', __dir__)) do |video_props_file|
   YAML.safe_load(video_props_file)
@@ -57,6 +58,10 @@ begin
 rescue Errno::ENOENT
   # Not an error: override props file does not exist
 end
+=======
+props = YAML.safe_load(File.open(File.expand_path('../bigbluebutton.yml', __dir__)))
+video_props = YAML.safe_load(File.open(File.expand_path('../video.yml', __dir__)))
+>>>>>>> origin/master-dev
 video_props['audio_offset'] = 0 if video_props['audio_offset'].nil?
 
 recording_dir = props['recording_dir']
@@ -84,10 +89,39 @@ duration = BigBlueButton::Events.get_recording_length(events)
 participants = BigBlueButton::Events.get_num_participants(events)
 metadata = events.at_xpath('/recording/metadata')
 
+<<<<<<< HEAD
 logger.info 'Checking whether webcams were used'
 have_webcams = BigBlueButton::Events.have_webcam_events(events)
 if have_webcams
   logger.info('Webcams were used in this session')
+=======
+logger.info 'Generating video events list'
+
+# Webcams
+webcam_edl = BigBlueButton::Events.create_webcam_edl(events, raw_archive_dir, props['show_moderator_viewpoint'])
+logger.debug 'Webcam EDL:'
+BigBlueButton::EDL::Video.dump(webcam_edl)
+
+# Deskshare
+deskshare_edl = BigBlueButton::Events.create_deskshare_edl(events, raw_archive_dir)
+logger.debug 'Deskshare EDL:'
+BigBlueButton::EDL::Video.dump(deskshare_edl)
+
+video_edl = BigBlueButton::EDL::Video.merge(webcam_edl, deskshare_edl)
+
+logger.debug 'Merged Video EDL:'
+BigBlueButton::EDL::Video.dump(video_edl)
+
+logger.info 'Applying recording start/stop events to video'
+video_edl = BigBlueButton::Events.edl_match_recording_marks_video(video_edl, events, initial_timestamp, final_timestamp)
+logger.debug 'Trimmed Video EDL:'
+BigBlueButton::EDL::Video.dump(video_edl)
+
+logger.info 'Checking whether webcams were used'
+have_webcams = BigBlueButton::Events.have_webcam_events(events)
+if have_webcams
+  logger.info('Webcams were use in this session')
+>>>>>>> origin/master-dev
 else
   logger.info('No webcams were used in this session')
 end
@@ -114,6 +148,7 @@ if !have_presentation && !have_webcams
   have_presentation = true
 end
 
+<<<<<<< HEAD
 preset = nil
 if video_props.fetch('allow_meta_preset', true)
   # Use preset specified via metadata parameter, if available
@@ -256,6 +291,8 @@ video_edl = BigBlueButton::Events.edl_match_recording_marks_video(video_edl, eve
 logger.debug 'Trimmed Video EDL:'
 BigBlueButton::EDL::Video.dump(video_edl)
 
+=======
+>>>>>>> origin/master-dev
 presentation_edl = nil
 if have_presentation
   # The presentation video gets special treatment
@@ -263,19 +300,33 @@ if have_presentation
   presentation_edl = [
     {
       timestamp: 0,
+<<<<<<< HEAD
       areas: { presentation: [{ filename: presentation_video, timestamp: 0 }] },
     },
     {
       timestamp: duration,
       areas: { presentation: [] },
     },
+=======
+      areas: { presentation: [{ filename: presentation_video, timestamp: 0 }] }
+    },
+    {
+      timestamp: duration,
+      areas: { presentation: [] }
+    }
+>>>>>>> origin/master-dev
   ]
 else
   presentation_edl = [
     {
       timestamp: 0,
+<<<<<<< HEAD
       areas: { presentation: [] },
     },
+=======
+      areas: { presentation: [] }
+    }
+>>>>>>> origin/master-dev
   ]
 end
 logger.debug 'Presentation EDL:'
@@ -318,18 +369,46 @@ if BigBlueButton::Events.screenshare_has_audio?(events, "#{raw_archive_dir}/desk
   audio = BigBlueButton::EDL::Audio.mixer([audio, deskshare_audio], "#{process_dir}/mixed_audio")
 end
 
+<<<<<<< HEAD
+=======
+# Select the layout based on what video sections are available
+layout = \
+  if have_webcams
+    if have_presentation || have_deskshare
+      video_props['layout']
+    else
+      video_props['nopresentation_layout']
+    end
+  else
+    video_props['nowebcam_layout']
+  end
+
+layout.symbolize_keys!
+layout[:areas].each do |area|
+  area.symbolize_keys!
+  area[:name] = area[:name].to_sym
+end
+
+>>>>>>> origin/master-dev
 if have_presentation
   logger.info 'Creating presentation area video'
   presentation_area = layout[:areas].detect { |area| area[:name] == :presentation }
 
+<<<<<<< HEAD
   bbb_presentation_video_codec = video_props.fetch('bbb_presentation_video_codec', 'vp9')
+=======
+>>>>>>> origin/master-dev
   BigBlueButton.execute(
     [
       'bbb-presentation-video',
       '-i', raw_archive_dir,
       '-w', presentation_area[:width].to_s, '-h', presentation_area[:height].to_s, '-r', layout[:framerate].to_s,
+<<<<<<< HEAD
       '-c', bbb_presentation_video_codec,
       '-o', presentation_video,
+=======
+      '-o', presentation_video
+>>>>>>> origin/master-dev
     ],
     true
   )
@@ -338,8 +417,13 @@ end
 logger.info 'Rendering video'
 video = BigBlueButton::EDL::Video.render(video_edl, layout, "#{process_dir}/video")
 
+<<<<<<< HEAD
 logger.info "Encoding output files to #{preset['formats'].length} formats"
 preset['formats'].each_with_index do |format, i|
+=======
+logger.info "Encoding output files to #{video_props['formats'].length} formats"
+video_props['formats'].each_with_index do |format, i|
+>>>>>>> origin/master-dev
   format.symbolize_keys!
   logger.info "  #{format[:mimetype]}"
   BigBlueButton::EDL.encode(audio, video, format, "#{process_dir}/video-#{i}", video_props['audio_offset'])
@@ -396,7 +480,11 @@ File.write(
     captions: captions,
     haveChat: have_chat,
     meetingName: metadata['meetingName'],
+<<<<<<< HEAD
     preset: preset
+=======
+    video_props: video_props
+>>>>>>> origin/master-dev
   )
 )
 

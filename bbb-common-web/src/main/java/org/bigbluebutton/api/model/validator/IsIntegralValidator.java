@@ -2,8 +2,13 @@ package org.bigbluebutton.api.model.validator;
 
 import org.bigbluebutton.api.model.constraint.IsIntegralConstraint;
 
+<<<<<<< HEAD
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+=======
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+>>>>>>> origin/master-dev
 
 public class IsIntegralValidator implements ConstraintValidator<IsIntegralConstraint, String> {
 

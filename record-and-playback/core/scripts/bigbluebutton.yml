@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 bbb_version: '3.0.17'
+=======
+bbb_version: '3.0.9'
+>>>>>>> origin/master-dev
 raw_audio_src: /var/freeswitch/meetings
 mediasoup_video_src: /var/mediasoup/recordings
 mediasoup_screenshare_src: /var/mediasoup/screenshare

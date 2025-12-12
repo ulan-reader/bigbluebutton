@@ -2,7 +2,13 @@ package org.bigbluebutton.api.model.shared;
 
 import org.bigbluebutton.api.model.constraint.GetChecksumConstraint;
 import org.bigbluebutton.api.util.ParamsUtil;
+<<<<<<< HEAD
 import jakarta.servlet.http.HttpServletRequest;
+=======
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotEmpty;
+>>>>>>> origin/master-dev
 
 @GetChecksumConstraint(groups = ChecksumValidationGroup.class)
 public class GetChecksum extends Checksum {

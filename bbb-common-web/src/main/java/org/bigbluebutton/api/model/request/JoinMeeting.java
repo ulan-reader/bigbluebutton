@@ -5,9 +5,14 @@ import org.bigbluebutton.api.model.shared.Checksum;
 import org.bigbluebutton.api.model.shared.JoinPassword;
 import org.bigbluebutton.api.model.shared.Password;
 
+<<<<<<< HEAD
 import jakarta.validation.Valid;
 import jakarta.servlet.http.HttpServletRequest;
 
+=======
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+>>>>>>> origin/master-dev
 import java.util.Map;
 
 @ContentTypeConstraint

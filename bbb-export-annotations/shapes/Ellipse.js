@@ -10,9 +10,15 @@ import {Geo} from './Geo.js';
 export class Ellipse extends Geo {
   /**
    * Draws an ellipse shape on the SVG canvas.
+<<<<<<< HEAD
    * @return {Promise<G>} Returns the SVG group element containing the ellipse.
    */
   async draw() {
+=======
+   * @return {G} Returns the SVG group element containing the ellipse.
+   */
+  draw() {
+>>>>>>> origin/master-dev
     const rx = this.w / 2;
     const ry = (this.h + this.growY) / 2;
 
@@ -29,7 +35,11 @@ export class Ellipse extends Geo {
 
     this.setFill(ellipse);
     ellipseGroup.add(ellipse);
+<<<<<<< HEAD
     await this.drawLabel(ellipseGroup);
+=======
+    this.drawLabel(ellipseGroup);
+>>>>>>> origin/master-dev
 
     return ellipseGroup;
   }

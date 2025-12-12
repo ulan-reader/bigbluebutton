@@ -11,7 +11,11 @@ export class Poll extends Geo {
    * Draws a poll shape based on the instance properties.
    *
    * @method draw
+<<<<<<< HEAD
    * @return {Promise<G>} An SVG group element containing the drawn poll shape.
+=======
+   * @return {G} An SVG group element containing the drawn poll shape.
+>>>>>>> origin/master-dev
    *
  */
   constructor(poll) {
@@ -169,7 +173,11 @@ export class Poll extends Geo {
     `.trim();
   }
 
+<<<<<<< HEAD
   async draw() {
+=======
+  draw() {
+>>>>>>> origin/master-dev
     const caseInsensitiveReducer = (acc, item) => {
       const index = acc.findIndex((ans) => ans.key.toLowerCase() === item.key.toLowerCase())
       if (index !== -1) {

@@ -20,9 +20,15 @@
 package org.bigbluebutton.api;
 
 import groovy.json.JsonBuilder;
+<<<<<<< HEAD
 import groovy.xml.XmlSlurper;
 import groovy.xml.slurpersupport.Attributes;
 import groovy.xml.slurpersupport.GPathResult;
+=======
+import groovy.util.XmlSlurper;
+import groovy.util.slurpersupport.Attributes;
+import groovy.util.slurpersupport.GPathResult;
+>>>>>>> origin/master-dev
 import groovy.xml.MarkupBuilder;
 
 import java.io.File;

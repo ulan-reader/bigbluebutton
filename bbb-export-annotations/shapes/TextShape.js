@@ -34,9 +34,15 @@ export class TextShape extends Shape {
    * Overrides the placeholder draw method in the Shape base class.
    * @override
    * @method draw
+<<<<<<< HEAD
    * @return {Promise<G>} An SVG group element containing the text.
    */
   async draw() {
+=======
+   * @return {G} An SVG group element containing the text.
+   */
+  draw() {
+>>>>>>> origin/master-dev
     const x = Shape.alignHorizontally(this.align, this.w);
     const y = 0;
 
@@ -52,15 +58,23 @@ export class TextShape extends Shape {
         })
         .fill(this.shapeColor);
 
+<<<<<<< HEAD
     const lines = await this.wrapText(this.text ?? '', this.w ?? 200);
     const lineHeight = this.fontSize * 1.35;
+=======
+    const lines = this.wrapText(this.text ?? '', this.w ?? 200);
+>>>>>>> origin/master-dev
 
     lines.forEach((line, idx) => {
       const tspan = new Tspan()
           .text(line)
           .attr({
             x,
+<<<<<<< HEAD
             dy: idx === 0 ? lineHeight / 2 : lineHeight,
+=======
+            dy: idx === 0 ? 0 : this.fontSize,
+>>>>>>> origin/master-dev
           });
 
       textElement.add(tspan);

@@ -27,7 +27,11 @@ val compileSettings = Seq(
   )
 )
 
+<<<<<<< HEAD
 scalaVersion := "2.13.18"
+=======
+scalaVersion := "2.13.9"
+>>>>>>> origin/master-dev
 
 resolvers += Resolver.sonatypeRepo("releases")
 

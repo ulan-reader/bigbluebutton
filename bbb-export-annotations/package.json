@@ -15,8 +15,12 @@
     "perfect-freehand": "^1.2.2",
     "redis": "^4.7.0",
     "sanitize-filename": "^1.6.3",
+<<<<<<< HEAD
     "svgdom": "^0.1.20",
     "wawoff2": "^2.0.1"
+=======
+    "svgdom": "^0.1.20"
+>>>>>>> origin/master-dev
   },
   "devDependencies": {
     "eslint": "^8.20.0",

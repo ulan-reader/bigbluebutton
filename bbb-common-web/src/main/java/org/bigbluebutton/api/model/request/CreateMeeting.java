@@ -4,8 +4,14 @@ import jakarta.ws.rs.core.MediaType;
 import org.bigbluebutton.api.model.constraint.*;
 import org.bigbluebutton.api.model.shared.Checksum;
 
+<<<<<<< HEAD
 import jakarta.servlet.http.HttpServletRequest;
 
+=======
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+>>>>>>> origin/master-dev
 import java.util.Map;
 import java.util.Set;
 

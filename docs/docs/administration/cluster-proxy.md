@@ -101,7 +101,11 @@ For each BigBlueButton server in your cluster, repeat the following steps:
 Add these options to `/etc/bigbluebutton/bbb-web.properties`:
 
 ```ini
+<<<<<<< HEAD
 defaultHTML5ClientUrl=https://bbb-proxy.example.com/bbb-01/html5client/
+=======
+defaultHTML5ClientUrl=https://bbb-proxy.example.com/bbb-01/html5client
+>>>>>>> origin/master-dev
 presentationBaseURL=https://bbb-01.example.com/bigbluebutton/presentation
 accessControlAllowOrigin=https://bbb-proxy.example.com
 graphqlWebsocketUrl=wss://bbb-01.example.com/graphql
@@ -218,6 +222,7 @@ _**Note:** This one includes the protocol._
 ---
 
 If your proxy server uses a different root domain than your BBB server, you’ll need an additional configuration.
+<<<<<<< HEAD
 Add the following settings to `/usr/share/bbb-web/WEB-INF/classes/application.properties`:
 
 ```shell
@@ -225,6 +230,18 @@ server.servlet.session.cookie.secure=true
 server.servlet.session.cookie.SameSite=none
 ```
 
+=======
+Add the following settings to `/usr/share/bbb-web/WEB-INF/classes/application.yml`:
+
+```yaml
+server:
+  servlet:
+    session:
+      cookie:
+        secure: true
+        SameSite: none
+```
+>>>>>>> origin/master-dev
 _**Note:** This change will be reverted with subsequent bbb-web updates. If you rely on the override, look to include it in a post-installation routine._
 
 ---

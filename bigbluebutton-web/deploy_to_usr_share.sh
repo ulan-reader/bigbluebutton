@@ -14,8 +14,12 @@ done
 sudo service bbb-web stop
 ./build.sh
 
+<<<<<<< HEAD
 ./gradlew clean assemble
 
+=======
+grails assemble
+>>>>>>> origin/master-dev
 mkdir -p exploded && cd exploded
 jar -xvf ../build/libs/bigbluebutton-0.10.0.war
 
@@ -25,6 +29,7 @@ if [ ! -d /usr/share/bbb-web-old ] ; then
 else
 	echo "A backup in /usr/share/bbb-web-old already exists. Skipping.."
 fi
+<<<<<<< HEAD
 
 sudo rm -rf /usr/share/bbb-web/assets/ /usr/share/bbb-web/META-INF/ /usr/share/bbb-web/org/ /usr/share/bbb-web/WEB-INF/
 sudo cp -R . /usr/share/bbb-web/
@@ -32,6 +37,12 @@ sudo cp -R . /usr/share/bbb-web/
 sudo chown bigbluebutton:bigbluebutton /usr/share/bbb-web
 sudo chown -R bigbluebutton:bigbluebutton /usr/share/bbb-web/assets/ /usr/share/bbb-web/META-INF/ /usr/share/bbb-web/org/ /usr/share/bbb-web/WEB-INF/
 
+=======
+sudo rm -rf /usr/share/bbb-web/assets/ /usr/share/bbb-web/META-INF/ /usr/share/bbb-web/org/ /usr/share/bbb-web/WEB-INF/
+sudo cp -R . /usr/share/bbb-web/
+sudo chown bigbluebutton:bigbluebutton /usr/share/bbb-web
+sudo chown -R bigbluebutton:bigbluebutton /usr/share/bbb-web/assets/ /usr/share/bbb-web/META-INF/ /usr/share/bbb-web/org/ /usr/share/bbb-web/WEB-INF/
+>>>>>>> origin/master-dev
 echo ''
 echo ''
 echo '----------------'

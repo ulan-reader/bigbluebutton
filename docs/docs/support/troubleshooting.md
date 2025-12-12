@@ -533,6 +533,7 @@ The [following issue](https://github.com/bigbluebutton/bigbluebutton/issues/8792
 
 ### The browser is not supported
 
+<<<<<<< HEAD
 When you attempt to join a BigBlueButton session, the client checks your browser before loading. The browser and version are compared against a built-in list of minimum supported versions.
 
 If the browser is older than the required version, the main client bundle is not loaded. Instead, a message appears at the top of the page:
@@ -558,6 +559,35 @@ For Safari versions between 14 and 15, a special compatibility bundle is automat
 * Browsers must support **WebRTC** for audio, video, and screen sharing to function properly. You can verify WebRTC support using [https://test.webrtc.org/](https://test.webrtc.org/).
 
 
+=======
+When you attempt to join a BigBlueButton session, the client looks for supported browsers before fully loading. The client gets its list of supported browsers from `/usr/share/bigbluebutton/html5-client/private/config/settings.yml`. You can see the list of supported browsers at the bottom. For example,
+
+```yaml
+- browser: mobileSafari
+  version:
+    - 11
+    - 1
+```
+
+states that `Mobile Safari` version 11.1 or later is supported (notice the first letter is lower case and concatenated with the remainder of the browser name).
+
+To add a browser to the list, first find your browser's useragent. You could use a tool like https://wtools.io/check-my-user-agent as well. For example, with the Vivaldi browser you might see
+
+```log
+Vivaldi 2.8.1664 / Linux 0.0.0
+```
+
+Next, to add this as a supported browser, append to `settings.yml`
+
+```yaml
+- browser: vivaldi
+  version:
+    - 2
+    - 8
+```
+
+save the updated `settings.yml` file, and then restart your BigBlueButton server with `sudo bbb-conf --restart`. Note any browser you add must support WebRTC libraries (not all do), so be sure to check it first with [https://test.webrtc.org/](https://test.webrtc.org/).
+>>>>>>> origin/master-dev
 
 
 ### nginx not running

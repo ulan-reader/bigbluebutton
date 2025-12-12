@@ -28,7 +28,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+<<<<<<< HEAD
 import java.util.concurrent.TimeUnit;
+=======
+>>>>>>> origin/master-dev
 
 import org.apache.commons.io.FileUtils;
 import org.bigbluebutton.presentation.SupportedFileTypes;
@@ -37,7 +40,10 @@ import org.bigbluebutton.presentation.UploadedPresentation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master-dev
 import com.google.gson.Gson;
 
 public class ThumbnailCreatorImp implements ThumbnailCreator {
@@ -51,7 +57,11 @@ public class ThumbnailCreatorImp implements ThumbnailCreator {
 
   private String BLANK_THUMBNAIL;
 
+<<<<<<< HEAD
   private long execTimeout = 10;
+=======
+  private long execTimeout = 10000;
+>>>>>>> origin/master-dev
 
   @Override
   public boolean createThumbnail(UploadedPresentation pres, int page, File pageFile) {
@@ -101,12 +111,20 @@ public class ThumbnailCreatorImp implements ThumbnailCreator {
     //System.out.println(COMMAND);
 
     long execTimeout = this.execTimeout;
+<<<<<<< HEAD
     long pageConversionTimeoutInMs = pres.getMaxPageConversionTime() * 1000;
     if (execTimeout > pageConversionTimeoutInMs) {
       execTimeout = pageConversionTimeoutInMs;
     }
 
     boolean done = new ExternalProcessExecutor().exec(COMMAND, TimeUnit.SECONDS.toMillis(execTimeout));
+=======
+    if (execTimeout > pres.getMaxPageConversionTime()) {
+      execTimeout = pres.getMaxPageConversionTime();
+    }
+
+    boolean done = new ExternalProcessExecutor().exec(COMMAND, execTimeout);
+>>>>>>> origin/master-dev
 
     if (done) {
       return true;

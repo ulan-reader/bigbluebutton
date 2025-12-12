@@ -1,5 +1,9 @@
 package org.bigbluebutton.core.db
+<<<<<<< HEAD
 import org.bigbluebutton.core.models.{ClientType, RegisteredUser, UserLockSettings, VoiceUserState}
+=======
+import org.bigbluebutton.core.models.{RegisteredUser, UserLockSettings, VoiceUserState}
+>>>>>>> origin/master-dev
 import slick.jdbc.PostgresProfile.api._
 
 case class UserNameColumnsDbModel(
@@ -198,7 +202,11 @@ object UserDAO {
                "joined",
                "registeredOn",
                true as "transferredFromParentMeeting",
+<<<<<<< HEAD
                ${ClientType.DIAL_IN} as "clientType"
+=======
+               'dial-in-user' as "clientType"
+>>>>>>> origin/master-dev
               from "user"
               where "userId" = ${userId}
               and "meetingId" = ${meetingIdFrom}

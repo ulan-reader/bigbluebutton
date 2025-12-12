@@ -10,9 +10,15 @@ import {Geo} from './Geo.js';
 export class Rhombus extends Geo {
   /**
    * Draws a rhombus shape on the SVG canvas.
+<<<<<<< HEAD
    * @return {Promise<G>} Returns the SVG group element containing the rhombus.
    */
   async draw() {
+=======
+   * @return {G} Returns the SVG group element containing the rhombus.
+   */
+  draw() {
+>>>>>>> origin/master-dev
     const width = this.w;
     const height = this.h + this.growY;
 
@@ -37,7 +43,11 @@ export class Rhombus extends Geo {
 
     this.setFill(rhombus);
     rhombusGroup.add(rhombus);
+<<<<<<< HEAD
     await this.drawLabel(rhombusGroup);
+=======
+    this.drawLabel(rhombusGroup);
+>>>>>>> origin/master-dev
 
     return rhombusGroup;
   }

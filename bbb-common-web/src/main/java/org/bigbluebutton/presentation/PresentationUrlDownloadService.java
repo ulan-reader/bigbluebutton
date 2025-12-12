@@ -3,7 +3,14 @@ package org.bigbluebutton.presentation;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+import java.net.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+>>>>>>> origin/master-dev
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
@@ -20,9 +27,14 @@ import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
 import org.apache.http.nio.client.methods.HttpAsyncMethods;
 import org.apache.http.nio.client.methods.ZeroCopyConsumer;
+<<<<<<< HEAD
 import org.bigbluebutton.api.Util;
 import org.bigbluebutton.api.service.RedirectFollowerService;
 import org.bigbluebutton.api.service.impl.PresRedirectValidator;
+=======
+import org.apache.commons.validator.routines.InetAddressValidator;
+import org.bigbluebutton.api.Util;
+>>>>>>> origin/master-dev
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,14 +42,25 @@ public class PresentationUrlDownloadService {
     private static Logger log = LoggerFactory
             .getLogger(PresentationUrlDownloadService.class);
 
+<<<<<<< HEAD
+=======
+    private static final int MAX_REDIRECTS = 5;
+>>>>>>> origin/master-dev
     private PageExtractor pageExtractor;
     private DocumentConversionService documentConversionService;
     private String presentationBaseURL;
     private String presentationDir;
     private String BLANK_PRESENTATION;
+<<<<<<< HEAD
     private RedirectFollowerService redirectFollower;
     private PresRedirectValidator presRedirectValidator;
     private int presDownloadReadTimeoutInMs;
+=======
+    private String defaultUploadedPresentation;
+    private List<String> insertDocumentSupportedProtocols;
+    private List<String> insertDocumentBlockedHosts;
+    private int presDownloadReadTimeoutInMs = 60000;
+>>>>>>> origin/master-dev
 
     private ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(3);
 
@@ -169,14 +192,130 @@ public class PresentationUrlDownloadService {
           scanUploadedPresentationFiles);
     }
 
+<<<<<<< HEAD
 
+=======
+    private String followRedirect(String meetingId, String redirectUrl,
+            int redirectCount, String origUrl) {
+
+        if (redirectCount > MAX_REDIRECTS) {
+            log.error("Max redirect reached for meeting=[{}] with url=[{}]",
+                    meetingId, origUrl);
+            return null;
+        }
+
+        if(!isValidRedirectUrl(redirectUrl)) return null;
+
+        URL presUrl;
+        try {
+            presUrl = new URL(redirectUrl);
+        } catch (MalformedURLException e) {
+            log.error("Malformed url=[{}] for meeting=[{}]", redirectUrl, meetingId, e);
+            return null;
+        }
+
+        HttpURLConnection conn;
+        try {
+            conn = (HttpURLConnection) presUrl.openConnection();
+            conn.setReadTimeout(presDownloadReadTimeoutInMs);
+            conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
+            conn.addRequestProperty("User-Agent", "Mozilla");
+            conn.setInstanceFollowRedirects(false);
+
+            // normally, 3xx is redirect
+            int status = conn.getResponseCode();
+            if (status != HttpURLConnection.HTTP_OK) {
+                if (status == HttpURLConnection.HTTP_MOVED_TEMP
+                        || status == HttpURLConnection.HTTP_MOVED_PERM
+                        || status == HttpURLConnection.HTTP_SEE_OTHER) {
+                    String newUrl = conn.getHeaderField("Location");
+                    return followRedirect(meetingId, newUrl, redirectCount + 1,
+                            origUrl);
+                } else {
+                    log.error(
+                            "Invalid HTTP response=[{}] for url=[{}] with meeting[{}]",
+                            status, redirectUrl, meetingId);
+                    return null;
+                }
+            } else {
+                return redirectUrl;
+            }
+        } catch (IOException e) {
+            log.error("IOException for url=[{}] with meeting[{}]", redirectUrl, meetingId, e);
+            return null;
+        }
+    }
+
+    private boolean isValidRedirectUrl(String redirectUrl) {
+        log.info("Validating redirect URL [{}]", redirectUrl);
+        URL url;
+
+        try {
+            url = new URL(redirectUrl);
+            String protocol = url.getProtocol();
+            String host = url.getHost();
+
+            if(insertDocumentSupportedProtocols.stream().noneMatch(p -> p.equalsIgnoreCase(protocol))) {
+                if(insertDocumentSupportedProtocols.size() == 1 && insertDocumentSupportedProtocols.get(0).equalsIgnoreCase("all")) {
+                    log.warn("Warning: All protocols are supported for presentation download. It is recommended to only allow HTTPS.");
+                } else {
+                    log.error("Invalid protocol [{}]", protocol);
+                    return false;
+                }
+            }
+
+            if(insertDocumentBlockedHosts.stream().anyMatch(h -> h.equalsIgnoreCase(host))) {
+                log.error("Attempted to download from blocked host [{}]", host);
+                return false;
+            }
+        } catch(MalformedURLException e) {
+            log.error("Malformed URL [{}]", redirectUrl);
+            return false;
+        }
+
+        try {
+            InetAddress[] addresses = InetAddress.getAllByName(url.getHost());
+            InetAddressValidator validator = InetAddressValidator.getInstance();
+
+            boolean localhostBlocked = insertDocumentBlockedHosts.stream().anyMatch(h -> h.equalsIgnoreCase("localhost"));
+
+            for(InetAddress address: addresses) {
+                if(!validator.isValid(address.getHostAddress())) {
+                    log.error("Invalid address [{}]", address.getHostAddress());
+                    return false;
+                }
+
+                if(localhostBlocked && !redirectUrl.equalsIgnoreCase(defaultUploadedPresentation)) {
+                    if(address.isAnyLocalAddress()) {
+                        log.error("Address [{}] is a local address", address.getHostAddress());
+                        return false;
+                    }
+
+                    if(address.isLoopbackAddress()) {
+                        log.error("Address [{}] is a loopback address", address.getHostAddress());
+                        return false;
+                    }
+                }
+            }
+        } catch(UnknownHostException e) {
+            log.error("Unknown host [{}]", url.getHost());
+            return false;
+        }
+
+        return true;
+    }
+>>>>>>> origin/master-dev
 
     public boolean savePresentation(final String meetingId,
             final String filename, final String urlString) {
 
+<<<<<<< HEAD
         String finalUrl = redirectFollower.followRedirect(
                 meetingId, urlString, 0, urlString, presRedirectValidator, presDownloadReadTimeoutInMs
         );
+=======
+        String finalUrl = followRedirect(meetingId, urlString, 0, urlString);
+>>>>>>> origin/master-dev
 
         if (finalUrl == null) return false;
         if(!finalUrl.equals(urlString)) {
@@ -251,12 +390,25 @@ public class PresentationUrlDownloadService {
         this.BLANK_PRESENTATION = blankPresentation;
     }
 
+<<<<<<< HEAD
     public void setRedirectFollower(RedirectFollowerService redirectFollower) {
         this.redirectFollower = redirectFollower;
     }
 
     public void setPresRedirectValidator(PresRedirectValidator presRedirectValidator) {
         this.presRedirectValidator = presRedirectValidator;
+=======
+    public void setDefaultUploadedPresentation(String defaultUploadedPresentation) {
+        this.defaultUploadedPresentation = defaultUploadedPresentation;
+    }
+
+    public void setInsertDocumentSupportedProtocols(String insertDocumentSupportedProtocols) {
+        this.insertDocumentSupportedProtocols = new ArrayList<>(Arrays.asList(insertDocumentSupportedProtocols.split(",")));
+    }
+
+    public void setInsertDocumentBlockedHosts(String insertDocumentBlockedHosts) {
+        this.insertDocumentBlockedHosts = new ArrayList<>(Arrays.asList(insertDocumentBlockedHosts.split(",")));
+>>>>>>> origin/master-dev
     }
 
     public void setPresDownloadReadTimeoutInMs(int presDownloadReadTimeoutInMs) {

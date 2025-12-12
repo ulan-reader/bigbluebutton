@@ -22,7 +22,11 @@ select_permissions:
         - extId
         - guest
         - guestStatus
+<<<<<<< HEAD
         - whiteboardWriteAccess
+=======
+        - hasDrawPermissionOnCurrentPage
+>>>>>>> origin/master-dev
         - isDialIn
         - isModerator
         - currentlyInMeeting

@@ -5,10 +5,17 @@ import org.bigbluebutton.api.model.shared.Checksum;
 import org.bigbluebutton.api.model.shared.ModeratorPassword;
 import org.bigbluebutton.api.model.shared.Password;
 
+<<<<<<< HEAD
 import jakarta.validation.Valid;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.Map;
+=======
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.Map;
+import java.util.Set;
+>>>>>>> origin/master-dev
 
 @ContentTypeConstraint
 public class EndMeeting extends RequestWithChecksum<EndMeeting.Params> {

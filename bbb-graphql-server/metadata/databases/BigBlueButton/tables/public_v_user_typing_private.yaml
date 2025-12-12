@@ -22,6 +22,10 @@ select_permissions:
     permission:
       columns:
         - chatId
+<<<<<<< HEAD
+=======
+        - isCurrentlyTyping
+>>>>>>> origin/master-dev
         - lastTypingAt
         - startedTypingAt
         - userId

@@ -2,9 +2,15 @@
 
 TARGET=$(basename "$(pwd)")
 
+<<<<<<< HEAD
 SERVER_VERSION=v1.9.7
 CLI_VERSION=2.3.1
 SIP_VERSION=v1.2.0
+=======
+SERVER_VERSION=v1.9.0
+CLI_VERSION=2.3.1
+SIP_VERSION=v1.1.1
+>>>>>>> origin/master-dev
 
 PACKAGE=$(echo "$TARGET" | cut -d'_' -f1)
 VERSION=$(echo "$TARGET" | cut -d'_' -f2)
@@ -81,6 +87,7 @@ if [ -z "$SIP_DIR" ]; then
     exit 1
 fi
 
+<<<<<<< HEAD
 # Apply livekit-sip patches if any. All patches end in "_sip.patch" and are in
 # the same directory as this script.
 for patch in "$BUILDDIR"/*_sip.patch; do
@@ -92,6 +99,8 @@ for patch in "$BUILDDIR"/*_sip.patch; do
     fi
 done
 
+=======
+>>>>>>> origin/master-dev
 pushd "$SIP_DIR" > /dev/null
 
 if [ "$TARGETPLATFORM" = "linux/arm64" ]; then

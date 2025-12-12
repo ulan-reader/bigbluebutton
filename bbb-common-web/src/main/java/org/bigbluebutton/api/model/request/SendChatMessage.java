@@ -1,10 +1,19 @@
 package org.bigbluebutton.api.model.request;
 
 import org.bigbluebutton.api.model.constraint.MeetingIDConstraint;
+<<<<<<< HEAD
 import org.bigbluebutton.api.model.constraint.NotNull;
 import org.bigbluebutton.api.model.constraint.Size;
 import org.bigbluebutton.api.model.shared.Checksum;
 import jakarta.servlet.http.HttpServletRequest;
+=======
+import org.bigbluebutton.api.model.constraint.MeetingNameConstraint;
+import org.bigbluebutton.api.model.constraint.NotNull;
+import org.bigbluebutton.api.model.constraint.Size;
+import org.bigbluebutton.api.model.shared.Checksum;
+
+import javax.servlet.http.HttpServletRequest;
+>>>>>>> origin/master-dev
 import java.util.Map;
 
 public class SendChatMessage extends RequestWithChecksum<SendChatMessage.Params> {

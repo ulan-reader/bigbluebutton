@@ -10,6 +10,7 @@ public class SvgConversionHandler extends AbstractCommandHandler {
     private static Logger log = LoggerFactory.getLogger(SvgConversionHandler.class);
 
     private static String PATH_OUTPUT = "<path";
+<<<<<<< HEAD
     private static String PATH_PATTERN = "\\d+\\s" + PATH_OUTPUT;
 
     private static String IMAGE_TAG_OUTPUT = "<image";
@@ -18,6 +19,12 @@ public class SvgConversionHandler extends AbstractCommandHandler {
     private static String USE_TAG_OUTPUT = "<use";
     private static String USE_TAG_PATTERN = "\\d+\\s" + USE_TAG_OUTPUT;
 
+=======
+    private static String IMAGE_TAG_OUTPUT = "<image";
+    private static String PATH_PATTERN = "\\d+\\s" + PATH_OUTPUT;
+    private static String IMAGE_TAG_PATTERN = "\\d+\\s" + IMAGE_TAG_OUTPUT;
+
+>>>>>>> origin/master-dev
     private final String id;
 
     public SvgConversionHandler(String id) {
@@ -64,6 +71,7 @@ public class SvgConversionHandler extends AbstractCommandHandler {
         return 0;
     }
 
+<<<<<<< HEAD
     /**
      *
      * @return The number of <use/> tags in the generated SVG.
@@ -84,6 +92,8 @@ public class SvgConversionHandler extends AbstractCommandHandler {
         return 0;
     }
 
+=======
+>>>>>>> origin/master-dev
     @Override
     protected String getIdTag() {
         return id;

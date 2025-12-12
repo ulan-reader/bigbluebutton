@@ -15,6 +15,10 @@ select_permissions:
         - running
         - songTrack
         - startedAt
+<<<<<<< HEAD
+=======
+        - startedOn
+>>>>>>> origin/master-dev
         - stopwatch
         - time
         - elapsed

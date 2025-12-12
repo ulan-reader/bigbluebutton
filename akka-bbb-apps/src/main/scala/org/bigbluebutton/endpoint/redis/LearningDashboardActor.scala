@@ -48,9 +48,13 @@ case class User(
                  raiseHand:          Vector[Long] = Vector(),
                  away:               Vector[Away] = Vector(),
                  webcams:            Vector[Webcam] = Vector(),
+<<<<<<< HEAD
                  totalOfMessages:                 Long = 0,
                  totalOfSharedNotes:              Long = 0,
                  totalOfWhiteboardAnnotations:    Long = 0,
+=======
+                 totalOfMessages:    Long = 0,
+>>>>>>> origin/master-dev
 )
 
 case class UserId(
@@ -155,12 +159,15 @@ class LearningDashboardActor(
       // Chat
       case m: GroupChatMessageBroadcastEvtMsg       => handleGroupChatMessageBroadcastEvtMsg(m)
 
+<<<<<<< HEAD
       // SharedNotes
       case m: PadUpdatedEvtMsg       => handlePadUpdatedEvtMsg(m)
 
       // Whiteboard
       case m: SendWhiteboardAnnotationsEvtMsg       => handleSendWhiteboardAnnotationsEvtMsg(m)
 
+=======
+>>>>>>> origin/master-dev
       // Presentation
       case m: PresentationConversionCompletedEvtMsg => handlePresentationConversionCompletedEvtMsg(m)
       case m: SetCurrentPageEvtMsg                  => handleSetCurrentPageEvtMsg(m)
@@ -222,6 +229,7 @@ class LearningDashboardActor(
     }
   }
 
+<<<<<<< HEAD
   private def handlePadUpdatedEvtMsg(msg: PadUpdatedEvtMsg) {
     if (msg.body.externalId == "notes") {
       for {
@@ -248,15 +256,25 @@ class LearningDashboardActor(
     }
   }
 
+=======
+>>>>>>> origin/master-dev
   private def handlePresentationConversionCompletedEvtMsg(msg: PresentationConversionCompletedEvtMsg) {
     for {
       meeting <- meetings.values.find(m => m.intId == msg.header.meetingId)
     } yield {
+<<<<<<< HEAD
       val updatedPresentations = meetingPresentations.getOrElse(meeting.intId, Map()) + (msg.body.presentation.id -> msg.body.presentation)
       meetingPresentations += (meeting.intId -> updatedPresentations)
       if(msg.body.presentation.current) {
         for {
           page <- msg.body.presentation.pages.find(p => p.current)
+=======
+      val updatedPresentations = meetingPresentations.get(meeting.intId).getOrElse(Map()) + (msg.body.presentation.id -> msg.body.presentation)
+      meetingPresentations += (meeting.intId -> updatedPresentations)
+      if(msg.body.presentation.current == true) {
+        for {
+          page <- msg.body.presentation.pages.find(p => p.current == true)
+>>>>>>> origin/master-dev
         } yield {
           this.setPresentationSlide(meeting.intId, msg.body.presentation.id,page.num, msg.body.presentation.name)
         }

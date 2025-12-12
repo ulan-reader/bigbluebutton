@@ -2,9 +2,13 @@ package streamingserver
 
 import (
 	"encoding/json"
+<<<<<<< HEAD
 	"slices"
 
 	"bbb-graphql-middleware/config"
+=======
+
+>>>>>>> origin/master-dev
 	"bbb-graphql-middleware/internal/common"
 )
 
@@ -24,6 +28,7 @@ func ReadNewStreamingSubscription(
 	browserConnection.Logger.Debug(browserMessage.Type)
 	browserConnection.Logger.Debug(browserMessage.Payload.OperationName)
 
+<<<<<<< HEAD
 	if browserMessage.Type == "subscribe" && slices.Contains(config.StreamingSubscriptionsManagedByMiddleware, browserMessage.Payload.OperationName) {
 		queryId := browserMessage.ID
 
@@ -42,6 +47,27 @@ func ReadNewStreamingSubscription(
 		if browserMessage.Payload.OperationName == "getUserVoiceStateStream" {
 			SendPreviousUserVoiceState(browserConnection, queryId)
 		}
+=======
+	operationName := "getCursorCoordinatesStream"
+	if browserMessage.Type == "subscribe" && browserMessage.Payload.OperationName == operationName {
+		queryId := browserMessage.ID
+
+		browserConnection.ActiveStreamingsMutex.RLock()
+		_, queryIdExists := browserConnection.ActiveStreamings[operationName]
+		browserConnection.ActiveStreamingsMutex.RUnlock()
+		if queryIdExists {
+			sendErrorMessage(browserConnection, queryId, "Only one getCursorCoordinatesStream subscription is allowed")
+			return nil
+		}
+
+		browserConnection.ActiveStreamingsMutex.Lock()
+		browserConnection.ActiveStreamings[operationName] = queryId
+		browserConnection.ActiveStreamingsMutex.Unlock()
+
+		SendPreviousCursorPosition(browserConnection, queryId)
+
+		browserConnection.Logger.Infof("Added new getCursorCoordinatesStream streaming %s ", queryId)
+>>>>>>> origin/master-dev
 	}
 
 	return nil

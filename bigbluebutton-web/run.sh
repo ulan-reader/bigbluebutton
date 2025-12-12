@@ -11,4 +11,8 @@ if [ "`whoami`" != "bigbluebutton" ]; then
 	exit 1
 fi
 
+<<<<<<< HEAD
 exec ./gradlew bootRun --args='--server.port=8090' -Dspring.profiles.active=prod
+=======
+exec grails prod run-app --port 8090
+>>>>>>> origin/master-dev

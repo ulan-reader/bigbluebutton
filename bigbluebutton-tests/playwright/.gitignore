@@ -3,6 +3,10 @@ node_modules/
 test-results*/
 pr-*/
 playwright-report/
+<<<<<<< HEAD
 blob-report/
 logs/
 dist/
+=======
+blob-report/
+>>>>>>> origin/master-dev

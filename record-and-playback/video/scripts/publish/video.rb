@@ -26,7 +26,11 @@ opts = Optimist.options do
   opt :meeting_id, 'Meeting id to publish', type: String
   opt :stderr, 'Log output to stderr'
 end
+<<<<<<< HEAD
 Optimist.die :meeting_id, 'must be provided' unless opts[:meeting_id]
+=======
+Optimist.dir :meeting_id, 'must be provided' unless opts[:meeting_id]
+>>>>>>> origin/master-dev
 
 match = /(.*)-(.*)/.match(opts[:meeting_id])
 meeting_id = match[1]
@@ -37,6 +41,7 @@ if playback != 'video'
 end
 
 # Load parameters and set up paths
+<<<<<<< HEAD
 props = BigBlueButton.read_props
 video_props = File.open(File.expand_path('../video.yml', __dir__)) do |video_props_file|
   YAML.safe_load(video_props_file)
@@ -54,6 +59,10 @@ rescue Errno::ENOENT
   # Not an error: override props file does not exist
 end
 video_props['audio_offset'] = 0 if video_props['audio_offset'].nil?
+=======
+props = YAML.safe_load(File.open(File.expand_path('../bigbluebutton.yml', __dir__)))
+video_props = YAML.safe_load(File.open(File.expand_path('../video.yml', __dir__)))
+>>>>>>> origin/master-dev
 
 recording_dir = props['recording_dir']
 process_dir = "#{props['recording_dir']}/process/video/#{meeting_id}"
@@ -70,6 +79,7 @@ unless File.exist?(process_donefile)
   exit 1
 end
 
+<<<<<<< HEAD
 metadata_xml = File.open("#{process_dir}/metadata.xml") do |io|
   Nokogiri::XML(io)
 end
@@ -104,6 +114,8 @@ unless preset.include?('layout') && preset.include?('formats')
   exit(1)
 end
 
+=======
+>>>>>>> origin/master-dev
 FileUtils.mkdir_p publish_dir
 
 logger.info 'Copying files to publish directory'
@@ -115,7 +127,11 @@ FileUtils.cp("#{process_dir}/index.html", "#{publish_dir}/index.html")
 FileUtils.cp("#{process_dir}/video.xml", "#{publish_dir}/video.xml")
 
 # Copy over generated video files
+<<<<<<< HEAD
 preset['formats'].each_with_index do |format, i|
+=======
+video_props['formats'].each_with_index do |format, i|
+>>>>>>> origin/master-dev
   FileUtils.cp("#{process_dir}/video-#{i}.#{format['extension']}",
                "#{publish_dir}/video-#{i}.#{format['extension']}")
 end

@@ -10,9 +10,15 @@ import {Geo} from './Geo.js';
 export class Hexagon extends Geo {
   /**
    * Draws a hexagon shape on the SVG canvas.
+<<<<<<< HEAD
    * @return {Promise<G>} Returns the SVG group element containing the hexagon.
    */
   async draw() {
+=======
+   * @return {G} Returns the SVG group element containing the hexagon.
+   */
+  draw() {
+>>>>>>> origin/master-dev
     const width = this.w;
     const height = this.h + this.growY;
     const sides = 6;
@@ -35,7 +41,11 @@ export class Hexagon extends Geo {
     // Fill the polygon if required
     this.setFill(hexagon);
     hexagonGroup.add(hexagon);
+<<<<<<< HEAD
     await this.drawLabel(hexagonGroup);
+=======
+    this.drawLabel(hexagonGroup);
+>>>>>>> origin/master-dev
 
     return hexagonGroup;
   }

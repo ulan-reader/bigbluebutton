@@ -844,6 +844,10 @@ class MeetingActor(
 
   private def handleMeetingTasksExecutor(): Unit = {
     clearExpiredReactionEmojis()
+<<<<<<< HEAD
+=======
+    stopFinishedTimer()
+>>>>>>> origin/master-dev
     endTimedOutBreakoutRooms()
   }
 
@@ -881,6 +885,15 @@ class MeetingActor(
     }
   }
 
+<<<<<<< HEAD
+=======
+  private def stopFinishedTimer(): Unit = {
+    if (TimerModel.resetTimerIfFinished(liveMeeting.timerModel)) {
+      TimerDAO.update(liveMeeting.props.meetingProp.intId, liveMeeting.timerModel)
+    }
+  }
+
+>>>>>>> origin/master-dev
   private def prepareMeetingInfo(): MeetingInfoAnalytics = {
     val meetingName: String = liveMeeting.props.meetingProp.name
     val externalId: String = liveMeeting.props.meetingProp.extId

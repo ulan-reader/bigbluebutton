@@ -299,13 +299,21 @@ trait HandlerHelpers extends SystemConfiguration {
   }
 
   def buildGroupChatMessageBroadcastEvtMsg(meetingId: String, userId: String, chatId: String,
+<<<<<<< HEAD
                                            chatParticipants: Vector[String], msg: GroupChatMessage): BbbCommonEnvCoreMsg = {
+=======
+                                           msg: GroupChatMessage): BbbCommonEnvCoreMsg = {
+>>>>>>> origin/master-dev
 
     val routing = Routing.addMsgToClientRouting(MessageTypes.BROADCAST_TO_MEETING, meetingId, userId)
     val envelope = BbbCoreEnvelope(GroupChatMessageBroadcastEvtMsg.NAME, routing)
     val header = BbbClientMsgHeader(GroupChatMessageBroadcastEvtMsg.NAME, meetingId, userId)
     val cmsgs = GroupChatApp.toMessageToUser(msg)
+<<<<<<< HEAD
     val body = GroupChatMessageBroadcastEvtMsgBody(chatId, chatParticipants, cmsgs)
+=======
+    val body = GroupChatMessageBroadcastEvtMsgBody(chatId, cmsgs)
+>>>>>>> origin/master-dev
     val event = GroupChatMessageBroadcastEvtMsg(header, body)
     BbbCommonEnvCoreMsg(envelope, event)
   }
@@ -314,7 +322,11 @@ trait HandlerHelpers extends SystemConfiguration {
     val routing = Routing.addMsgToClientRouting(MessageTypes.BROADCAST_TO_MEETING, meetingId, userId)
     val envelope = BbbCoreEnvelope(GroupChatMessageEditedEvtMsg.NAME, routing)
     val header = BbbClientMsgHeader(GroupChatMessageEditedEvtMsg.NAME, meetingId, userId)
+<<<<<<< HEAD
     val body = GroupChatMessageEditedEvtMsgBody(chatId, msg.id, msg.message, msg.messageAsHtml)
+=======
+    val body = GroupChatMessageEditedEvtMsgBody(chatId, msg.id, msg.message)
+>>>>>>> origin/master-dev
     val event = GroupChatMessageEditedEvtMsg(header, body)
     BbbCommonEnvCoreMsg(envelope, event)
   }

@@ -1,6 +1,10 @@
 package org.bigbluebutton.api.model.shared;
 
+<<<<<<< HEAD
 import jakarta.validation.constraints.NotEmpty;
+=======
+import javax.validation.constraints.NotEmpty;
+>>>>>>> origin/master-dev
 
 public abstract class Password {
 

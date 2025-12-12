@@ -10,9 +10,15 @@ import {Geo} from './Geo.js';
 export class ArrowLeft extends Geo {
   /**
    * Draws a left arrow shape on the SVG canvas.
+<<<<<<< HEAD
    * @return {Promise<G>} Returns the SVG group element containing the left arrow.
    */
   async draw() {
+=======
+   * @return {G} Returns the SVG group element containing the left arrow.
+   */
+  draw() {
+>>>>>>> origin/master-dev
     const w = this.w;
     const h = this.h + this.growY;
     const ox = Math.min(w, h) * 0.38;
@@ -36,7 +42,11 @@ export class ArrowLeft extends Geo {
 
     this.setFill(arrow);
     arrowGroup.add(arrow);
+<<<<<<< HEAD
     await this.drawLabel(arrowGroup);
+=======
+    this.drawLabel(arrowGroup);
+>>>>>>> origin/master-dev
 
     return arrowGroup;
   }

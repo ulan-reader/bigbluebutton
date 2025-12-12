@@ -2,8 +2,13 @@ package org.bigbluebutton.api.model.request;
 
 import org.bigbluebutton.api.model.constraint.UserSessionConstraint;
 
+<<<<<<< HEAD
 import jakarta.servlet.http.HttpServletRequest;
 
+=======
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
+>>>>>>> origin/master-dev
 import java.util.Map;
 
 public class LearningDashboard extends RequestWithSession<LearningDashboard.Params> {

@@ -28,7 +28,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+<<<<<<< HEAD
 import java.util.concurrent.TimeUnit;
+=======
+>>>>>>> origin/master-dev
 
 import org.bigbluebutton.presentation.SupportedFileTypes;
 import org.bigbluebutton.presentation.TextFileCreator;
@@ -41,7 +44,11 @@ import com.google.gson.Gson;
 public class TextFileCreatorImp implements TextFileCreator {
   private static Logger log = LoggerFactory.getLogger(TextFileCreatorImp.class);
 
+<<<<<<< HEAD
   private long execTimeout = 60;
+=======
+  private long execTimeout = 60000;
+>>>>>>> origin/master-dev
 
   @Override
   public boolean createTextFile(UploadedPresentation pres, int page) {
@@ -120,6 +127,7 @@ public class TextFileCreatorImp implements TextFileCreator {
 
         //System.out.println(COMMAND);
 
+<<<<<<< HEAD
         long execTimeout = this.execTimeout;
         long pageConversionTimeoutInMs = pres.getMaxPageConversionTime() * 1000;
         if (execTimeout > pageConversionTimeoutInMs) {
@@ -127,6 +135,14 @@ public class TextFileCreatorImp implements TextFileCreator {
         }
 
         boolean done = new ExternalProcessExecutor().exec(COMMAND, TimeUnit.SECONDS.toMillis(execTimeout));
+=======
+      long execTimeout = this.execTimeout;
+      if (execTimeout > pres.getMaxPageConversionTime()) {
+        execTimeout = pres.getMaxPageConversionTime();
+      }
+
+        boolean done = new ExternalProcessExecutor().exec(COMMAND, execTimeout);
+>>>>>>> origin/master-dev
         if (!done) {
           success = false;
 

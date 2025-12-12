@@ -82,6 +82,7 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
         <property name="recordingServiceGW" ref="recordingServiceGW"/>
     </bean>
 
+<<<<<<< HEAD
     <bean id="redirectFollower" class="org.bigbluebutton.api.service.RedirectFollowerService">
     </bean>
 
@@ -92,18 +93,25 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
         <property name="html5PluginSdkVersion" value="${html5PluginSdkVersion}"/>
         <property name="redirectFollower" ref="redirectFollower"/>
         <property name="pluginRedirectValidator" ref="pluginRedirectValidator"/>
+=======
+    <bean id="pluginUtils" class="org.bigbluebutton.api.util.PluginUtils">
+        <property name="html5PluginSdkVersion" value="${html5PluginSdkVersion}"/>
+>>>>>>> origin/master-dev
     </bean>
 
     <bean id="recordingServiceGW" class="org.bigbluebutton.api2.util.RecMetaXmlHelper">
         <constructor-arg index="0" ref="bbbWebApiGWApp"/>
     </bean>
 
+<<<<<<< HEAD
     <bean id="presRedirectValidator" class="org.bigbluebutton.api.service.impl.PresRedirectValidator">
         <property name="defaultUploadedPresentation" value="${beans.presentationService.defaultUploadedPresentation}"/>
         <property name="insertDocumentSupportedProtocols" value="${insertDocumentSupportedProtocols}" />
         <property name="insertDocumentBlockedHosts" value="${insertDocumentBlockedHosts}" />
     </bean>
 
+=======
+>>>>>>> origin/master-dev
     <bean id="presDownloadService" class="org.bigbluebutton.presentation.PresentationUrlDownloadService"
           destroy-method="stop">
         <property name="presentationDir" value="${presentationDir}"/>
@@ -111,9 +119,16 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
         <property name="pageExtractor" ref="pageExtractor"/>
         <property name="documentConversionService" ref="documentConversionService"/>
         <property name="blankPresentation" value="${BLANK_PRESENTATION}"/>
+<<<<<<< HEAD
         <property name="redirectFollower" ref="redirectFollower" />
         <property name="presDownloadReadTimeoutInMs" value="${presDownloadReadTimeoutInMs}" />
         <property name="presRedirectValidator" ref="presRedirectValidator" />
+=======
+        <property name="defaultUploadedPresentation" value="${beans.presentationService.defaultUploadedPresentation}"/>
+        <property name="insertDocumentSupportedProtocols" value="${insertDocumentSupportedProtocols}" />
+        <property name="insertDocumentBlockedHosts" value="${insertDocumentBlockedHosts}" />
+        <property name="presDownloadReadTimeoutInMs" value="${presDownloadReadTimeoutInMs}" />
+>>>>>>> origin/master-dev
     </bean>
 
     <bean id="xmlService" class="org.bigbluebutton.api.service.impl.XmlServiceImpl"/>

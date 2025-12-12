@@ -6,8 +6,13 @@ import org.bigbluebutton.api.model.constraint.MeetingExistsConstraint;
 import org.bigbluebutton.api.model.constraint.UserSessionConstraint;
 import org.bigbluebutton.api.service.SessionService;
 
+<<<<<<< HEAD
 import jakarta.servlet.http.HttpServletRequest;
 
+=======
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
+>>>>>>> origin/master-dev
 import java.util.Map;
 
 @ContentTypeConstraint

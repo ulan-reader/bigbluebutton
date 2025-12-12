@@ -10,9 +10,15 @@ import {Geo} from './Geo.js';
 export class ArrowUp extends Geo {
   /**
    * Draws an up arrow shape on the SVG canvas.
+<<<<<<< HEAD
    * @return {Promise<G>} Returns the SVG group element containing the up arrow.
    */
   async draw() {
+=======
+   * @return {G} Returns the SVG group element containing the up arrow.
+   */
+  draw() {
+>>>>>>> origin/master-dev
     const w = this.w;
     const h = this.h + this.growY;
     const ox = w * 0.16;
@@ -36,7 +42,11 @@ export class ArrowUp extends Geo {
 
     this.setFill(arrow);
     arrowGroup.add(arrow);
+<<<<<<< HEAD
     await this.drawLabel(arrowGroup);
+=======
+    this.drawLabel(arrowGroup);
+>>>>>>> origin/master-dev
 
     return arrowGroup;
   }

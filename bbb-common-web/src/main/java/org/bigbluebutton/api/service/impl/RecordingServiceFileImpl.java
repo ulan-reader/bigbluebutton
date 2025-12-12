@@ -33,7 +33,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
+<<<<<<< HEAD
 import java.util.stream.Collectors;
+=======
+>>>>>>> origin/master-dev
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -213,6 +216,7 @@ public class RecordingServiceFileImpl implements RecordingService {
         // If no/invalid pagination parameters were given do not paginate the response
         if(pageable == null) return recordingServiceHelper.getRecordings2x(recs);
 
+<<<<<<< HEAD
         // Remove metadata with duplicate IDs
         Set<String> seenIds = new HashSet<>();
         List<RecordingMetadata> uniqueRecordingMetadata = recs.stream()
@@ -221,6 +225,10 @@ public class RecordingServiceFileImpl implements RecordingService {
 
         Page<RecordingMetadata> recordingsPage = listToPage(uniqueRecordingMetadata, offset, pageable);
         String response = recordingServiceHelper.getRecordings2x(new ArrayList<>(recordingsPage.getContent()));
+=======
+        Page<RecordingMetadata> recordingsPage = listToPage(recs, offset, pageable);
+        String response = recordingServiceHelper.getRecordings2x(new ArrayList<RecordingMetadata>(recordingsPage.getContent()));
+>>>>>>> origin/master-dev
         return xmlService.constructPaginatedResponse(recordingsPage, offset, response);
     }
 

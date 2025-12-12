@@ -55,9 +55,15 @@ cd ..
 
 cd bigbluebutton-web
 # Build new version of bbb-web
+<<<<<<< HEAD
 ./gradlew clean
 ./gradlew resolveDeps
 ./gradlew assemble
+=======
+gradle clean
+gradle resolveDeps
+grails assemble
+>>>>>>> origin/master-dev
 
 # Build presentation checker
 if [ -d pres-checker ]; then

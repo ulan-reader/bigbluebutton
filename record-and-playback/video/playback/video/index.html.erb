@@ -24,7 +24,11 @@
         </div>
         <div id="video-area">
           <video id="video" class="video-js vjs-fill vjs-default-skin vjs-big-play-centered" controls>
+<<<<<<< HEAD
             <% preset['formats'].each_with_index do |format, i| %>
+=======
+            <% video_props['formats'].each_with_index do |format, i| %>
+>>>>>>> origin/master-dev
               <source src="video-<%= i %>.<%= format[:extension] %>" type="<%= CGI.escapeHTML(format[:mimetype]) %>">
             <% end %>
             <% captions.each do |caption| %>

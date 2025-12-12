@@ -10,9 +10,15 @@ import {Geo} from './Geo.js';
 export class Trapezoid extends Geo {
   /**
    * Draws a trapezoid shape on the SVG canvas.
+<<<<<<< HEAD
    * @return {Promise<G>} Returns the SVG group element containing the trapezoid.
    */
   async draw() {
+=======
+   * @return {G} Returns the SVG group element containing the trapezoid.
+   */
+  draw() {
+>>>>>>> origin/master-dev
     const width = this.w;
     const height = this.h + this.growY;
 
@@ -38,7 +44,11 @@ export class Trapezoid extends Geo {
 
     this.setFill(trapezoid);
     trapezoidGroup.add(trapezoid);
+<<<<<<< HEAD
     await this.drawLabel(trapezoidGroup);
+=======
+    this.drawLabel(trapezoidGroup);
+>>>>>>> origin/master-dev
 
     return trapezoidGroup;
   }

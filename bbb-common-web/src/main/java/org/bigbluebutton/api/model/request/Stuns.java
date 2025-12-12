@@ -2,7 +2,12 @@ package org.bigbluebutton.api.model.request;
 
 import org.bigbluebutton.api.model.constraint.*;
 import org.bigbluebutton.api.service.SessionService;
+<<<<<<< HEAD
 import jakarta.servlet.http.HttpServletRequest;
+=======
+
+import javax.servlet.http.HttpServletRequest;
+>>>>>>> origin/master-dev
 import java.util.Map;
 
 @ContentTypeConstraint

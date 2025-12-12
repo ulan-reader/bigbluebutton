@@ -30,7 +30,10 @@ class ChatMessageDbTableDef(tag: Tag) extends Table[ChatMessageDbModel](tag, Non
   val correlationId = column[String]("correlationId")
   val chatEmphasizedText = column[Boolean]("chatEmphasizedText")
   val message = column[Option[String]]("message")
+<<<<<<< HEAD
   val messageAsHtml = column[Option[String]]("messageAsHtml")
+=======
+>>>>>>> origin/master-dev
   val messageType = column[String]("messageType")
   val replyToMessageId = column[Option[String]]("replyToMessageId")
   val messageMetadata = column[Option[String]]("messageMetadata")
@@ -46,7 +49,11 @@ class ChatMessageDbTableDef(tag: Tag) extends Table[ChatMessageDbModel](tag, Non
 
   override def * = (
     messageId, chatId, meetingId, correlationId, chatEmphasizedText,
+<<<<<<< HEAD
     message, messageAsHtml, messageType, replyToMessageId, messageMetadata, senderId, senderName, senderRole,
+=======
+    message, messageType, replyToMessageId, messageMetadata, senderId, senderName, senderRole,
+>>>>>>> origin/master-dev
     createdAt, editedAt, deletedByUserId, deletedAt
   ) <> (ChatMessageDbModel.tupled, ChatMessageDbModel.unapply)
 }
@@ -62,7 +69,10 @@ object ChatMessageDAO {
           correlationId = groupChatMessage.correlationId,
           chatEmphasizedText = groupChatMessage.chatEmphasizedText,
           message = Some(groupChatMessage.message),
+<<<<<<< HEAD
           messageAsHtml = Some(groupChatMessage.messageAsHtml),
+=======
+>>>>>>> origin/master-dev
           messageType = messageType,
           replyToMessageId = groupChatMessage.replyToMessageId match {
             case "" => None
@@ -84,7 +94,11 @@ object ChatMessageDAO {
     ChatUserDAO.updateChatVisible(meetingId, chatId, visible = true)
   }
 
+<<<<<<< HEAD
   def insertSystemMsg(meetingId: String, chatId: String, message: String, messageAsHtml: String, messageType: String, messageMetadata: Map[String,Any], senderName: String) = {
+=======
+  def insertSystemMsg(meetingId: String, chatId: String, message: String, messageType: String, messageMetadata: Map[String,Any], senderName: String) = {
+>>>>>>> origin/master-dev
     DatabaseConnection.enqueue(
       TableQuery[ChatMessageDbTableDef].forceInsert(
         ChatMessageDbModel(
@@ -94,7 +108,10 @@ object ChatMessageDAO {
           correlationId = "",
           chatEmphasizedText = false,
           message = Some(message),
+<<<<<<< HEAD
           messageAsHtml = Some(messageAsHtml),
+=======
+>>>>>>> origin/master-dev
           messageType = messageType,
           replyToMessageId = None,
           messageMetadata = Some(JsonUtils.mapToJson(messageMetadata).compactPrint),
@@ -113,7 +130,11 @@ object ChatMessageDAO {
     ChatUserDAO.updateChatVisible(meetingId, chatId, visible = true)
   }
 
+<<<<<<< HEAD
   def update(meetingId: String, chatId: String, messageId: String, message: String, messageAsHtml: String) = {
+=======
+  def update(meetingId: String, chatId: String, messageId: String, message: String) = {
+>>>>>>> origin/master-dev
     //The database will automatically keep the previous message as history
     DatabaseConnection.enqueue(
       TableQuery[ChatMessageDbTableDef]
@@ -121,8 +142,13 @@ object ChatMessageDAO {
         .filter(_.chatId === chatId)
         .filter(_.messageId === messageId)
         .filter(_.message.nonEmpty)
+<<<<<<< HEAD
         .map(msg => (msg.message, msg.messageAsHtml, msg.editedAt))
         .update((Some(message), Some(messageAsHtml), Some(new java.sql.Timestamp(System.currentTimeMillis()))))
+=======
+        .map(msg => (msg.message, msg.editedAt))
+        .update((Some(message), Some(new java.sql.Timestamp(System.currentTimeMillis()))))
+>>>>>>> origin/master-dev
     )
   }
 
@@ -134,8 +160,13 @@ object ChatMessageDAO {
         .filter(_.chatId === chatId)
         .filter(_.messageId === messageId)
         .filter(_.message.nonEmpty)
+<<<<<<< HEAD
         .map(msg => (msg.message, msg.messageAsHtml, msg.deletedByUserId, msg.deletedAt))
         .update((None, None, Some(deletedByUserId), Some(new java.sql.Timestamp(System.currentTimeMillis()))))
+=======
+        .map(msg => (msg.message, msg.deletedByUserId, msg.deletedAt))
+        .update((None, Some(deletedByUserId), Some(new java.sql.Timestamp(System.currentTimeMillis()))))
+>>>>>>> origin/master-dev
     )
   }
 

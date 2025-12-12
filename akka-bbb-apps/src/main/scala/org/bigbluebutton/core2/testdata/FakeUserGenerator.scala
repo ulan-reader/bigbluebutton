@@ -82,7 +82,10 @@ object FakeUserGenerator {
       callerName = user.name,
       callerNum = user.name,
       "#ff6242",
+<<<<<<< HEAD
       speechLocale = "",
+=======
+>>>>>>> origin/master-dev
       muted,
       listenOnlyInputDevice,
       deafened,
@@ -111,7 +114,10 @@ object FakeUserGenerator {
       callerName = name,
       callerNum = name,
       "#ff6242",
+<<<<<<< HEAD
       speechLocale = "",
+=======
+>>>>>>> origin/master-dev
       muted,
       listenOnlyInputDevice,
       deafened,

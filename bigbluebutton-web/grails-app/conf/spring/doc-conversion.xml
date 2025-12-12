@@ -77,10 +77,13 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
         <property name="wait" value="${imageResizeWait}"/>
     </bean>
 
+<<<<<<< HEAD
     <bean id="imageResolutionService" class="org.bigbluebutton.presentation.imp.ImageResolutionService">
         <property name="wait" value="${detectImageDimensionsTimeout}"/>
     </bean>
 
+=======
+>>>>>>> origin/master-dev
     <bean id="pageCounterService" class="org.bigbluebutton.presentation.imp.PageCounterService">
         <property name="pageCounter" ref="pageCounter"/>
     </bean>
@@ -88,24 +91,39 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
     <bean id="thumbCreator" class="org.bigbluebutton.presentation.imp.ThumbnailCreatorImp">
         <property name="imageMagickDir" value="${imageMagickDir}"/>
         <property name="blankThumbnail" value="${BLANK_THUMBNAIL}"/>
+<<<<<<< HEAD
         <property name="execTimeout" value="${thumbnailCreationExecTimeout}"/>
+=======
+        <property name="execTimeout" value="${thumbnailCreationExecTimeoutInMs}"/>
+>>>>>>> origin/master-dev
     </bean>
 
     <bean id="pngCreator" class="org.bigbluebutton.presentation.imp.PngCreatorImp">
         <property name="blankPng" value="${BLANK_PNG}"/>
         <property name="slideWidth" value="${pngSlideWidth}"/>
         <property name="convTimeout" value="${pngCreationConversionTimeout}"/>
+<<<<<<< HEAD
         <property name="execTimeout" value="${pngCreationExecTimeout}"/>
     </bean>
 
     <bean id="textFileCreator" class="org.bigbluebutton.presentation.imp.TextFileCreatorImp">
         <property name="execTimeout" value="${textFileCreationExecTimeout}"/>
+=======
+        <property name="execTimeout" value="${pngCreationExecTimeoutInMs}"/>
+    </bean>
+
+    <bean id="textFileCreator" class="org.bigbluebutton.presentation.imp.TextFileCreatorImp">
+        <property name="execTimeout" value="${textFileCreationExecTimeoutInMs}"/>
+>>>>>>> origin/master-dev
     </bean>
 
     <bean id="svgImageCreator" class="org.bigbluebutton.presentation.imp.SvgImageCreatorImp">
     	<property name="slidesGenerationProgressNotifier" ref="slidesGenerationProgressNotifier"/>
         <property name="imageTagThreshold" value="${imageTagThreshold}"/>
+<<<<<<< HEAD
         <property name="useTagThreshold" value="${useTagThreshold}"/>
+=======
+>>>>>>> origin/master-dev
         <property name="pathsThreshold" value="${placementsThreshold}"/>
         <property name="blankSvg" value="${BLANK_SVG}"/>
         <property name="convPdfToSvgTimeout" value="${svgConversionTimeout}"/>
@@ -115,7 +133,10 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
         <property name="forceRasterizeSlides" value="${forceRasterizeSlides}"/>
         <property name="pngWidthRasterizedSlides" value="${pngWidthRasterizedSlides}"/>
         <property name="imageResizer" ref="imageResizer"/>
+<<<<<<< HEAD
         <property name="imageResolutionService" ref="imageResolutionService"/>
+=======
+>>>>>>> origin/master-dev
     </bean>
 
     <bean id="generatedSlidesInfoHelper" class="org.bigbluebutton.presentation.GeneratedSlidesInfoHelperImp"/>
@@ -153,7 +174,10 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
         <property name="textFileCreator" ref="textFileCreator"/>
         <property name="slidesGenerationProgressNotifier" ref="slidesGenerationProgressNotifier"/>
         <property name="imageResizer" ref="imageResizer"/>
+<<<<<<< HEAD
         <property name="imageResolutionService" ref="imageResolutionService"/>
+=======
+>>>>>>> origin/master-dev
         <property name="maxImageWidth" value="${maxImageWidth}"/>
         <property name="maxImageHeight" value="${maxImageHeight}"/>
         <property name="generatePngs" value="${generatePngs}"/>

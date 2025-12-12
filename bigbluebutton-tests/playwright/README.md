@@ -5,6 +5,7 @@ Tests for BigBlueButton using Playwright.
 ## Setup (with an existing BigBlueButton server)
 
 You need to install the dependencies:
+<<<<<<< HEAD
 
 ```bash
 cd ../bigbluebutton-tests/playwright
@@ -18,10 +19,22 @@ You may also need to run the following command:
 npx playwright install-deps
 ```
 
+=======
+```bash
+$ cd ../bigbluebutton-tests/playwright
+$ npm install
+$ npx playwright install
+```
+You may also need to run the following command:
+```bash
+$ npx playwright install-deps
+```
+>>>>>>> origin/master-dev
 To run these tests with an existing BigBlueButton server, you need to find the server's URL and secret (can be done with `bbb-conf --secret` command). You need to put them into the `.env` file inside `bigbluebutton-tests/playwright` folder (variables `BBB_URL` and `BBB_SECRET`).
 
 ## Run tests
 
+<<<<<<< HEAD
 We recommend to use Node 20+ to avoid errors in JavaScript.
 Tests can be executed using `npx` and `npm test`. You can run all tests in each of 3 supported environments (`chromium`, `firefox`, `webkit`) with one of the following commands:
 
@@ -37,11 +50,34 @@ You can also run a single test suite and limit the execution to only one browser
 npx playwright test chat --project="firefox"
 or
 npm test chat -- --project="firefox" # or "chromium" for example
+=======
+We recommend to use Node version 16 or higher to avoid errors in JavaScript.
+Tests can be executed using `npx` and `npm test`. You can run all tests in each of 3 supported environments (`chromium`, `firefox`, `webkit`) with one of the following commands:
+```bash
+$ npx playwright test
+or
+$ npm test
+```
+
+You can also run a single test suite and limit the execution to only one browser:
+```bash
+$ npx playwright test chat --project="firefox"
+or
+$ npm test chat -- --project="firefox" # or "chromium" for example
+```
+
+### Npm-scripts parameters
+
+Run fully parallel mode:
+```bash
+$ npm test chat --parallel -- --project chromium
+>>>>>>> origin/master-dev
 ```
 
 ### Additional commands
 
 To see the tests running visually, you must run them in headed mode:
+<<<<<<< HEAD
 
 ```bash
 npm run test:headed chat
@@ -59,12 +95,31 @@ You can also use this also through the test tree, adding the test suite / group 
 
 ```bash
 npm run test:filter "notifications chat"
+=======
+```bash
+$ npm run test:headed chat
+```
+
+If you want to run a specific test or a specific group of tests, you can do so with the following command:
+```bash
+$ npm run test:filter "Send public message"
+```
+_(note that this filter needs to be passed in "double quotes")_
+
+You can also use this also through the test tree, adding the test suite / group of tests before the test filter:
+```bash
+$ npm run test:filter "notifications chat"
+>>>>>>> origin/master-dev
 ```
 
 If you don't have `BBB_URL` and `BBB_SECRET` set, but have ssh access to the test server, you can use the following command to obtain `BBB_URL` and `BBB_SECRET` via ssh:
 
 ```bash
+<<<<<<< HEAD
 npm run test:ssh -- HOSTNAME
+=======
+$ npm run test:ssh -- HOSTNAME
+>>>>>>> origin/master-dev
 ```
 
 ## Recording Meteor messages
@@ -114,12 +169,18 @@ It doesn't seem necessary to relay cookies, but that could be done by giving a `
 
 You can print the browser console log to standard output by setting the environment variable `CONSOLE`:
 
+<<<<<<< HEAD
 ```bash
 CONSOLE= npm test chat -- --project=firefox
+=======
+```
+$ CONSOLE= npm test chat -- --project=firefox
+>>>>>>> origin/master-dev
 ```
 
 `CONSOLE` can be blank (as in the example), or can be a comma-separated list of the following options:
 
+<<<<<<< HEAD
 | Option | Meaning                                     |
 | ------ | ------------------------------------------- |
 | color  | (or "colour") colorize the output           |
@@ -163,6 +224,15 @@ For the best development experience, configure your editor to:
 - Auto-fix ESLint issues when possible
 
 VSCode settings are provided in `.vscode/settings.json` for automatic formatting and linting.
+=======
+| Option | Meaning |
+| ------ | ------- |
+| color  | (or "colour") colorize the output |
+| label  | label each line with the BigBlueButton user |
+| norefs | remove JavaScript reference URLs |
+| nots   | remove timestamps |
+| nocl   | remove "clientLogger:" strings |
+>>>>>>> origin/master-dev
 
 ## Check test results
 
@@ -177,13 +247,22 @@ After opening a PR, the CI will run automated tests within your changes + target
 ![alt text](core/docs/images/artifacts-list.png)
 
 - Click to download and extract the content, preferably, in a folder that already has Playwright installed. You can do it in the `bigbluebutton/bigbluebutton-tests/playwright` folder with the dependencies installed ([see Setup instructions](#setup-with-an-existing-bigbluebutton-server))
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master-dev
   - We suggest the folder to be named with the prefix `test-results` or `pr-` as it will be ignored by git
 
 - Run the following command to serve up the reported files:
   - you might want to use it in a different port than the default `9323`. use `--port <PORT>` then
 
 ```sh
+<<<<<<< HEAD
 npx playwright show-report <results-folder-name>
 ```
 
+=======
+$ npx playwright show-report <results-folder-name>
+```
+>>>>>>> origin/master-dev
 - Access the logged URL to check the test report (if needed, check the [Playwright official documentation](https://playwright.dev/docs/trace-viewer-intro#opening-the-html-report))

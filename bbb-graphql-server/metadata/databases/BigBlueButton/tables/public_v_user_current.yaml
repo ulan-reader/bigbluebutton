@@ -44,7 +44,11 @@ object_relationships:
           userId: userId
         insertion_order: null
         remote_table:
+<<<<<<< HEAD
           name: v_user_current_breakoutRoom
+=======
+          name: v_user_breakoutRoom
+>>>>>>> origin/master-dev
           schema: public
   - name: livekit
     using:
@@ -163,7 +167,11 @@ array_relationships:
           userId: userId
         insertion_order: null
         remote_table:
+<<<<<<< HEAD
           name: v_user_current_camera
+=======
+          name: v_user_camera
+>>>>>>> origin/master-dev
           schema: public
   - name: chats
     using:
@@ -209,7 +217,11 @@ select_permissions:
         - extId
         - guest
         - guestStatus
+<<<<<<< HEAD
         - whiteboardWriteAccess
+=======
+        - hasDrawPermissionOnCurrentPage
+>>>>>>> origin/master-dev
         - inactivityWarningDisplay
         - inactivityWarningTimeoutSecs
         - isDialIn
@@ -267,7 +279,11 @@ select_permissions:
         - firstNameSortable
         - guest
         - guestStatus
+<<<<<<< HEAD
         - whiteboardWriteAccess
+=======
+        - hasDrawPermissionOnCurrentPage
+>>>>>>> origin/master-dev
         - inactivityWarningDisplay
         - inactivityWarningTimeoutSecs
         - isDialIn

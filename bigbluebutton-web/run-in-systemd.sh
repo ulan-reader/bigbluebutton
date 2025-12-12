@@ -18,18 +18,24 @@ fi
 
 timeout_secs="$1"; shift
 
+<<<<<<< HEAD
 if [[ -z ${XDG_RUNTIME_DIR-} ]] || [[ ! -d $XDG_RUNTIME_DIR ]]; then
   echo "XDG_RUNTIME_DIR is not available, check user session manager" >&2
   exit 1
 fi
 
+=======
+>>>>>>> origin/master-dev
 : "${BBB_PRESENTATION_DIR:=/var/bigbluebutton/}"
 : "${BBB_PRESENTATION_CONVERSION_MEMORY_HIGH:=512M}"
 : "${BBB_PRESENTATION_CONVERSION_MEMORY_MAX:=640M}"
 
 systemd-run --user --pipe --wait --quiet --same-dir                   \
+<<<<<<< HEAD
   --unit=bbb-web-run-in-systemd-$$                                    \
   --description="bbb-web run-in-systemd $*"                           \
+=======
+>>>>>>> origin/master-dev
   --property=RuntimeMaxSec="${timeout_secs}"                          \
   --property=ProtectSystem=strict                                     \
   --property=ProtectHome=yes                                          \
@@ -42,7 +48,10 @@ systemd-run --user --pipe --wait --quiet --same-dir                   \
   --property=MemoryMax="${BBB_PRESENTATION_CONVERSION_MEMORY_MAX}"    \
   --property=MemorySwapMax=0                                          \
   --property=UMask=0022                                               \
+<<<<<<< HEAD
   --property=CollectMode=inactive-or-failed                           \
+=======
+>>>>>>> origin/master-dev
   "$@"
 
 exit $?   # propagate the child’s exit status

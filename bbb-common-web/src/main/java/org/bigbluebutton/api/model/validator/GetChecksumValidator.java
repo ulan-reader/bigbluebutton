@@ -1,8 +1,16 @@
 package org.bigbluebutton.api.model.validator;
 
+<<<<<<< HEAD
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
+=======
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+
+import jakarta.ws.rs.core.MediaType;
+>>>>>>> origin/master-dev
 import org.apache.commons.codec.digest.DigestUtils;
 import org.bigbluebutton.api.model.constraint.GetChecksumConstraint;
 import org.bigbluebutton.api.model.shared.GetChecksum;

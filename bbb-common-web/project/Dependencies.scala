@@ -27,7 +27,11 @@ object Dependencies {
     // Office and document conversion
     val apachePoi = "5.1.0"
     val nuProcess = "2.0.6"
+<<<<<<< HEAD
     val tika = "3.2.3"
+=======
+    val tika = "3.0.0"
+>>>>>>> origin/master-dev
 
     // Server
     val servlet = "4.0.1"
@@ -110,4 +114,7 @@ object Dependencies {
     Compile.apacheText,
     Compile.bbbCommons) ++ testing
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master-dev

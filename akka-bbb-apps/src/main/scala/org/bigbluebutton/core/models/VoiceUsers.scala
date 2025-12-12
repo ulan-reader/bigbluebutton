@@ -80,6 +80,7 @@ object VoiceUsers {
     }
   }
 
+<<<<<<< HEAD
   def userSpeechLocale(users: VoiceUsers, userId: String, speechLocale: String): Option[VoiceUserState] = {
     for {
       u <- findWIthIntId(users, userId)
@@ -91,6 +92,8 @@ object VoiceUsers {
     }
   }
 
+=======
+>>>>>>> origin/master-dev
   def userUpdatedListenOnlyInputDevice(users: VoiceUsers, voiceUserId: String, listenOnlyInputDevice: Boolean): Option[VoiceUserState] = {
     for {
       u <- findWithVoiceUserId(users, voiceUserId)
@@ -255,7 +258,10 @@ case class VoiceUserState(
     callerName:            String,
     callerNum:             String,
     color:                 String,
+<<<<<<< HEAD
     speechLocale:          String,
+=======
+>>>>>>> origin/master-dev
     muted:                 Boolean,
     listenOnlyInputDevice: Boolean,
     deafened:              Boolean,

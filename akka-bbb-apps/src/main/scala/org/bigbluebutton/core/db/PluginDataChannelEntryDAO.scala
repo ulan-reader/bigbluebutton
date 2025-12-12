@@ -22,7 +22,10 @@ case class PluginDataChannelEntryDbModel(
     toRoles:            Option[List[String]],
     toUserIds:          Option[List[String]],
     createdAt:          java.sql.Timestamp,
+<<<<<<< HEAD
     updatedAt:          java.sql.Timestamp,
+=======
+>>>>>>> origin/master-dev
     deletedAt:          Option[java.sql.Timestamp],
 )
 
@@ -37,9 +40,14 @@ class PluginDataChannelEntryDbTableDef(tag: Tag) extends Table[PluginDataChannel
   val toRoles = column[Option[List[String]]]("toRoles")
   val toUserIds = column[Option[List[String]]]("toUserIds")
   val createdAt = column[java.sql.Timestamp]("createdAt")
+<<<<<<< HEAD
   val updatedAt = column[java.sql.Timestamp]("updatedAt")
   val deletedAt = column[Option[java.sql.Timestamp]]("deletedAt")
   override def * = (meetingId, pluginName, channelName, subChannelName, entryId, payloadJson, createdBy, toRoles, toUserIds, createdAt, updatedAt, deletedAt) <> (PluginDataChannelEntryDbModel.tupled, PluginDataChannelEntryDbModel.unapply)
+=======
+  val deletedAt = column[Option[java.sql.Timestamp]]("deletedAt")
+  override def * = (meetingId, pluginName, channelName, subChannelName, entryId, payloadJson, createdBy, toRoles, toUserIds, createdAt, deletedAt) <> (PluginDataChannelEntryDbModel.tupled, PluginDataChannelEntryDbModel.unapply)
+>>>>>>> origin/master-dev
 }
 
 object PluginDataChannelEntryDAO {
@@ -61,7 +69,10 @@ object PluginDataChannelEntryDAO {
           },
           toUserIds = if(toUserIds.isEmpty) None else Some(toUserIds),
           createdAt = new java.sql.Timestamp(System.currentTimeMillis()),
+<<<<<<< HEAD
           updatedAt = new java.sql.Timestamp(System.currentTimeMillis()),
+=======
+>>>>>>> origin/master-dev
           deletedAt = None
         )
       )
@@ -119,7 +130,10 @@ object PluginDataChannelEntryDAO {
   def replace(meetingId: String, pluginName: String, channelName: String,
              subChannelName: String,  entryId: String, payloadJson: JsValue) = {
 
+<<<<<<< HEAD
     val now = new java.sql.Timestamp(System.currentTimeMillis())
+=======
+>>>>>>> origin/master-dev
     DatabaseConnection.enqueue(
       TableQuery[PluginDataChannelEntryDbTableDef]
         .filter(_.meetingId === meetingId)
@@ -128,8 +142,13 @@ object PluginDataChannelEntryDAO {
         .filter(_.subChannelName === subChannelName)
         .filter(_.entryId === entryId)
         .filter(_.deletedAt.isEmpty)
+<<<<<<< HEAD
         .map(entry => (entry.payloadJson, entry.updatedAt))
         .update((payloadJson, now))
+=======
+        .map(_.payloadJson)
+        .update(payloadJson)
+>>>>>>> origin/master-dev
     )
   }
 

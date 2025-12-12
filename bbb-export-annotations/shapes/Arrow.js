@@ -232,9 +232,15 @@ export class Arrow extends Shape {
   /**
    * Renders the arrow object as an SVG group element.
    *
+<<<<<<< HEAD
    * @return {Promise<G>} - An SVG group element.
    */
   async draw() {
+=======
+   * @return {G} - An SVG group element.
+   */
+  draw() {
+>>>>>>> origin/master-dev
     const arrowGroup = this.shapeGroup;
     const arrowPath = new Path();
     const pathData = this.constructPath();
@@ -280,7 +286,11 @@ export class Arrow extends Shape {
     }
 
     arrowGroup.add(arrowPath);
+<<<<<<< HEAD
     await this.drawLabel(arrowGroup);
+=======
+    this.drawLabel(arrowGroup);
+>>>>>>> origin/master-dev
 
     return arrowGroup;
   }

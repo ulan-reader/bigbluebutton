@@ -13,6 +13,7 @@ categories:
   - web-conferencing
   - video-conferencing
   - collaboration
+  - education
   - learning-management-system
 usedBy:
   - French Ministry of Education
@@ -77,11 +78,13 @@ maintenance:
       affiliation: German Community Contact
     - name: Steven Muegge
       email: smuegge@bigbluebutton.org
+      website: https://bigbluebutton.org
       affiliation: Executive Director, BigBlueButton Inc.
   contractors:
     - name: Blindside Networks
       email: team@blindsidenetworks.com
       website: https://blindsidenetworks.com
+      affiliation: Commercial Support
       until: '2030-06-01'
     - name: Mconf
       email: contact@mconf.com

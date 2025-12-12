@@ -25,6 +25,10 @@ select_permissions:
         - userId
         - lastTypingAt
         - startedTypingAt
+<<<<<<< HEAD
+=======
+        - isCurrentlyTyping
+>>>>>>> origin/master-dev
       filter:
         _and:
           - meetingId:

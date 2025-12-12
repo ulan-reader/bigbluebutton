@@ -14,7 +14,10 @@ public class DocPageGeneratedProgress implements IDocConversionMsg {
   public final Integer numPages;
   public final Integer pagesCompleted;
   public final String presBaseUrl;
+<<<<<<< HEAD
   public final String presParentPath;
+=======
+>>>>>>> origin/master-dev
   public final Boolean current;
   public final Integer page;
 
@@ -31,7 +34,10 @@ public class DocPageGeneratedProgress implements IDocConversionMsg {
                                   Integer numPages,
                                   Integer pagesCompleted,
                                   String presBaseUrl,
+<<<<<<< HEAD
                                   String presParentPath,
+=======
+>>>>>>> origin/master-dev
                                   Integer page,
                                   Boolean current) {
     this.podId = podId;
@@ -47,7 +53,10 @@ public class DocPageGeneratedProgress implements IDocConversionMsg {
     this.numPages = numPages;
     this.pagesCompleted = pagesCompleted;
     this.presBaseUrl = presBaseUrl;
+<<<<<<< HEAD
     this.presParentPath = presParentPath;
+=======
+>>>>>>> origin/master-dev
     this.page = page;
     this.current = current;
   }

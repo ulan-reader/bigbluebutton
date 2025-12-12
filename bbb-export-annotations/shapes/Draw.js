@@ -58,9 +58,15 @@ export class Draw extends Shape {
   /**
    * Renders the draw object as an SVG group element.
    *
+<<<<<<< HEAD
    * @return {Promise<G>} - An SVG group element.
    */
   async draw() {
+=======
+   * @return {G} - An SVG group element.
+   */
+  draw() {
+>>>>>>> origin/master-dev
     const shapePoints = this.segments[0]?.points;
     const shapePointsLength = shapePoints?.length || 0;
     const isDashDraw = (this.dash === 'draw');

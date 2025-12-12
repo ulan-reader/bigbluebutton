@@ -36,7 +36,10 @@ object TestDataGen {
       callerName = user.name,
       callerNum = user.name,
       color = "#ff6242",
+<<<<<<< HEAD
       speechLocale = "",
+=======
+>>>>>>> origin/master-dev
       muted,
       listenOnlyInputDevice,
       deafened,
@@ -62,7 +65,10 @@ object TestDataGen {
       callerName = name,
       callerNum = name,
       color = "#ff6242",
+<<<<<<< HEAD
       speechLocale = "",
+=======
+>>>>>>> origin/master-dev
       muted,
       listenOnlyInputDevice,
       deafened,

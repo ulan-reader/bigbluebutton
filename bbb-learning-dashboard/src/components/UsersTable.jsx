@@ -221,6 +221,7 @@ class UsersTable extends React.Component {
               className={`px-3.5 2xl:px-4 py-3 text-center ${tab === 'overview' ? 'cursor-pointer' : ''}`}
               onClick={() => { if (tab === 'overview') this.toggleOrder('talkTimeOrder'); }}
             >
+<<<<<<< HEAD
               <span className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
@@ -230,11 +231,18 @@ class UsersTable extends React.Component {
                   ? renderArrow(talkTimeOrder)
                   : null }
               </span>
+=======
+              <FormattedMessage id="app.learningDashboard.usersTable.colTalk" defaultMessage="Talk time" />
+              { tab === 'overview' && lastFieldClicked === 'talkTimeOrder'
+                ? renderArrow(talkTimeOrder)
+                : null }
+>>>>>>> origin/master-dev
             </th>
             <th
               className={`px-3.5 2xl:px-4 py-3 text-center ${tab === 'overview' ? 'cursor-pointer' : ''}`}
               onClick={() => { if (tab === 'overview') this.toggleOrder('webcamTimeOrder'); }}
             >
+<<<<<<< HEAD
               <span className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
@@ -284,6 +292,21 @@ class UsersTable extends React.Component {
                 </svg>
                 <FormattedMessage id="app.learningDashboard.usersTable.colTotalOfSharedNotes" defaultMessage="Shared Notes" />
               </span>
+=======
+              <FormattedMessage id="app.learningDashboard.usersTable.colWebcam" defaultMessage="Webcam Time" />
+              { tab === 'overview' && lastFieldClicked === 'webcamTimeOrder'
+                ? renderArrow(webcamTimeOrder)
+                : null }
+            </th>
+            <th className="px-3.5 2xl:px-4 py-3 text-center">
+              <FormattedMessage id="app.learningDashboard.usersTable.colMessages" defaultMessage="Messages" />
+            </th>
+            <th className="px-3.5 2xl:px-4 py-3 col-text-left">
+              <FormattedMessage id="app.learningDashboard.usersTable.colReactions" defaultMessage="Reactions" />
+            </th>
+            <th className="px-3.5 2xl:px-4 py-3 text-center">
+              <FormattedMessage id="app.learningDashboard.usersTable.colRaiseHands" defaultMessage="Raise Hand" />
+>>>>>>> origin/master-dev
             </th>
             <th
               className={`px-3.5 2xl:px-4 py-3 text-center ${tab === 'overview_activityscore' ? 'cursor-pointer' : ''}`}
@@ -524,6 +547,7 @@ class UsersTable extends React.Component {
                           </span>
                         ) : null }
                     </td>
+<<<<<<< HEAD
                     <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userTotalOfWhiteboardAnnotationsDashboard">
                       { user.totalOfWhiteboardAnnotations > 0
                         ? (
@@ -540,6 +564,8 @@ class UsersTable extends React.Component {
                           </span>
                         ) : null }
                     </td>
+=======
+>>>>>>> origin/master-dev
                     {
                       !user.isModerator ? (
                         <td className={`px-4 py-3 text-sm text-center items ${opacity}`} data-test="userActivityScoreDashboard">

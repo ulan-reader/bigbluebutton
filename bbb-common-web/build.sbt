@@ -1,6 +1,10 @@
 import org.bigbluebutton.build._
 
+<<<<<<< HEAD
 version := "0.0.5-SNAPSHOT"
+=======
+version := "0.0.4-SNAPSHOT"
+>>>>>>> origin/master-dev
 
 val compileSettings = Seq(
   organization := "org.bigbluebutton",
@@ -40,7 +44,11 @@ lazy val commonWeb = (project in file(".")).settings(name := "bbb-common-web", l
 // Config file is in ./.scalariform.conf
 scalariformAutoformat := true
 
+<<<<<<< HEAD
 scalaVersion := "2.13.18"
+=======
+scalaVersion := "2.13.9"
+>>>>>>> origin/master-dev
 //-----------
 // Packaging
 //
@@ -93,6 +101,7 @@ pomExtra := (
       <developer>
         <id>ritzalam</id>
         <name>Richard Alam</name>
+<<<<<<< HEAD
         <url>https://www.bigbluebutton.org</url>
       </developer>
     </developers>)
@@ -106,11 +115,26 @@ libraryDependencies ++= Seq(
   "org.springframework.data" % "spring-data-commons" % "3.4.10",
   "org.hibernate.validator" % "hibernate-validator" % "8.0.1.Final",
   "org.glassfish" % "jakarta.el" % "4.0.2",
+=======
+        <url>http://www.bigbluebutton.org</url>
+      </developer>
+    </developers>)
+
+licenses := Seq("LGPL-3.0" -> url("http://opensource.org/licenses/LGPL-3.0"))
+
+homepage := Some(url("http://www.bigbluebutton.org"))
+
+libraryDependencies ++= Seq(
+  "javax.validation" % "validation-api" % "2.0.1.Final",
+  "org.springframework.boot" % "spring-boot-starter-validation" % "2.7.17",
+  "org.springframework.data" % "spring-data-commons" % "2.7.6",
+>>>>>>> origin/master-dev
   "org.apache.httpcomponents" % "httpclient" % "4.5.13",
   "org.postgresql" % "postgresql" % "42.7.2",
   "org.hibernate" % "hibernate-core" % "5.6.1.Final",
   "org.flywaydb" % "flyway-core" % "7.8.2",
   "com.zaxxer" % "HikariCP" % "4.0.3",
+<<<<<<< HEAD
   "commons-validator" % "commons-validator" % "1.10.0",
   "org.apache.tika" % "tika-core" % "3.2.3",
   "org.apache.tika" % "tika-parsers-standard-package" % "3.2.3",
@@ -119,4 +143,12 @@ libraryDependencies ++= Seq(
   "xyz.capybara" % "clamav-client" % "2.1.2",
   "jakarta.servlet" % "jakarta.servlet-api" % "6.0.0" % "provided",
   "jakarta.annotation" % "jakarta.annotation-api" % "2.1.1"
+=======
+  "commons-validator" % "commons-validator" % "1.7",
+  "org.apache.tika" % "tika-core" % "3.0.0",
+  "org.apache.tika" % "tika-parsers-standard-package" % "3.0.0",
+  "org.scala-lang.modules" %% "scala-xml" % "2.2.0",
+  "jakarta.ws.rs" % "jakarta.ws.rs-api" % "3.1.0",
+  "xyz.capybara" % "clamav-client" % "2.1.2"
+>>>>>>> origin/master-dev
 )

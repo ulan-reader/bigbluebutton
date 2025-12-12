@@ -94,7 +94,11 @@ select_permissions:
         - bot
         - guest
         - guestStatus
+<<<<<<< HEAD
         - whiteboardWriteAccess
+=======
+        - hasDrawPermissionOnCurrentPage
+>>>>>>> origin/master-dev
         - isDialIn
         - isModerator
         - currentlyInMeeting

@@ -37,7 +37,10 @@ public class ImageSlidesGenerationService {
 	private TextFileCreator textFileCreator;
 	private PngCreator pngCreator;
 	private ImageResizer imageResizer;
+<<<<<<< HEAD
 	private ImageResolutionService imageResolutionService;
+=======
+>>>>>>> origin/master-dev
 	private long maxImageWidth = 2048;
 	private long maxImageHeight = 1536;
 	private boolean svgImagesRequired=true;
@@ -62,9 +65,18 @@ public class ImageSlidesGenerationService {
 			if (generatePngs) {
 				createPngImages(pres, page);
 			}
+<<<<<<< HEAD
 		}
 
 		System.out.println("****** Conversion complete for " + pres.getName());
+=======
+
+			notifier.sendConversionUpdateMessage(page, pres, page);
+		}
+
+		System.out.println("****** Conversion complete for " + pres.getName());
+		notifier.sendConversionCompletedMessage(pres);
+>>>>>>> origin/master-dev
 	}
 
 	public void createBlanks(UploadedPresentation pres) {
@@ -90,7 +102,12 @@ public class ImageSlidesGenerationService {
 		log.debug("Creating SVG images.");
 
 		try {
+<<<<<<< HEAD
 			ImageResolution imageResolution = imageResolutionService.identifyImageResolution(pres.getUploadedFile());
+=======
+			ImageResolutionService imgResService = new ImageResolutionService();
+			ImageResolution imageResolution = imgResService.identifyImageResolution(pres.getUploadedFile());
+>>>>>>> origin/master-dev
 
 			log.debug("Identified image {} width={} and height={}", pres.getName(), imageResolution.getWidth(), imageResolution.getHeight());
 
@@ -145,10 +162,13 @@ public class ImageSlidesGenerationService {
 	public void setImageResizer(ImageResizer imageResizer) {
 	    this.imageResizer = imageResizer;
 	}
+<<<<<<< HEAD
 
     public void setImageResolutionService(ImageResolutionService imageResolutionService) {
         this.imageResolutionService = imageResolutionService;
     }
+=======
+>>>>>>> origin/master-dev
 	
 	public void setMaxImageWidth(long maxImageWidth) {
 	    this.maxImageWidth = maxImageWidth;

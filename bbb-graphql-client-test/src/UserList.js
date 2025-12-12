@@ -57,11 +57,19 @@ function UserList({myUser}) {
   const { loading, error, data } = usePatchedSubscription(
     gql`subscription {
       user(limit: 50, order_by: [
+<<<<<<< HEAD
                 {role: asc},
                 {emojiTime: asc_nulls_last},
                 {isDialIn: desc},
                 {whiteboardWriteAccess: desc},
                 {name: asc},
+=======
+                {role: asc}, 
+                {emojiTime: asc_nulls_last}, 
+                {isDialIn: desc}, 
+                {hasDrawPermissionOnCurrentPage: desc}, 
+                {name: asc}, 
+>>>>>>> origin/master-dev
                 {userId: asc}
                 ]) {
         userId
@@ -87,7 +95,11 @@ function UserList({myUser}) {
         cameras {
           streamId
         }
+<<<<<<< HEAD
         whiteboardWriteAccess
+=======
+        hasDrawPermissionOnCurrentPage
+>>>>>>> origin/master-dev
         lastBreakoutRoom {
           isDefaultName
           sequence
@@ -146,7 +158,11 @@ function UserList({myUser}) {
                   <td style={{backgroundColor: user.mobile === true ? '#A0DAA9' : ''}}>{user.mobile === true ? 'Yes' : 'No'}</td>
                   <td>{user.clientType}</td>
                   <td style={{backgroundColor: user.cameras.length > 0 ? '#A0DAA9' : ''}}>{user.cameras.length > 0 ? 'Yes' : 'No'}</td>
+<<<<<<< HEAD
                   <td style={{backgroundColor: user.whiteboardWriteAccess == true ? '#A0DAA9' : ''}}>{user.whiteboardWriteAccess ? 'Yes' : 'No'}</td>
+=======
+                  <td style={{backgroundColor: user.hasDrawPermissionOnCurrentPage == true ? '#A0DAA9' : ''}}>{user.hasDrawPermissionOnCurrentPage ? 'Yes' : 'No'}</td>
+>>>>>>> origin/master-dev
                   <td style={{backgroundColor: user.pinned === true ? '#A0DAA9' : ''}}>{user.pinned === true ? 'Yes' : 'No'}</td>
                   <td style={{backgroundColor: user.voice?.joined === true ? '#A0DAA9' : ''}}>{user.voice?.joined === true ? 'Yes' : 'No'}</td>
                   <td style={{backgroundColor: user.voice?.listenOnly === true ? '#A0DAA9' : ''}}>{user.voice?.listenOnly === true ? 'Yes' : 'No'}</td>

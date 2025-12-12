@@ -82,7 +82,11 @@ Permission: Restricted to User Viewing Self-Related Data
 - `firstNameSortable`
 - `guest`
 - `guestStatus`
+<<<<<<< HEAD
 - `whiteboardWriteAccess`
+=======
+- `hasDrawPermissionOnCurrentPage`
+>>>>>>> origin/master-dev
 - `inactivityWarningDisplay`
 - `inactivityWarningTimeoutSecs`
 - `isDialIn`
@@ -139,7 +143,10 @@ Permission: Restricted to User Viewing Self-Related Data
 - `deletedAt`
 - `editedAt`
 - `message`
+<<<<<<< HEAD
 - `messageAsHtml`
+=======
+>>>>>>> origin/master-dev
 - `messageId`
 - `messageMetadata`
 - `messageSequence`
@@ -167,7 +174,10 @@ Permission: Restricted to User Viewing Self-Related Data
 - `deletedAt`
 - `editedAt`
 - `message`
+<<<<<<< HEAD
 - `messageAsHtml`
+=======
+>>>>>>> origin/master-dev
 - `messageId`
 - `messageMetadata`
 - `messageSequence`
@@ -205,7 +215,11 @@ Permission: Restricted by Lock Settings
 - `firstNameSortable`
 - `guest`
 - `guestStatus`
+<<<<<<< HEAD
 - `whiteboardWriteAccess`
+=======
+- `hasDrawPermissionOnCurrentPage`
+>>>>>>> origin/master-dev
 - `isDialIn`
 - `isModerator`
 - `isRunningEchoTest`
@@ -488,6 +502,10 @@ Permission: Restricted to Poll Owner or User Viewing Self-Related Data
 - `running`
 - `songTrack`
 - `startedAt`
+<<<<<<< HEAD
+=======
+- `startedOn`
+>>>>>>> origin/master-dev
 - `stopwatch`
 - `time`
 
@@ -579,6 +597,7 @@ Permission: Restricted to Presenter
 ### Relationships:
 - `creator: Object` [Type User](#type-user)
 
+<<<<<<< HEAD
 ## Type: pluginDataChannelEntry_public
 ### Fields:
 - `channelName`
@@ -590,6 +609,8 @@ Permission: Restricted to Presenter
 - `subChannelName`
 - `toRoles`
 
+=======
+>>>>>>> origin/master-dev
 ## Type: user_connectionStatus
 ### Fields:
 - `connectionAliveAt`
@@ -689,6 +710,10 @@ Permission: Restricted to Moderators or the User Viewing Self-Related Data
 Permission: Restricted to User Viewing Self-Related Data
 ### Fields:
 - `chatId`
+<<<<<<< HEAD
+=======
+- `isCurrentlyTyping`
+>>>>>>> origin/master-dev
 - `lastTypingAt`
 - `startedTypingAt`
 - `userId`
@@ -698,6 +723,10 @@ Permission: Restricted to User Viewing Self-Related Data
 ## Type: user_typing_public
 ### Fields:
 - `chatId`
+<<<<<<< HEAD
+=======
+- `isCurrentlyTyping`
+>>>>>>> origin/master-dev
 - `lastTypingAt`
 - `startedTypingAt`
 - `userId`

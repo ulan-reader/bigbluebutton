@@ -119,6 +119,7 @@ var AllowedSubscriptionsForNotInMeetingUsers = []string{
 	"userCurrentSubscription",
 	"Patched_userCurrentSubscription",
 }
+<<<<<<< HEAD
 
 var StreamingSubscriptionsManagedByMiddleware = []string{
 	"getCursorCoordinatesStream",
@@ -126,3 +127,5 @@ var StreamingSubscriptionsManagedByMiddleware = []string{
 	"getChatMessageStream",
 	"getUserVoiceStateStream",
 }
+=======
+>>>>>>> origin/master-dev

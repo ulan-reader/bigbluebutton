@@ -58,9 +58,15 @@ export class Star extends Geo {
 
   /**
    * Draws a star shape on the SVG canvas.
+<<<<<<< HEAD
    * @return {Promise<G>} Returns the SVG group element containing the star.
    */
   async draw() {
+=======
+   * @return {G} Returns the SVG group element containing the star.
+   */
+  draw() {
+>>>>>>> origin/master-dev
     const width = this.w;
     const height = this.h + this.growY;
 
@@ -83,7 +89,11 @@ export class Star extends Geo {
     this.setFill(star);
     starGroup.add(star);
 
+<<<<<<< HEAD
     await this.drawLabel(starGroup);
+=======
+    this.drawLabel(starGroup);
+>>>>>>> origin/master-dev
 
     return starGroup;
   }

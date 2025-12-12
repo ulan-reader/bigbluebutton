@@ -11,10 +11,17 @@ import {TAU} from '../shapes/helpers.js';
 export class Oval extends Geo {
   /**
    * Draws an oval shape on the SVG canvas.
+<<<<<<< HEAD
    * @return {Promise<G>} Returns the SVG group element containing the oval.
    * @see {@link https://github.com/tldraw/tldraw/blob/main/packages/editor/src/lib/primitives/geometry/Stadium2d.ts} Adapted from Tldraw.
    */
   async draw() {
+=======
+   * @return {G} Returns the SVG group element containing the oval.
+   * @see {@link https://github.com/tldraw/tldraw/blob/main/packages/editor/src/lib/primitives/geometry/Stadium2d.ts} Adapted from Tldraw.
+   */
+  draw() {
+>>>>>>> origin/master-dev
     const w = Math.max(1, this.w);
     const h = Math.max(1, this.h + this.growY);
     const cx = w / 2;
@@ -53,7 +60,11 @@ export class Oval extends Geo {
 
     this.setFill(oval);
     ovalGroup.add(oval);
+<<<<<<< HEAD
     await this.drawLabel(ovalGroup);
+=======
+    this.drawLabel(ovalGroup);
+>>>>>>> origin/master-dev
 
     return ovalGroup;
   }

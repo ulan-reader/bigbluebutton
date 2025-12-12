@@ -32,9 +32,15 @@ export class StickyNote extends Shape {
    * Overrides the placeholder draw method in the Shape base class.
    * @override
    * @method draw
+<<<<<<< HEAD
    * @return {Promise<G>} An SVG group element containing the note.
    */
   async draw() {
+=======
+   * @return {G} An SVG group element containing the note.
+   */
+  draw() {
+>>>>>>> origin/master-dev
     const stickyNote = this.shapeGroup;
     const rectW = 200 + this.padding * 2;
     const rectH = 200 + this.growY;
@@ -47,7 +53,11 @@ export class StickyNote extends Shape {
         .fill(this.shapeColor);
 
     stickyNote.add(rect);
+<<<<<<< HEAD
     await this.drawLabel(stickyNote);
+=======
+    this.drawLabel(stickyNote);
+>>>>>>> origin/master-dev
 
     return stickyNote;
   }

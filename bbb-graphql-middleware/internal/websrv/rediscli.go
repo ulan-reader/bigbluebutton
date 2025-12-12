@@ -32,12 +32,16 @@ var allowedMessages = []string{
 	"CheckGraphqlMiddlewareAlivePingSysMsg",
 	"SendCursorPositionEvtMsg",
 	"SetCurrentPageEvtMsg",
+<<<<<<< HEAD
 	"NotifyAllInMeetingEvtMsg",
 	"NotifyUserInMeetingEvtMsg",
 	"NotifyRoleInMeetingEvtMsg",
 	"GroupChatMessageBroadcastEvtMsg",
 	"ModifyWhiteboardAccessEvtMsg",
 	"UserVoiceStateEvtMsg",
+=======
+	"ModifyWhiteboardAccessEvtMsg",
+>>>>>>> origin/master-dev
 	"UserLeftMeetingEvtMsg",
 	"MeetingEndedEvtMsg",
 }
@@ -107,7 +111,10 @@ func StartRedisListener() {
 		if messageName == "MeetingEndedEvtMsg" {
 			log.Debugf("Removing cursor positions for meeting: %s", receivedMessage.Core.Body["meetingId"].(string))
 			go streamingserver.RemoveMeetingCursorsCache(receivedMessage.Core.Body["meetingId"].(string))
+<<<<<<< HEAD
 			go streamingserver.RemoveMeetingUserVoiceStatesCache(receivedMessage.Core.Body["meetingId"].(string))
+=======
+>>>>>>> origin/master-dev
 		}
 		if messageName == "UserLeftMeetingEvtMsg" {
 			log.Debugf("Removing cursor positions for meeting: %s, user: %s", receivedMessage.Core.Header.MeetingId, receivedMessage.Core.Header.UserId)
@@ -122,6 +129,7 @@ func StartRedisListener() {
 			)
 		}
 
+<<<<<<< HEAD
 		if messageName == "NotifyAllInMeetingEvtMsg" {
 			go streamingserver.HandleNotifyAllInMeetingEvtMsg(
 				receivedMessage,
@@ -162,6 +170,8 @@ func StartRedisListener() {
 			)
 		}
 
+=======
+>>>>>>> origin/master-dev
 		// Ping message requires a response with a Pong message
 		if messageName == "CheckGraphqlMiddlewareAlivePingSysMsg" &&
 			strings.Contains(msg.Payload, common.GetUniqueID()) {

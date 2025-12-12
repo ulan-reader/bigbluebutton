@@ -474,7 +474,10 @@ object Roles {
 object ClientType {
   val FLASH = "FLASH"
   val HTML5 = "HTML5"
+<<<<<<< HEAD
   val DIAL_IN = "dial-in-user"
+=======
+>>>>>>> origin/master-dev
 }
 
 object SystemUser {

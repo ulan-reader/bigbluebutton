@@ -282,10 +282,17 @@ export class Cloud extends Geo {
   /**
  * Renders a cloud shape on the SVG canvas. It uses a predefined SVG path
  * for the cloud shape, which is scaled to the dimensions of the instance.
+<<<<<<< HEAD
  * @return {Promise<G>} An SVG group element (`<g>`)
  * that contains the cloud path and label.
  */
   async draw() {
+=======
+ * @return {G} An SVG group element (`<g>`)
+ * that contains the cloud path and label.
+ */
+  draw() {
+>>>>>>> origin/master-dev
     const points = Cloud.cloudSvgPath(
         this.w,
         this.h + this.growY,
@@ -302,7 +309,11 @@ export class Cloud extends Geo {
 
     this.setFill(cloud);
     cloudGroup.add(cloud);
+<<<<<<< HEAD
     await this.drawLabel(cloudGroup);
+=======
+    this.drawLabel(cloudGroup);
+>>>>>>> origin/master-dev
 
     return cloudGroup;
   }

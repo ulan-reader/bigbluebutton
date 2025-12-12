@@ -24,9 +24,15 @@ export class Frame extends Shape {
   /**
    * Renders the frame object as an SVG group element.
    *
+<<<<<<< HEAD
    * @return {Promise<G>} - An SVG group element.
    */
   async draw() {
+=======
+   * @return {G} - An SVG group element.
+   */
+  draw() {
+>>>>>>> origin/master-dev
     // Parent group
     const frameGroup = this.shapeGroup;
 

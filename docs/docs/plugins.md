@@ -178,21 +178,33 @@ In the future, support for additional placeholders may be added.
 
 ### Manifest Json
 
+<<<<<<< HEAD
 Here is a complete `manifest.json` example with all possible configurations:
+=======
+Here is as complete `manifest.json` example with all possible configurations:
+>>>>>>> origin/master-dev
 
 ```json
 {
   "requiredSdkVersion": "~0.0.77",
   "name": "MyPlugin",
+<<<<<<< HEAD
   "version": "0.0.8", // Optional
+=======
+>>>>>>> origin/master-dev
   "javascriptEntrypointUrl": "MyPlugin.js",
   "javascriptEntrypointIntegrity": "sha384-Bwsz2rxm...", // Optional
   "localesBaseUrl": "https://cdn.domain.com/my-plugin/", // Optional
   "dataChannels":[
     {
       "name": "public-channel",
+<<<<<<< HEAD
       "pushPermission": ["moderator","presenter"], // "moderator","presenter", "all", "viewer"
       "replaceOrDeletePermission": ["moderator", "creator"] // "moderator", "presenter","all", "viewer", "creator"
+=======
+      "pushPermission": ["moderator","presenter"], // "moderator","presenter", "all"
+      "replaceOrDeletePermission": ["moderator", "creator"] // "moderator", "presenter","all", "creator"
+>>>>>>> origin/master-dev
     }
   ], // One can enable more data-channels to better organize client communication
   "eventPersistence": {
@@ -206,9 +218,12 @@ Here is a complete `manifest.json` example with all possible configurations:
       "permissions": ["moderator", "viewer"]
     }
   ],
+<<<<<<< HEAD
   "serverCommandsPermission": {
     "chat.sendCustomPublicChatMessage": ["presenter", "moderator"] // "moderator","presenter", "all", "viewer"
   },
+=======
+>>>>>>> origin/master-dev
   "settingsSchema": [
     {
       "name": "myJson",
@@ -225,6 +240,7 @@ Here is a complete `manifest.json` example with all possible configurations:
 
 To better understand remote-data-sources, please, refer to [this section](#external-data-resources)
 
+<<<<<<< HEAD
 **version:**
 
 This refers to the version of the plugin. It prevents browsers from caching old plugin files.
@@ -237,6 +253,11 @@ Browser will load: `MyPlugin.js?version=0.0.8`.
 **settingsSchema:**
 
 The `settingsSchema` serves two main purposes:
+=======
+**settingsSchema:**
+
+The settingsSchema serves two main purposes:
+>>>>>>> origin/master-dev
 
 1. **Validation:** Ensures that all required settings are provided for a plugin. If any required setting is missing, the plugin will not load.
 2. **Configuration Exposure:** Lists all available settings for the plugin, enabling external systems—such as a Learning Management System (LMS)—to present these settings to a meeting organizer. This allows the organizer to configure the plugin manually before the meeting begins.
@@ -910,7 +931,11 @@ The data-channel name must be in the `manifest.json` along with all the permissi
     {
       "name": "channel-name",
       "pushPermission": ["moderator","presenter"],
+<<<<<<< HEAD
       "replaceOrDeletePermission": ["moderator", "creator"]
+=======
+      "replaceOrDeletePermission": ["moderator", "sender"]
+>>>>>>> origin/master-dev
     }
   ]
 }
@@ -991,7 +1016,11 @@ As seen for the `useUiData`, the return type is well defined by the enum chosen 
   - setSelfViewDisable: Sets the self-view camera disabled/enabled for specific camera.
 - chat:
   - form:
+<<<<<<< HEAD
     - open: this function will open the sidebar chat panel automatically. Optionally accepts `{chatId: string}` to open a specific chat;
+=======
+    - open: this function will open the sidebar chat panel automatically;
+>>>>>>> origin/master-dev
     - fill: this function will fill the form input field of the chat passed in the argument as `{text: string}`
 - conference:
   - setSpeakerLevel: this function will set the speaker volume level(audio output) of the conference to a certain number between 0 and 1;
@@ -1008,6 +1037,7 @@ As seen for the `useUiData`, the return type is well defined by the enum chosen 
 - presentation-area:
   - open: this function will open the presentation area content automatically;
   - close: this function will close the presentation area content automatically;
+<<<<<<< HEAD
 - sidekick-options-container: **(deprecated - use [sidekickArea](#sidekickarea-ui-commands) instead)**
   - open: this function will open the sidekick options panel automatically;
   - close: this function will close the sidekick options panel automatically (and also the sidebar content if open, to avoid inconsistencies in ui);
@@ -1020,6 +1050,11 @@ As seen for the `useUiData`, the return type is well defined by the enum chosen 
     - renameGenericContentSection: this function renames the section name (section that the option belongs to) of a Generic Sidekick Content. Takes `id` (string) and `newName` (string) as parameters;
     - setMenuBadge: this function sets a badge on the sidekick option menu. Takes `id` (string) and `badgeContent` (string) as parameters;
     - removeMenuBadge: this function removes the badge from the sidekick option menu. Takes `id` (string) as parameter;
+=======
+- sidekick-options-container:
+  - open: this function will open the sidekick options panel automatically;
+  - close: this function will close the sidekick options panel automatically (and also the sidebar content if open, to avoid inconsistencies in ui);
+>>>>>>> origin/master-dev
 - user-status:
   - setAwayStatus: this function will set the away status of the user to a certain status;
 
@@ -1034,6 +1069,7 @@ See usage ahead:
 
 So the idea is that we have a `uiCommands` object and at a point, there will be the command to do the intended action, such as open the chat form and/or fill it, as demonstrated above
 
+<<<<<<< HEAD
 #### SidekickArea UI Commands
 
 The `sidekickArea` commands allow plugins to control and customize the sidekick panel and its content options. These commands are particularly useful when working with Generic Sidekick Content.
@@ -1091,11 +1127,23 @@ For a complete working example, see the [sample-generic-content-sidekick-plugin]
     - sendCustomPublicMessage: This function sends a text message to the public chat, optionally including custom metadata
       > **Note**: The custom messages sent by plugins are not automatically rendered by the client. To display these messages, a plugin must handle the rendering using `useLoadedChatMessages` and `useChatMessageDomElements`.
     - createPrivateChat: This function creates a private chat with a specific user
+=======
+### Server Commands
+
+  `serverCommands` object: It contains all the possible commands available to the developer to interact with the BBB core server, see the ones implemented down below:
+
+  - chat:
+    - sendPublicMessage: This function sends a message to the public chat on behalf of the currently logged-in user.
+
+    - sendCustomPublicMessage: This function sends a text message to the public chat, optionally including custom metadata.
+      > **Note**: The custom messages sent by plugins are not automatically rendered by the client. To display these messages, a plugin must handle the rendering using `useLoadedChatMessages` and `useChatMessageDomElements`.
+>>>>>>> origin/master-dev
 
   - caption:
     - save: this function saves the given text, locale and caption type
     - addLocale: this function sends a locale to be added to the available options
 
+<<<<<<< HEAD
 As these commands can change state in the back-end, "permission control" is available based on role for some of the Commands (in the manifest), those are:
   - chat:
     - sendCustomPublicMessage;
@@ -1110,6 +1158,8 @@ An example of the usage is displayed in the [Manifest](#manifest-json) section, 
 
 If no permission is present in the manifest, then we consider that every user in the meeting can use the server-command.
 
+=======
+>>>>>>> origin/master-dev
 ### Dom Element Manipulation
 
 - `useChatMessageDomElements` hook: This hook will return the dom element of a chat message reactively, so one can modify whatever is inside, such as text, css, js, etc.;
@@ -1146,12 +1196,21 @@ This is possible by simply configuring the dataResource name in the manifest and
 {
   // ...rest of manifest configuration
   "remoteDataSources": [
+<<<<<<< HEAD
     {
       "name": "allUsers",
       "url": "${meta_pluginSettingsUserInformation}",
       "fetchMode": "onMeetingCreate", // Possible values: "onMeetingCreate", "onDemand"
       "permissions": ["moderator", "viewer"] // Possible values: "moderator", "viewer", "presenter"
     }
+=======
+      {
+          "name": "allUsers",
+          "url": "${meta_pluginSettingsUserInformation}",
+          "fetchMode": "onMeetingCreate", // Possible values: "onMeetingCreate", "onDemand"
+          "permissions": ["moderator", "viewer"] // Possible values: "moderator", "viewer", "presenter"
+      }
+>>>>>>> origin/master-dev
   ]
 }
 ```
@@ -1297,6 +1356,7 @@ Where `<meeting-id>` is the id of the the meeting you just recorded. Then, among
 </event>
 ```
 
+<<<<<<< HEAD
 ## Guidelines
 
 This section outlines good practices for developing plugins.
@@ -1322,6 +1382,8 @@ We also strongly encourage developers to include localization in their plugins. 
 
 For a practical example, see how the [pick-random-user plugin](https://github.com/bigbluebutton/plugin-pick-random-user/blob/7259ec7f32ea0e3d851f4b6636a739a82a385896/src/commons/hooks.ts#L17) uses it in the `useGetInternationalization` hook.
 
+=======
+>>>>>>> origin/master-dev
 ## Frequently Asked Questions (FAQ)
 
 **How do I remove a certain extensible area that I don't want anymore?**

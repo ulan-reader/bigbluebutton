@@ -32,10 +32,14 @@ case class GroupChatMsgToUser(
     sender:             GroupChatUser,
     chatEmphasizedText: Boolean       = false,
     message:            String,
+<<<<<<< HEAD
     messageAsHtml:      String,
     replyToMessageId:   String,
     messageType:        String,
     metadata:           Map[String, Any],
+=======
+    replyToMessageId:   String,
+>>>>>>> origin/master-dev
 )
 case class GroupChatInfo(id: String, access: String, createdBy: GroupChatUser, users: Vector[GroupChatUser])
 
@@ -122,7 +126,11 @@ case class SendGroupChatMessageFromApiSysPubMsgBody(
 
 object GroupChatMessageBroadcastEvtMsg { val NAME = "GroupChatMessageBroadcastEvtMsg" }
 case class GroupChatMessageBroadcastEvtMsg(header: BbbClientMsgHeader, body: GroupChatMessageBroadcastEvtMsgBody) extends BbbCoreMsg
+<<<<<<< HEAD
 case class GroupChatMessageBroadcastEvtMsgBody(chatId: String, chatParticipants: Vector[String], msg: GroupChatMsgToUser)
+=======
+case class GroupChatMessageBroadcastEvtMsgBody(chatId: String, msg: GroupChatMsgToUser)
+>>>>>>> origin/master-dev
 
 object EditGroupChatMessageReqMsg { val NAME = "EditGroupChatMessageReqMsg" }
 case class EditGroupChatMessageReqMsg(header: BbbClientMsgHeader, body: EditGroupChatMessageReqMsgBody) extends StandardMsg
@@ -130,7 +138,11 @@ case class EditGroupChatMessageReqMsgBody(chatId: String, messageId: String, mes
 
 object GroupChatMessageEditedEvtMsg { val NAME = "GroupChatMessageEditedEvtMsg" }
 case class GroupChatMessageEditedEvtMsg(header: BbbClientMsgHeader, body: GroupChatMessageEditedEvtMsgBody) extends BbbCoreMsg
+<<<<<<< HEAD
 case class GroupChatMessageEditedEvtMsgBody(chatId: String, messageId: String, message: String, messageAsHtml: String)
+=======
+case class GroupChatMessageEditedEvtMsgBody(chatId: String, messageId: String, message: String)
+>>>>>>> origin/master-dev
 
 object DeleteGroupChatMessageReqMsg { val NAME = "DeleteGroupChatMessageReqMsg" }
 case class DeleteGroupChatMessageReqMsg(header: BbbClientMsgHeader, body: DeleteGroupChatMessageReqMsgBody) extends StandardMsg

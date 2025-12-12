@@ -126,7 +126,10 @@ class RedisRecorderActor(
       case m: WebcamsOnlyForModeratorChangedEvtMsg  => handleWebcamsOnlyForModeratorChangedEvtMsg(m)
       case m: MeetingEndingEvtMsg                   => handleMeetingEndingEvtMsg(m)
       case m: MeetingCreatedEvtMsg                  => handleStarterConfigurations(m)
+<<<<<<< HEAD
       case m: BroadcastLayoutEvtMsg                 => handleBroadcastLayoutEvtMsg(m)
+=======
+>>>>>>> origin/master-dev
       case m: SetScreenshareAsContentEvtMsg         => handleSetScreenshareAsContent(m)
       case m: ScreenshareRtmpBroadcastStartedEvtMsg => handleScreenshareRtmpBroadcastStartedEvtMsg(m)
       case m: ScreenshareRtmpBroadcastStoppedEvtMsg => handleScreenshareRtmpBroadcastStoppedEvtMsg(m)
@@ -169,7 +172,11 @@ class RedisRecorderActor(
       ev.setMeetingId(msg.header.meetingId)
       ev.setMessageId(msg.body.msg.id)
       ev.setSenderId(msg.body.msg.sender.id)
+<<<<<<< HEAD
       ev.setMessage(msg.body.msg.messageAsHtml)
+=======
+      ev.setMessage(msg.body.msg.message)
+>>>>>>> origin/master-dev
       ev.setSenderRole(msg.body.msg.sender.role)
       ev.setReplyToMessageId(msg.body.msg.replyToMessageId)
 
@@ -185,7 +192,11 @@ class RedisRecorderActor(
       val ev = new EditPublicChatMessageRecordEvent()
       ev.setMeetingId(msg.header.meetingId)
       ev.setMessageId(msg.body.messageId)
+<<<<<<< HEAD
       ev.setMessage(msg.body.messageAsHtml)
+=======
+      ev.setMessage(msg.body.message)
+>>>>>>> origin/master-dev
       record(msg.header.meetingId, ev.toMap.asJava)
     }
   }
@@ -805,6 +816,7 @@ class RedisRecorderActor(
     record(msg.body.props.meetingProp.intId, ev.toMap().asJava)
   }
 
+<<<<<<< HEAD
   private def handleBroadcastLayoutEvtMsg(msg: BroadcastLayoutEvtMsg): Unit = {
     val ev = new LayoutBroadcastedRecordEvent()
     ev.setMeetingId(msg.header.meetingId)
@@ -817,6 +829,8 @@ class RedisRecorderActor(
     record(msg.header.meetingId, ev.toMap().asJava)
   }
 
+=======
+>>>>>>> origin/master-dev
   private def handleSetScreenshareAsContent(msg: SetScreenshareAsContentEvtMsg): Unit = {
     val ev = new SetScreenshareAsContentEvent()
     ev.setScreenshareAsContent(msg.body.screenshareAsContent)

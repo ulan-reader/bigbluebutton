@@ -9,7 +9,12 @@ archivesBaseName = 'bbb-pres-check'
 
 task resolveDeps(type: Copy) {
     into('lib')
+<<<<<<< HEAD
     from configurations.runtimeClasspath
+=======
+    from configurations.default
+    from configurations.default.allArtifacts.file
+>>>>>>> origin/master-dev
     doLast { println '[bbb:task] Resolved dependencies for pres-checker application' }
 }
 

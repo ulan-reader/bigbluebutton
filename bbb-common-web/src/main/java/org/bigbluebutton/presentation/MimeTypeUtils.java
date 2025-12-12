@@ -79,7 +79,11 @@ public class MimeTypeUtils {
     public List<String> getValidMimeTypes() {
         List<String> validMimeTypes = Arrays.asList(XLS, XLSX,
                 DOC, DOCX, PPT, PPTX, ODT, RTF, TXT, ODS, ODP, ODG,
+<<<<<<< HEAD
                 PDF, JPEG, PNG, TIKA_MSOFFICE, TIKA_MSOFFICE_X,
+=======
+                PDF, JPEG, PNG, SVG, TIKA_MSOFFICE, TIKA_MSOFFICE_X,
+>>>>>>> origin/master-dev
                 WEBP
         );
         return validMimeTypes;

@@ -51,11 +51,19 @@ function toPx(pt) {
  * @function overlayDraw
  * @param {Object} svg - The SVG element to which the drawing will be added.
  * @param {Object} annotation - The annotation data used to create the drawing.
+<<<<<<< HEAD
  * @return {Promise<void>}
  */
 async function overlayDraw(svg, annotation) {
   const drawing = new Draw(annotation);
   const drawnDrawing = await drawing.draw();
+=======
+ * @return {void}
+ */
+function overlayDraw(svg, annotation) {
+  const drawing = new Draw(annotation);
+  const drawnDrawing = drawing.draw();
+>>>>>>> origin/master-dev
 
   svg.add(drawnDrawing);
 }
@@ -66,11 +74,19 @@ async function overlayDraw(svg, annotation) {
  * @function overlayGeo
  * @param {Object} svg - SVG element to which the geometric shape will be added.
  * @param {Object} annotation - Annotation data used to create the geo shape.
+<<<<<<< HEAD
  * @return {Promise<void>}
  */
 async function overlayGeo(svg, annotation) {
   const geo = createGeoObject(annotation);
   const geoDrawn = await geo.draw();
+=======
+ * @return {void}
+ */
+function overlayGeo(svg, annotation) {
+  const geo = createGeoObject(annotation);
+  const geoDrawn = geo.draw();
+>>>>>>> origin/master-dev
   svg.add(geoDrawn);
 }
 
@@ -80,14 +96,24 @@ async function overlayGeo(svg, annotation) {
  * @function overlayHighlight
  * @param {Object} svg - SVG element to which the highlight will be applied.
  * @param {Object} annotation - JSON annotation data.
+<<<<<<< HEAD
  * @return {Promise<void>}
  */
 async function overlayHighlight(svg, annotation) {
+=======
+ * @return {void}
+ */
+function overlayHighlight(svg, annotation) {
+>>>>>>> origin/master-dev
   // Adjust JSON properties
   annotation.opacity = 0.3;
 
   const highlight = new Highlight(annotation);
+<<<<<<< HEAD
   const highlightDrawn = await highlight.draw();
+=======
+  const highlightDrawn = highlight.draw();
+>>>>>>> origin/master-dev
   svg.add(highlightDrawn);
 }
 
@@ -98,11 +124,19 @@ async function overlayHighlight(svg, annotation) {
  * @function overlayLine
  * @param {Object} svg - SVG element to which the line will be added.
  * @param {Object} annotation - JSON annotation data for the line.
+<<<<<<< HEAD
  * @return {Promise<void>}
  */
 async function overlayLine(svg, annotation) {
   const line = new Line(annotation);
   const lineDrawn = await line.draw();
+=======
+ * @return {void}
+ */
+function overlayLine(svg, annotation) {
+  const line = new Line(annotation);
+  const lineDrawn = line.draw();
+>>>>>>> origin/master-dev
   svg.add(lineDrawn);
 }
 
@@ -112,11 +146,19 @@ async function overlayLine(svg, annotation) {
  * @function overlayArrow
  * @param {Object} svg - The SVG element where the arrow will be added.
  * @param {Object} annotation - JSON annotation data for the arrow.
+<<<<<<< HEAD
  * @return {Promise<void>}
  */
 async function overlayArrow(svg, annotation) {
   const arrow = new Arrow(annotation);
   const arrowDrawn = await arrow.draw();
+=======
+ * @return {void}
+ */
+function overlayArrow(svg, annotation) {
+  const arrow = new Arrow(annotation);
+  const arrowDrawn = arrow.draw();
+>>>>>>> origin/master-dev
   svg.add(arrowDrawn);
 }
 
@@ -126,11 +168,19 @@ async function overlayArrow(svg, annotation) {
  * @function overlaySticky
  * @param {Object} svg - SVG element to which the sticky note will be added.
  * @param {Object} annotation - JSON annotation data for the sticky note.
+<<<<<<< HEAD
  * @return {Promise<void>}
  */
 async function overlaySticky(svg, annotation) {
   const stickyNote = new StickyNote(annotation);
   const stickyNoteDrawn = await stickyNote.draw();
+=======
+ * @return {void}
+ */
+function overlaySticky(svg, annotation) {
+  const stickyNote = new StickyNote(annotation);
+  const stickyNoteDrawn = stickyNote.draw();
+>>>>>>> origin/master-dev
   svg.add(stickyNoteDrawn);
 }
 
@@ -141,15 +191,25 @@ async function overlaySticky(svg, annotation) {
  * @function overlayText
  * @param {Object} svg - The SVG element where the text will be added.
  * @param {Object} annotation - JSON annotation data for the text.
+<<<<<<< HEAD
  * @return {Promise<void>}
  */
 async function overlayText(svg, annotation) {
+=======
+ * @return {void}
+ */
+function overlayText(svg, annotation) {
+>>>>>>> origin/master-dev
   if (annotation?.props?.size == null || annotation?.props?.text?.length == 0) {
     return;
   }
 
   const text = new TextShape(annotation);
+<<<<<<< HEAD
   const textDrawn = await text.draw();
+=======
+  const textDrawn = text.draw();
+>>>>>>> origin/master-dev
   svg.add(textDrawn);
 }
 
@@ -158,11 +218,19 @@ async function overlayText(svg, annotation) {
  * @function overlayText
  * @param {Object} svg - The SVG element where the frame will be added.
  * @param {Object} annotation - JSON frame data.
+<<<<<<< HEAD
  * @return {Promise<void>}
  */
 async function overlayFrame(svg, annotation) {
   const frameShape = new Frame(annotation);
   const frame = await frameShape.draw();
+=======
+ * @return {void}
+ */
+function overlayFrame(svg, annotation) {
+  const frameShape = new Frame(annotation);
+  const frame = frameShape.draw();
+>>>>>>> origin/master-dev
   svg.add(frame);
 }
 
@@ -171,11 +239,19 @@ async function overlayFrame(svg, annotation) {
  * @function overlayPoll
  * @param {Object} svg - The SVG element where the poll will be added.
  * @param {Object} annotation - JSON poll data.
+<<<<<<< HEAD
  * @return {Promise<void>}
  */
 async function overlayPoll(svg, annotation) {
   const pollShape = new Poll(annotation);
   const poll = await pollShape.draw();
+=======
+ * @return {void}
+ */
+function overlayPoll(svg, annotation) {
+  const pollShape = new Poll(annotation);
+  const poll = pollShape.draw();
+>>>>>>> origin/master-dev
   svg.add(poll);
 }
 
@@ -186,6 +262,7 @@ async function overlayPoll(svg, annotation) {
  * @function overlayAnnotation
  * @param {Object} svg - SVG element onto which the annotation will be overlaid.
  * @param {Object} annotation - JSON annotation data.
+<<<<<<< HEAD
  * @return {Promise<void>}
  */
 export async function overlayAnnotation(svg, annotation) {
@@ -217,6 +294,39 @@ export async function overlayAnnotation(svg, annotation) {
         break;
       case 'poll':
         await overlayPoll(svg, annotation);
+=======
+ * @return {void}
+ */
+export function overlayAnnotation(svg, annotation) {
+  try {
+    switch (annotation.type) {
+      case 'draw':
+        overlayDraw(svg, annotation);
+        break;
+      case 'geo':
+        overlayGeo(svg, annotation);
+        break;
+      case 'highlight':
+        overlayHighlight(svg, annotation);
+        break;
+      case 'line':
+        overlayLine(svg, annotation);
+        break;
+      case 'arrow':
+        overlayArrow(svg, annotation);
+        break;
+      case 'text':
+        overlayText(svg, annotation);
+        break;
+      case 'note':
+        overlaySticky(svg, annotation);
+        break;
+      case 'frame':
+        overlayFrame(svg, annotation);
+        break;
+      case 'poll':
+        overlayPoll(svg, annotation);
+>>>>>>> origin/master-dev
         break;
       default:
         logger.info(`Unknown annotation type ${annotation.type}.`);
@@ -235,9 +345,15 @@ export async function overlayAnnotation(svg, annotation) {
  * @function overlayAnnotations
  * @param {Object} svg - SVG element onto which annotations will be overlaid.
  * @param {Array} slideAnnotations - Array of JSON annotation data objects.
+<<<<<<< HEAD
  * @return {Promise<void>}
  */
 async function overlayAnnotations(svg, slideAnnotations) {
+=======
+ * @return {void}
+ */
+function overlayAnnotations(svg, slideAnnotations) {
+>>>>>>> origin/master-dev
   // Sort annotations by lowest child index
   slideAnnotations = sortByKey(slideAnnotations, 'annotationInfo', 'index');
 
@@ -272,7 +388,11 @@ async function overlayAnnotations(svg, slideAnnotations) {
         for (const childId of annotation.annotationInfo.children) {
           const childAnnotation =
           slideAnnotations.find((ann) => ann.id == childId);
+<<<<<<< HEAD
           await overlayAnnotation(svg, childAnnotation.annotationInfo);
+=======
+          overlayAnnotation(svg, childAnnotation.annotationInfo);
+>>>>>>> origin/master-dev
         }
 
         break;
@@ -289,7 +409,11 @@ async function overlayAnnotations(svg, slideAnnotations) {
         const parentId = annotation.annotationInfo.parentId;
         // Don't render an annotation if it is contained in a frame.
         if (!frameMap.has(parentId)) {
+<<<<<<< HEAD
           await overlayAnnotation(svg, annotation.annotationInfo);
+=======
+          overlayAnnotation(svg, annotation.annotationInfo);
+>>>>>>> origin/master-dev
         }
     }
   }
@@ -306,9 +430,15 @@ async function processPresentationAnnotations() {
   const client = redis.createClient({
     password: config.redis.password,
     socket: {
+<<<<<<< HEAD
       host: config.redis.host,
       port: config.redis.port,
     },
+=======
+        host: config.redis.host,
+        port: config.redis.port
+    }
+>>>>>>> origin/master-dev
   });
 
   await client.connect();
@@ -338,9 +468,13 @@ async function processPresentationAnnotations() {
     } else if (fs.existsSync(svgBackgroundSlide)) {
       backgroundFormat = 'svg';
     } else {
+<<<<<<< HEAD
       logger.error(
           `Skipping slide ${currentSlide.page} (${jobId}): unknown extension`,
       );
+=======
+      logger.error(`Skipping slide ${currentSlide.page} (${jobId}): unknown extension`);
+>>>>>>> origin/master-dev
       continue;
     }
 
@@ -349,9 +483,13 @@ async function processPresentationAnnotations() {
     const slideHeight = currentSlide.height;
 
     if (!slideWidth || !slideHeight) {
+<<<<<<< HEAD
       logger.error(
           `Skipping slide ${currentSlide.page} (${jobId}): unknown dimensions`,
       );
+=======
+      logger.error(`Skipping slide ${currentSlide.page} (${jobId}): unknown dimensions`);
+>>>>>>> origin/master-dev
       continue;
     }
 
@@ -387,7 +525,11 @@ async function processPresentationAnnotations() {
     const whiteboard = canvas.group().attr({class: 'wb'});
 
     // 4. Overlay annotations onto slides
+<<<<<<< HEAD
     await overlayAnnotations(whiteboard, currentSlide.annotations);
+=======
+    overlayAnnotations(whiteboard, currentSlide.annotations);
+>>>>>>> origin/master-dev
 
     const svg = canvas.svg();
 
@@ -403,6 +545,7 @@ async function processPresentationAnnotations() {
       }
     });
 
+<<<<<<< HEAD
     /**
      * Constructs the command arguments for converting an annotated slide from
      * SVG to PDF format.
@@ -414,6 +557,15 @@ async function processPresentationAnnotations() {
      * @const {string[]} convertAnnotatedSlide - The command arguments for the
      * conversion process.
      */
+=======
+/**
+ * Constructs the command arguments for converting an annotated slide from SVG to PDF format.
+ * `cairoSVGUnsafeFlag` should be enabled (true) for CairoSVG versions >= 2.7.0
+ * to allow external resources, such as presentation slides, to be loaded.
+ *
+ * @const {string[]} convertAnnotatedSlide - The command arguments for the conversion process.
+ */
+>>>>>>> origin/master-dev
     const convertAnnotatedSlide = [
       SVGfile,
       '--output-width', toPx(slideWidth),
