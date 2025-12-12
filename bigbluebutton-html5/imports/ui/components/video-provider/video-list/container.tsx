@@ -15,6 +15,8 @@ import { HookEvents } from 'bigbluebutton-html-plugin-sdk/dist/cjs/core/enum';
 import { DomElementManipulationHooks } from 'bigbluebutton-html-plugin-sdk/dist/cjs/dom-element-manipulation/enums';
 import { UpdatedEventDetails } from 'bigbluebutton-html-plugin-sdk/dist/cjs/core/types';
 import { UserCameraHelperAreas } from '../../plugins-engine/extensible-areas/components/user-camera-helper/types';
+import Session from '/imports/ui/services/storage/in-memory';
+import { addTypedEventListener } from '/imports/utils/events';
 
 interface VideoListContainerProps {
   streams: VideoItem[];
@@ -98,6 +100,21 @@ const VideoListContainer: React.FC<VideoListContainerProps> = (props) => {
     });
   }
 
+  // Получаем из локального хранилища список скрытых видео
+  const [hiddenCams, setHiddenCams] = useState<string[]>(() => {
+    const stored = Session.getItem('hiddenCams');
+    return Array.isArray(stored) ? stored : [];
+  });
+
+  // Обновляем список скрытых видео при изменении локального хранилища
+  useEffect(() => {
+    const unsubscribe = addTypedEventListener<string[]>(window, 'hiddenCamsChange', (e) => {
+      setHiddenCams(e.detail);
+    });
+
+    return unsubscribe;
+  }, []);
+
   return (
     !streams.length
       ? null
@@ -114,7 +131,7 @@ const VideoListContainer: React.FC<VideoListContainerProps> = (props) => {
           handleVideoFocus={handleVideoFocus}
           isGridEnabled={isGridEnabled}
           overflowCount={overflowCount}
-          streams={streams}
+          streams={hiddenCams.length ? streams.filter((s) => !hiddenCams.includes(s.userId)) : streams}
           onVideoItemMount={onVideoItemMount}
           onVideoItemUnmount={onVideoItemUnmount}
           onVirtualBgDrop={onVirtualBgDrop}
