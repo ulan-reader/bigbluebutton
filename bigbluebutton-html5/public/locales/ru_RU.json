@@ -1572,5 +1572,11 @@
     "mobileApp.portals.drawerNavigation.button.label": "Порталы",
     "mobileApp.portals.addPortalPopup.validation.emptyFields": "Обязательные поля",
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "Имя уже используется",
-    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Ошибка при загрузке страницы - проверьте URL и сетевое подключение"
+    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Ошибка при загрузке страницы - проверьте URL и сетевое подключение",
+    "showParticipantVideoStreamLabel": "Показать веб-камеру участника",
+    "hideParticipantVideoStreamLabel": "Скрыть веб-камеру участника",
+    "app.actionsBar.subtitles.enable": "Включить субтитры",
+    "app.actionsBar.subtitles.disable": "Выключить субтитры",
+    "app.actionsBar.subtitles.visible": "Показать субтитры",
+    "app.actionsBar.subtitles.invisible": "Скрыть субтитры"
 }

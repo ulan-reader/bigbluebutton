@@ -1563,5 +1563,9 @@
     "mobileApp.portals.drawerNavigation.button.label": "Portales",
     "mobileApp.portals.addPortalPopup.validation.emptyFields": "Campos requeridos",
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "El nombre ya está en uso",
-    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Error al intentar cargar la página - comprueba la URL y la conexión de red"
+    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Error al intentar cargar la página - comprueba la URL y la conexión de red",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

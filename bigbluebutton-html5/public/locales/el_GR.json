@@ -1584,5 +1584,9 @@
     "mobileApp.portals.drawerNavigation.button.label": "Πύλες",
     "mobileApp.portals.addPortalPopup.validation.emptyFields": "Απαιτούμενα πεδία",
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "Αυτό το όνομα χρησιμοποιείται",
-    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Σφάλμα φόρτωσης της σελίδας - ελέγξτε τη URL και τη σύνδεση δικτύου"
+    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Σφάλμα φόρτωσης της σελίδας - ελέγξτε τη URL και τη σύνδεση δικτύου",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

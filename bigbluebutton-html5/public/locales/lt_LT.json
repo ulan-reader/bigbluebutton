@@ -660,5 +660,9 @@
     "app.legacy.upgradeBrowser": "Panašu, kad naudojate senesnę palaikomos naršyklės versiją. Atnaujinkite savo naršyklę, kad gautumėte visą palaikymą.",
     "app.legacy.criosBrowser": "Jei naudojate „iOS“, naudokite „Safari“, kad gautumėte visą palaikymą.",
     "mobileApp.portals.fields.name.placeholder": "BigBlueButton demo",
-    "mobileApp.portals.fields.url.label": "Serverio URL"
+    "mobileApp.portals.fields.url.label": "Serverio URL",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

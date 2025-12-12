@@ -617,5 +617,9 @@
     "app.debugWindow.windowTitle": "Atkļūdot",
     "app.debugWindow.form.button.copy": "Kopēt",
     "app.debugWindow.form.button.apply": "Piemērot",
-    "app.layout.style.custom": "Pielāgots/individuāls"
+    "app.layout.style.custom": "Pielāgots/individuāls",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

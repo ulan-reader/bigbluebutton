@@ -1311,5 +1311,9 @@
     "mobileApp.portals.drawerNavigation.button.label": "Portallar",
     "mobileApp.portals.addPortalPopup.validation.emptyFields": "Zorunlu Alanlar",
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "İsim zaten kullanılıyor",
-    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Sayfayı yüklemeye çalışırken hata oluştu -URL'yi  ve ağ bağlantısını kontrol edin"
+    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Sayfayı yüklemeye çalışırken hata oluştu -URL'yi  ve ağ bağlantısını kontrol edin",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

@@ -779,5 +779,9 @@
     "app.debugWindow.form.enableAutoarrangeLayoutLabel": "އޮޓޯ އެރޭންޖް ލޭއައުޓް ޖައްސާ",
     "app.debugWindow.form.enableAutoarrangeLayoutDescription": "(ވެބްކެމް އޭރިއާ ސައިޒް ބަދަލު ކުރުމުން ނުވަތަ ދަމާލާފައި ގެންގޮއްސި ނަމަ ބޭނުން ނުކުރެވޭގޮތް ވާނެއެވެ)",
     "app.debugWindow.form.chatLoggerLabel": "ޗެޓް ލޮގުކުރާ ވަރު އިމްތިހާނު ކުރޭ",
-    "app.debugWindow.form.button.apply": "އެޕްލައީ ކުރޭ"
+    "app.debugWindow.form.button.apply": "އެޕްލައީ ކުރޭ",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

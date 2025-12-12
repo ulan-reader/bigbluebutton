@@ -615,5 +615,9 @@
     "app.iOSWarning.label": "Molimo vas da izvršite nadogradnju na verziju iOS-a 12.2 ili višu",
     "app.legacy.unsupportedBrowser": "Izgleda da koristite pretraživač koji nije podržan. Molimo vas da koristite {supportedBrowser1} ili {supportedBrowser2} za potpunu podršku.",
     "app.legacy.upgradeBrowser": "Izgleda da koristite stariju verziju podržavanog pretraživača. Molimo vas da nadogradite vaš pretraživač radi potpune podrške.",
-    "app.legacy.criosBrowser": "Molimo vas da na iOS-u koristite Safari pretraživač za punu podršku."
+    "app.legacy.criosBrowser": "Molimo vas da na iOS-u koristite Safari pretraživač za punu podršku.",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

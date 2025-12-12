@@ -1563,5 +1563,9 @@
     "mobileApp.portals.drawerNavigation.button.label": "Portais",
     "mobileApp.portals.addPortalPopup.validation.emptyFields": "Campos obrigatorios",
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "Ese nome xa está a ser usado",
-    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Produciuse un erro ao tentar cargar a páxina. Comprobe o URL e a conexión de rede"
+    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Produciuse un erro ao tentar cargar a páxina. Comprobe o URL e a conexión de rede",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

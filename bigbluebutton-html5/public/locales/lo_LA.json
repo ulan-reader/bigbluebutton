@@ -44,5 +44,9 @@
     "app.dropdown.close": "ປິດ",
     "app.shortcut-help.closeLabel": "ປິດ",
     "app.videoPreview.closeLabel": "ປິດ",
-    "app.externalVideo.close": "ປິດ"
+    "app.externalVideo.close": "ປິດ",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }

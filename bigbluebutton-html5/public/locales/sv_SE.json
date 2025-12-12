@@ -1310,5 +1310,9 @@
     "mobileApp.portals.drawerNavigation.button.label": "Portaler",
     "mobileApp.portals.addPortalPopup.validation.emptyFields": "Obligatoriska fält",
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "Namn används redan",
-    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Fel vid laddning av sidan - kolla adress och uppkoppling"
+    "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Fel vid laddning av sidan - kolla adress och uppkoppling",
+    "app.actionsBar.subtitles.enable": "",
+    "app.actionsBar.subtitles.disable": "",
+    "app.actionsBar.subtitles.visible": "",
+    "app.actionsBar.subtitles.invisible": ""
 }
